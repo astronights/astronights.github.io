@@ -1,0 +1,9 @@
+name: Deploy Personal Website
+run-name: Deploying ${{github.actor}}.github.io
+on: [push]
+jobs:
+  run-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
