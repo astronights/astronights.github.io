@@ -1,3 +1,5 @@
-# astronights.github.io
-My personal website
-Still working on it
+# My Personal Website
+
+**Note** Currently in development
+
+Link: astronights@github.io
