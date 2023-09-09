@@ -22,11 +22,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
-      run: |
-        npm install
-        npx webpack
-
     - name: Deploy React to GitHub Pages
       uses: bitovi/github-actions-react-to-github-pages@v1.2.1
       with:
