@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
+  "name": "shubhankar-agrawal",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://astronights.github.io/",
   "dependencies": {
     "@chakra-ui/react": "^2.8.1",
     "@testing-library/jest-dom": "^5.17.0",
