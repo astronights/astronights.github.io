@@ -1,5 +1,5 @@
 import { Box, Heading, Container, Text, Button, Stack, Icon, useColorModeValue, createIcon } from "@chakra-ui/react";
-import ProfileArray from "./ProfileArray";
+import ProfileArray from "../arrays/ProfileArray";
 
 export default function Header({ color }) {
     const profile = ProfileArray();

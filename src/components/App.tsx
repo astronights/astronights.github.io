@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/app.sass';
 import Nav from './NavBar';
 import Header from './Header';
+import About from './About';
 import Contact from './Contact';
 import Footer from './Footer';
 
@@ -15,8 +16,8 @@ function App() {
     <>
       <Nav color={color} />
       <Header color={color} />
-      {/*
       <About color={color} />
+      {/*
       <Experience color={color} />
   <Projects color={color} /> */}
       <Contact color={color} />

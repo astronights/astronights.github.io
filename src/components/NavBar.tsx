@@ -4,12 +4,11 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
-import ProfileArray from "./ProfileArray";
+import ProfileArray from "../arrays/ProfileArray";
 const TbIcons = require("react-icons/tb");
 
 export default function Nav({ color }) {
     const profile = ProfileArray();
-    console.log(profile);
     const colors = {
         "blue": "#3182CE",
         "cyan": "#00B5D8",
@@ -58,7 +57,7 @@ export default function Nav({ color }) {
 
     for (let i = 0; i < profile.logo.length; i++) {
         const letter = profile.logo[i].toUpperCase();
-        const component = letter === " " ? " " :TbIcons[`TbLetter${letter}`];
+        const component = letter === " " ? TbIcons['TbSeparator'] : TbIcons[`TbLetter${letter}`];
         TbLetterComponents.push(component);
     }
 
@@ -77,19 +76,15 @@ export default function Nav({ color }) {
                 w="100%"
             >
                 <Link onClick={scrollToHeader}>
-                    <HStack>
+                    <HStack gap={'0.3rm'}>
                         {TbLetterComponents.map((Component, index) => {
-                            if (Component === " ") {
-                                return (
-                                    <div> </div>
-                                )
+                            if (Component.name === "TbSeparator ") {
+                                return <Component key={index} color={'transparent'} />;
                             } else {
-                                return (
-                                    <Component key={index} color={colors[color]} />
-                                )
+                                return <Component key={index} color={colors[color]} />
                             }
-                        })
                         }
+                        )}
                     </HStack>
                 </Link>
 
