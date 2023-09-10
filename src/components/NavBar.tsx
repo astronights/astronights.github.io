@@ -5,7 +5,7 @@ import {
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import ProfileArray from "./ProfileArray";
-import { TbIcons } from "react-icons/tb";
+const TbIcons = require("react-icons/tb");
 
 export default function Nav({ color }) {
     const profile = ProfileArray();
@@ -57,8 +57,8 @@ export default function Nav({ color }) {
     const TbLetterComponents = [];
 
     for (let i = 0; i < profile.logo.length; i++) {
-        const letter = profile.logo[i];
-        const component = TbIcons[`TbLetter${letter}`];
+        const letter = profile.logo[i].toUpperCase();
+        const component = letter === " " ? " " :TbIcons[`TbLetter${letter}`];
         TbLetterComponents.push(component);
     }
 
@@ -78,9 +78,18 @@ export default function Nav({ color }) {
             >
                 <Link onClick={scrollToHeader}>
                     <HStack>
-                        {TbLetterComponents.map((Component, index) => (
-                            <Component key={index} color={colors[color]} />
-                        ))}
+                        {TbLetterComponents.map((Component, index) => {
+                            if (Component === " ") {
+                                return (
+                                    <div> </div>
+                                )
+                            } else {
+                                return (
+                                    <Component key={index} color={colors[color]} />
+                                )
+                            }
+                        })
+                        }
                     </HStack>
                 </Link>
 

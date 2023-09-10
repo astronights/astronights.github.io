@@ -1,7 +1,9 @@
 import React from 'react';
 import '../assets/app.sass';
 import Nav from './NavBar';
-import Header from './Header'
+import Header from './Header';
+import Contact from './Contact';
+import Footer from './Footer';
 
 function App() {
   // Available Colours:
@@ -16,9 +18,9 @@ function App() {
       {/*
       <About color={color} />
       <Experience color={color} />
-      <Projects color={color} />
+  <Projects color={color} /> */}
       <Contact color={color} />
-      <Footer /> */}
+      <Footer />
     </>
   );
 }

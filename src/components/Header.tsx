@@ -23,7 +23,7 @@ export default function Header({ color }) {
                 />
             </Heading>
 
-            <Container maxW={"3xl"} id="hero">
+            <Container maxW={"3xl"} id="header">
                 <Stack
                     as={Box}
                     textAlign={"center"}
@@ -32,7 +32,7 @@ export default function Header({ color }) {
                     pt={{ base: 36, md: 52 }}
                 >
                     <Heading
-                        fontWeight={600}
+                        fontWeight={400}
                         fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
                         lineHeight={"110%"}
                     >
