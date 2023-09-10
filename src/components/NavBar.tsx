@@ -5,10 +5,11 @@ import {
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import ProfileArray from "./ProfileArray";
-import TbIcons from "react-icons/tb";
+import { TbIcons } from "react-icons/tb";
 
 export default function Nav({ color }) {
     const profile = ProfileArray();
+    console.log(profile);
     const colors = {
         "blue": "#3182CE",
         "cyan": "#00B5D8",
@@ -26,8 +27,8 @@ export default function Nav({ color }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const [isLargerThanMD] = useMediaQuery("(min-width: 48em)");
-    const scrollToHero = () => {
-        const heroSection = document.querySelector("#hero");
+    const scrollToHeader = () => {
+        const heroSection = document.querySelector("#header");
         heroSection.scrollIntoView({ behavior: "smooth" });
     };
     const scrollToAbout = () => {
@@ -75,7 +76,7 @@ export default function Nav({ color }) {
                 justifyContent={"space-between"}
                 w="100%"
             >
-                <Link onClick={scrollToHero}>
+                <Link onClick={scrollToHeader}>
                     <HStack>
                         {TbLetterComponents.map((Component, index) => (
                             <Component key={index} color={colors[color]} />
