@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/app.sass';
+import '../assets/css/app.sass';
 import Nav from './NavBar';
 import Header from './Header';
 import About from './About';

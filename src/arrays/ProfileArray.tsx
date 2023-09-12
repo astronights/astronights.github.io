@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { marked } from 'marked'
+import { Profile } from '../types';
 
-const parseProfile = (mdContent) => {
+const parseProfile = (mdContent: string): Profile => {
     const profile = {
         siteName: "",
         headerName: "",
@@ -48,7 +49,7 @@ const parseProfile = (mdContent) => {
     return profile;
 };
 
-const ProfileArray = () => {
+const ProfileArray = ():Profile => {
     const [profile, setProfile] = useState({
         siteName: "",
         headerName: "",

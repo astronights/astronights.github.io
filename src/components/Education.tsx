@@ -17,8 +17,9 @@ export default function Education({ color }) {
   const [nodes, edges] = getGraphData(education);
 
   const handleSelected = (value) => {
-    const picks = education.filter((edu) => (edu.node - value < 1) && (edu.node > value)).map((edu) => (edu.node));
+    const picks = education.filter((edu) => (edu.node - value < 1) && (edu.node >= value)).map((edu) => (edu.node));
     const intersection = selected.filter((val) => picks.includes(val));
+    console.log(value, selected, picks, intersection)
     if (intersection.length > 0) {
       setSelected(selected.filter((val) => !intersection.includes(val)));
     } else {
@@ -68,19 +69,19 @@ export default function Education({ color }) {
                     <Flex justifyContent="space-between">
                       <HStack>
                         <Image src={edu.image} h={50} />
-                        <Box px={2} > // align="left"
-                          <Text fontWeight={600}>{edu.degree === null ? edu.title : edu.degree}</Text>
+                        <Box alignContent={'left'} px={2} >
+                          <Text fontWeight={600}>{edu.degree}</Text>
                           <Text>{edu.institution}</Text>
                         </Box>
                       </HStack>
                       <Text px={2} fontWeight={300}>
-                        {edu.duration}
+                        {edu.period}
                       </Text>
                     </Flex>
                   </CardHeader>
                   <CardBody>
                     <Flex>
-                      <List spacing={3}> //align="left"
+                      <List spacing={3}>
                         {edu.description.map((item, index) => (
                           <ListItem key={index}>
                             <ListIcon

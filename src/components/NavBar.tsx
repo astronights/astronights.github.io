@@ -78,7 +78,7 @@ export default function Nav({ color }) {
                 <Link onClick={scrollToHeader}>
                     <HStack gap={'0.3rm'}>
                         {TbLetterComponents.map((Component, index) => {
-                            if (Component.name === "TbSeparator ") {
+                            if (Component.name === "TbSeparator") {
                                 return <Component key={index} color={'transparent'} />;
                             } else {
                                 return <Component key={index} color={colors[color]} />

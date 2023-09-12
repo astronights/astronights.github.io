@@ -12,7 +12,7 @@ import { Box, Container, Stack, Text, useColorModeValue } from "@chakra-ui/react
           py={4}
           align="center"
         >
-          <Text>Design inspired by a Template From [https://github.com/eldoraboo](https://github.com/eldoraboo)</Text>
+          <Text>Design inspired by a template From <a href='https://github.com/eldoraboo'>https://github.com/eldoraboo</a></Text>
         </Container>
       </Box>
     );

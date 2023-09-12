@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { marked } from 'marked'
+import { Study } from "../types";
 
-const parseEducation = (mdContent) => {
+const parseEducation = (mdContent: string):Study[] => {
 
   const education = [];
 
@@ -19,6 +20,7 @@ const parseEducation = (mdContent) => {
     let period = '';
     let degree = '';
     let grade = '';
+    let image = '';
     let description = [];
 
     Array.from(details.children).forEach((child) => {
@@ -35,6 +37,8 @@ const parseEducation = (mdContent) => {
         degree = child.textContent.split('Degree: ')[1];
       } else if (child.textContent.startsWith('Grade')) {
         grade = child.textContent.split('Grade: ')[1];
+      } else if (child.textContent.startsWith('Image')) {
+        image = child.textContent.split('Image: ')[1];
       } else if (child.textContent.startsWith('Description')) {
         description = Array.from(child.getElementsByTagName('ul')[0].children).map((li) => li.textContent);
       }
@@ -44,6 +48,7 @@ const parseEducation = (mdContent) => {
       node,
       title,
       institution,
+      image,
       location,
       period,
       degree,
@@ -57,7 +62,7 @@ const parseEducation = (mdContent) => {
 
 };
 
-const EducationArray = () => {
+const EducationArray = (): Study[] => {
   const [education, setEducation] = useState([]);
 
   useEffect(() => {
