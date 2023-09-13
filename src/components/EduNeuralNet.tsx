@@ -5,17 +5,28 @@ import { Card } from '@chakra-ui/react';
 
 const Flow = (props: { education: Study[] }) => {
     const reactFlowInstance = useReactFlow();
-    console.log(reactFlowInstance.project)
 
-    const nodes = [
-        { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-        { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-    ];
-    const edges = [{ id: 'e1-2', source: '1', target: '2' }];
+    const nodes = props.education.map((edu) => ({
+        id: edu.node.toString(),
+        position: {
+            x: 100 * edu.node,
+            y: Number.isInteger(edu.node) ? 100 : 100 + 100 * (edu.node - Math.floor(edu.node))
+        },
+        data: { label: edu.node },
+    }));
+
+    console.log(nodes)
+
+    const edges = props.education.filter((edu) =>
+        Number.isInteger(edu.node) && edu.node > 0).map((edu) => ({
+            id: `${edu.node - 1}to${edu.node}`,
+            source: (edu.node - 1).toString(),
+            target: edu.node.toString(),
+        }));
 
     return (
         <Card variant='elevated' style={{ width: '100vw', height: '100vh' }}>
-            <ReactFlow nodes={nodes} edges={edges}>
+            <ReactFlow nodes={nodes} edges={edges} fitView={true} snapToGrid={true}>
                 <Background />
             </ReactFlow>
         </Card>
