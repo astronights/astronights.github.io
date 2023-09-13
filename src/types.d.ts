@@ -19,6 +19,7 @@ export type Study = {
     location: string
     period: string
     degree: string
+    country?: string
     grade?: string
     description: string[]
     badges?: string[]

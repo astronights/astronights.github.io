@@ -21,6 +21,7 @@ const parseEducation = (mdContent: string):Study[] => {
     let degree = '';
     let grade = '';
     let image = '';
+    let country = '';
     let badges = [];
     let description = [];
 
@@ -40,6 +41,8 @@ const parseEducation = (mdContent: string):Study[] => {
         grade = child.textContent.split('Grades: ')[1];
       } else if (child.textContent.startsWith('Image')) {
         image = child.textContent.split('Image: ')[1];
+      } else if (child.textContent.startsWith('Country')) {
+        country = child.textContent.split('Country: ')[1];
       } else if (child.textContent.startsWith('Badges')) {
         badges = Array.from(child.getElementsByTagName('ul')[0].children).map((li) => li.textContent);
       } else if (child.textContent.startsWith('Description')) {
@@ -56,6 +59,7 @@ const parseEducation = (mdContent: string):Study[] => {
       period,
       degree,
       grade,
+      country,
       badges,
       description,
     });
