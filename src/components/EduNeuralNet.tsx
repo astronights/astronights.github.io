@@ -11,9 +11,8 @@ const hoverColor = '#7996a04d';
 
 const bgColor = (hover, selected, item, selectColor) => {
     console.log(selected.map(String), item)
-    return hover.includes(item) ? hoverColor :
-        (selected.map(String).includes(item.split('a')[0].split('g')[0]) ?
-            selectColor : 'transparent')
+    return selected.map(String).includes(item.split('a')[0].split('g')[0]) ? selectColor
+        : (hover.includes(item) ? hoverColor : 'transparent')
 }
 
 const NeuralNetNode = ({ data }) => {
