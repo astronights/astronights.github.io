@@ -193,7 +193,7 @@ const Flow = (props: { education: Study[], color: string, updateSelected: (value
                 onNodeMouseEnter={handleTouchMove}
                 onNodeMouseLeave={() => setHover([])}
                 maxZoom={1.1} minZoom={0.9}
-                translateExtent={[[50, -35], [550, 200]]}
+                translateExtent={[[50, -35], [600, 200]]}
             >
                 <Background gap={10} />
             </ReactFlow>
