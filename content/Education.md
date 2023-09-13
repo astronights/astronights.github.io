@@ -2,11 +2,12 @@
 
 - Node: 0
 
-## School
+## High School
 
 - Node: 1
 - Institution: A.M.M Matriculation Higher Secondary School
 - Location: Chennai, India
+- Country: IN
 - Period: May 2016
 - Image: /images/amm.png
 - Degree: High School Certificate
@@ -16,11 +17,12 @@
 - Badges:
   - Best Outgoing Student 2016
 
-## Undergraduate
+## Bachelors of Engineering
 
 - Node: 2
 - Institution: The University of Hong Kong
 - Location: Hong Kong S.A.R
+- Country: HK
 - Period: Sep 2016 - Jun 2020
 - Image: /images/hku.png
 - Degree: Bachelors of Engineering (Computer Science)
@@ -37,6 +39,7 @@
 - Node: 2.1
 - Institution: Common Purpose
 - Location: Manila, Philippines
+- Country: PH
 - Period: Jun 2017
 - Image: /images/ldp.png
 - Degree: Leadership Development Programme
@@ -49,6 +52,7 @@
 - Node: 2.2
 - Institution: Tianjin University
 - Location: Tianjin, China
+- Country: CN
 - Period: Jul 2017
 - Image: /images/tju.png
 - Degree: Tianjin Interflow Program
@@ -62,6 +66,7 @@
 - Node: 2.3
 - Institution: Universite Catholique de Lyon
 - Location: Lyon, France
+- Country: FR
 - Period: Jul 2018
 - Degree: Intesive Summer French Programme (B1)
 - Image: /images/ucly.png
@@ -75,6 +80,7 @@
 - Node: 2.4
 - Institution: Nanyang Technological University
 - Location: Singapore
+- Country: SG
 - Period: Jan 2019 - May 2019
 - Image: /images/ntu.png
 - Degree: Semester Exchange
@@ -83,11 +89,12 @@
   - Student exchange program from Faculty of Engineering
   - Member of NUS Open Source Society
 
-## Postgraduate
+## Masters of Computing
 
 - Node: 3
 - Institution: National University of Singapore
 - Location: Singapore
+- Country: SG
 - Period: Jan 2022 - Jan 2023
 - Image: /images/nus.png
 - Degree: Masters of Computing (Artificial Intelligence)
