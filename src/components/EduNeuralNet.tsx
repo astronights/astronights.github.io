@@ -28,7 +28,7 @@ const InfinityNode = ({ data }) => {
     const handlerMap = { 'source': 'Right', 'target': 'Left' }
 
     return (
-        <div className='nn-node'>
+        <div className='infinity-node'>
             <Handle id={handlerMap[data.type]} type={data.type}
                 position={Position[handlerMap[data.type]]}
                 isConnectable={false} />
@@ -37,10 +37,19 @@ const InfinityNode = ({ data }) => {
     );
 }
 
-const nodeTypes = { nnNode: NeuralNetNode, infinityNode: InfinityNode };
+const ParentNode = ({ data }) => {
+
+    return (
+        <div className='parent-node'>
+            <Text>{data.text}</Text>
+        </div>
+    );
+}
+
+const nodeTypes = { nnNode: NeuralNetNode, infinityNode: InfinityNode, parentNode: ParentNode };
 const activationFunctions = ['tanh', 'relu', 'tanh']
 
-const Flow = (props: { education: Study[] }) => {
+const Flow = (props: { education: Study[], updateSelected: (value: number) => void }) => {
     const reactFlowInstance = useReactFlow();
 
     const [nodes, setNodes] = useState([]);
@@ -60,6 +69,8 @@ const Flow = (props: { education: Study[] }) => {
             data: { label: 0, text: 'Early Life', type: 'source' },
         })
 
+        x += 50;
+
         graphEdges.push({
             id: '0to1',
             source: '0',
@@ -68,6 +79,17 @@ const Flow = (props: { education: Study[] }) => {
 
         const groups = _.groupBy(props.education, (edu) => Math.floor(edu.node));
         Object.entries(groups).forEach(([key, items]) => {
+
+            graphNodes.push({
+                id: `${key}g`,
+                position: { x: x + 70, y: y - 120 },
+                type: 'parentNode',
+                data: {
+                    label: key, text: items[0].title
+                },
+                style: { width: `${120 + (items.length > 1 ? 80 : 0)}px` }
+            });
+
             x += 75;
 
             graphNodes.push({
@@ -154,7 +176,7 @@ const Flow = (props: { education: Study[] }) => {
 
         });
 
-        const lastNode = props.education.length !== 0  ? props.education.slice(-1)[0].node + 1 : 99;
+        const lastNode = props.education.length !== 0 ? props.education.slice(-1)[0].node + 1 : 99;
 
         graphNodes.push({
             id: lastNode.toString(),
@@ -164,11 +186,7 @@ const Flow = (props: { education: Study[] }) => {
                 label: lastNode,
                 text: 'Present', type: 'target'
             },
-        })
-
-        console.log(graphNodes);
-        console.log(graphEdges);
-
+        });
 
         setNodes(graphNodes);
         setEdges(graphEdges);
@@ -178,14 +196,20 @@ const Flow = (props: { education: Study[] }) => {
 
     }, [props.education, reactFlowInstance]);
 
-    // console.log(reactFlowInstance);
+    const onNodeClick = (_, node) => {
+        console.log(parseFloat(node.id))
+        props.updateSelected(parseFloat(node.id))
+    }
 
     return (
-        <Card variant='elevated' style={{ width: '100vw', height: '65vh' }}>
+        <Card variant='elevated' style={{ width: '100vw', height: '50vh' }}>
             <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}
+                onNodeClick={onNodeClick}
+                edgesFocusable={false}
                 snapToGrid={true}
-            // panOnDrag={false} panOnScroll={false}
-            // zoomOnScroll={false} zoomOnPinch={false} zoomOnDoubleClick={false}
+                zoomOnScroll={false} zoomOnDoubleClick={false} panOnScroll={false}
+            // panOnDrag={false} 
+            // zoomOnScroll={false} zoomOnPinch={false} 
             >
                 <Background gap={10} />
             </ReactFlow>
@@ -193,7 +217,7 @@ const Flow = (props: { education: Study[] }) => {
     )
 }
 
-const EduNeuralNet = (props: { education: Study[] }) => {
+const EduNeuralNet = (props: { education: Study[], updateSelected: (value: number) => void }) => {
 
     return (
         <ReactFlowProvider>

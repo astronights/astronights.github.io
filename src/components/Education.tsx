@@ -43,7 +43,7 @@ export default function Education({ color }) {
             <Divider orientation="horizontal" />
           </Stack>
           <Center px={4}>
-            <EduNeuralNet education={education}/>
+            <EduNeuralNet education={education} updateSelected={handleSelected}/>
           </Center>
           <Center px={4}>
             <ButtonGroup variant="outline">
