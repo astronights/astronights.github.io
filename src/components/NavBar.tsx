@@ -57,6 +57,9 @@ const NavBar = (props: {color: string}) => {
 
     for (let i = 0; i < profile.logo.length; i++) {
         const letter = profile.logo[i].toUpperCase();
+        if (window.visualViewport.width <= 768 && letter === " ") {
+            break;
+        }
         const component = letter === " " ? TbIcons['TbSeparator'] : TbIcons[`TbLetter${letter}`];
         TbLetterComponents.push(component);
     }
@@ -89,7 +92,7 @@ const NavBar = (props: {color: string}) => {
                 </Link>
 
                 <Flex alignItems={"center"}>
-                    <Stack direction={"row"} spacing={7}>
+                    <Stack direction={"row"} spacing={5}>
                         {isLargerThanMD ? (
                             <>
                                 <Button variant="ghost" onClick={scrollToAbout}>
