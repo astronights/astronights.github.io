@@ -1,6 +1,6 @@
 import {
   Divider, Stack, Text, Container, Box, HStack, Card, CardHeader, CardBody, CardFooter, Flex, Badge,
-  Image, List, ListItem, ListIcon, Button, ButtonGroup, Center
+  Image, List, ListItem, ListIcon, Center
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { useState } from "react";
@@ -10,8 +10,6 @@ import EduNeuralNet from "./EduNeuralNet";
 export default function Education({ color }) {
   const education = EducationArray();
   const [selected, setSelected] = useState([]);
-  const options = education.filter((edu) =>
-    Number.isInteger(edu.node) && edu.node > 0).map((edu) => ({ node: edu.node, title: edu.title }));
 
   const handleSelected = (value: number) => {
     const picks = education.filter((edu) =>
@@ -43,20 +41,8 @@ export default function Education({ color }) {
             <Divider orientation="horizontal" />
           </Stack>
           <Center px={4}>
-            <EduNeuralNet education={education} updateSelected={handleSelected} selected={selected}/>
-          </Center>
-          <Center px={4}>
-            <ButtonGroup variant="outline">
-              {options.map((option) => (
-                <Button
-                  key={option.node}
-                  colorScheme={selected.includes(option.node) ? `${color}` : "gray"}
-                  onClick={() => handleSelected(option.node)}
-                >
-                  {option.title}
-                </Button>
-              ))}
-            </ButtonGroup>
+            <EduNeuralNet education={education} color={color}
+            updateSelected={handleSelected} selected={selected}/>
           </Center>
           <Stack px={4} spacing={4}>
             {education

@@ -1,4 +1,4 @@
-import ReactFlow, { Background, Handle, Position, ReactFlowProvider, useReactFlow } from 'reactflow';
+import ReactFlow, { Background, Handle, Position, ReactFlowProvider } from 'reactflow';
 import { Study } from '../types';
 import { Card, Text } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
@@ -7,10 +7,19 @@ import 'reactflow/dist/style.css';
 import '../assets/css/neuralnet.sass';
 import range from '../utils';
 
+const hoverColor = '#7996a04d';
+
+const bgColor = (hover, selected, item, selectColor) => {
+    console.log(selected.map(String), item)
+    return hover.includes(item) ? hoverColor :
+        (selected.map(String).includes(item.split('a')[0].split('g')[0]) ?
+            selectColor : 'transparent')
+}
+
 const NeuralNetNode = ({ data }) => {
 
     return (
-        <div className='nn-node'>
+        <div className='nn-node' style={data.style}>
             <Handle key={'source'} id={'Right'} type={'source'}
                 position={Position.Right} isConnectable={false} />
             <Handle key={'target'} id={'Left'} type={'target'}
@@ -23,42 +32,23 @@ const NeuralNetNode = ({ data }) => {
     );
 }
 
-const InfinityNode = ({ data }) => {
-
-    const handlerMap = { 'source': 'Right', 'target': 'Left' }
-
-    return (
-        <div className='infinity-node'>
-            <Handle id={handlerMap[data.type]} type={data.type}
-                position={Position[handlerMap[data.type]]}
-                isConnectable={false} />
-            <Text>{data.text}</Text>
-        </div>
-    );
-}
-
 const ParentNode = ({ data }) => {
 
     return (
-        <div className='parent-node'>
+        <div className='parent-node' style={data.style}>
             <Text>{data.text}</Text>
         </div>
     );
 }
 
-const nodeTypes = { nnNode: NeuralNetNode, infinityNode: InfinityNode, parentNode: ParentNode };
+const nodeTypes = { nnNode: NeuralNetNode, parentNode: ParentNode };
 const activationFunctions = ['tanh', 'relu', 'tanh']
 
-const Flow = (props: { education: Study[], updateSelected: (value: number) => void, selected: number[] }) => {
-    const reactFlowInstance = useReactFlow();
+const Flow = (props: { education: Study[], color: string, updateSelected: (value: number) => void, selected: number[] }) => {
 
     const [nodes, setNodes] = useState([]);
     const [edges, setEdges] = useState([]);
-
-    const [selected, setSelected] = useState(props.selected);
     const [hover, setHover] = useState([]);
-
-    console.log(selected, hover);
 
     useEffect(() => {
 
@@ -67,20 +57,7 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
         let x = 0;
         let y = 100;
 
-        graphNodes.push({
-            id: '0',
-            position: { x, y },
-            type: 'infinityNode',
-            data: { label: 0, text: 'Early Life', type: 'source' },
-        })
-
-        x += 50;
-
-        graphEdges.push({
-            id: '0to1',
-            source: '0',
-            target: '1',
-        })
+        console.log(props.selected)
 
         const groups = lodash.groupBy(props.education, (edu) => Math.floor(edu.node));
         Object.entries(groups).forEach(([key, items]) => {
@@ -90,7 +67,8 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
                 position: { x: x + 70, y: y - 120 },
                 type: 'parentNode',
                 data: {
-                    label: key, text: items[0].title
+                    label: key, text: items[0].title,
+                    style: { backgroundColor: bgColor(hover, props.selected, `${key}g`, props.color) }
                 },
                 style: { width: `${120 + (items.length > 1 ? 80 : 0)}px` }
             });
@@ -98,13 +76,14 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
             x += 75;
 
             graphNodes.push({
-                id: key.toString(),
+                id: key,
                 position: { x, y },
                 type: 'nnNode',
                 data: {
                     label: key, image: items[0].image,
                     alt: items[0].institution,
-                    country: items[0].country
+                    country: items[0].country,
+                    style: { backgroundColor: bgColor(hover, props.selected, key, props.color) }
                 }
             });
 
@@ -121,7 +100,8 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
                         data: {
                             label: item.node, image: item.image,
                             alt: item.institution,
-                            country: item.country
+                            country: item.country,
+                            style: { backgroundColor: bgColor(hover, props.selected, item.node.toString(), props.color) }
                         }
                     })
 
@@ -166,7 +146,8 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
                     type: 'nnNode',
                     data: {
                         label: key, image: `/images/${activationFunctions[index]}.png`,
-                        alt: activationFunctions[index]
+                        alt: activationFunctions[index],
+                        style: { backgroundColor: bgColor(hover, props.selected, `${key}a${index + 1}`, props.color) }
                     }
                 });
 
@@ -181,47 +162,39 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
 
         });
 
-        const lastNode = props.education.length !== 0 ? props.education.slice(-1)[0].node + 1 : 99;
-
-        graphNodes.push({
-            id: lastNode.toString(),
-            position: { x: x + 100, y },
-            type: 'infinityNode',
-            data: {
-                label: lastNode,
-                text: 'Present', type: 'target'
-            },
-        });
-
         setNodes(graphNodes);
         setEdges(graphEdges);
 
-        // TODO: Make this fit Bounds dynamic
-        // reactFlowInstance.fitBounds({ x: 90, y: 10, width: xCounter - 50, height: 200 });
-
-    }, [props.education, props.selected, reactFlowInstance]);
+    }, [props.education, props.selected, hover, props.color]);
 
     const handleNodeClick = (_, node) => {
-        setSelected([parseFloat(node.id)]);
         props.updateSelected(parseFloat(node.id))
     }
 
     const handleTouchMove = (_, node) => {
-        setHover(nodes.filter((n) => node.id.startsWith(n.id)));
+        if (node.id.includes('.')) {
+            setHover([node.id]);
+        } else if (node.id.includes('a')) {
+            setHover(nodes.filter((n) => n.id.startsWith(node.id.split('a')[0])
+                && !n.id.includes('.')).map((n) => n.id));
+        } else {
+            setHover(nodes.filter((n) => n.id.startsWith(node.id.replace('g', ''))).map((n) => n.id));
+        }
     }
 
+    const height = window.visualViewport.width < 512 ? 35 : (window.visualViewport.width < 968 ? 25 : 50)
+
     return (
-        <Card variant='elevated' style={{ width: '100vw', height: '50vh' }}>
+        <Card variant='elevated' style={{ width: '100vw', height: `${height}vh` }}>
             <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}
                 onNodeClick={handleNodeClick}
                 edgesFocusable={false}
                 snapToGrid={true}
                 zoomOnScroll={false} zoomOnDoubleClick={false} panOnScroll={false}
                 onNodeMouseEnter={handleTouchMove}
+                onNodeMouseLeave={() => setHover([])}
                 maxZoom={1.1} minZoom={0.9}
-                
-            // panOnDrag={false} 
-            // zoomOnScroll={false} zoomOnPinch={false} 
+                translateExtent={[[50, -35], [550, 200]]}
             >
                 <Background gap={10} />
             </ReactFlow>
@@ -229,7 +202,10 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
     )
 }
 
-const EduNeuralNet = (props: { education: Study[], updateSelected: (value: number) => void, selected: number[] }) => {
+const EduNeuralNet = (props: {
+    education: Study[], color: string,
+    updateSelected: (value: number) => void, selected: number[]
+}) => {
 
     return (
         <ReactFlowProvider>
