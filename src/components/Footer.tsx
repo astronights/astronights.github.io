@@ -12,7 +12,7 @@ const Footer = () => {
         py={4}
         align="center"
       >
-        <Text>Design inspired by a template from {" "}
+        <Text textAlign={'center'}>Design inspired by a template from {" "}
           <Link href='https://github.com/eldoraboo'>https://github.com/eldoraboo
           </Link>
           </Text>
