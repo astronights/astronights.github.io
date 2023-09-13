@@ -1,7 +1,7 @@
 import { Box, Heading, Container, Text, Button, Stack, Icon, useColorModeValue, createIcon } from "@chakra-ui/react";
 import ProfileArray from "../arrays/ProfileArray";
 
-export default function Header({ color }) {
+const Header = (props: {color: string}) => {
     const profile = ProfileArray();
     const scrollToContact = () => {
         const contactSection = document.querySelector("#contact");
@@ -37,7 +37,7 @@ export default function Header({ color }) {
                         lineHeight={"110%"}
                     >
                         {profile.headerName} <br />
-                        <Text as={"span"} color={`${color}.400`}>
+                        <Text as={"span"} color={`${props.color}.400`}>
                             {profile.headerRole}
                         </Text>
                     </Heading>
@@ -55,12 +55,12 @@ export default function Header({ color }) {
                         position={"relative"}
                     >
                         <Button
-                            colorScheme={color}
-                            bg={`${color}.400`}
+                            colorScheme={props.color}
+                            bg={`${props.color}.400`}
                             rounded={"full"}
                             px={6}
                             _hover={{
-                                bg: `${color}.500`,
+                                bg: `${props.color}.500`,
                             }}
                             onClick={linkedin}
                         >
@@ -113,3 +113,5 @@ const Arrow = createIcon({
         />
     ),
 });
+
+export default Header;

@@ -21,6 +21,7 @@ const parseEducation = (mdContent: string):Study[] => {
     let degree = '';
     let grade = '';
     let image = '';
+    let badges = [];
     let description = [];
 
     Array.from(details.children).forEach((child) => {
@@ -35,10 +36,12 @@ const parseEducation = (mdContent: string):Study[] => {
         period = child.textContent.split('Period: ')[1];
       } else if (child.textContent.startsWith('Degree')) {
         degree = child.textContent.split('Degree: ')[1];
-      } else if (child.textContent.startsWith('Grade')) {
-        grade = child.textContent.split('Grade: ')[1];
+      } else if (child.textContent.startsWith('Grades')) {
+        grade = child.textContent.split('Grades: ')[1];
       } else if (child.textContent.startsWith('Image')) {
         image = child.textContent.split('Image: ')[1];
+      } else if (child.textContent.startsWith('Badges')) {
+        badges = Array.from(child.getElementsByTagName('ul')[0].children).map((li) => li.textContent);
       } else if (child.textContent.startsWith('Description')) {
         description = Array.from(child.getElementsByTagName('ul')[0].children).map((li) => li.textContent);
       }
@@ -53,6 +56,7 @@ const parseEducation = (mdContent: string):Study[] => {
       period,
       degree,
       grade,
+      badges,
       description,
     });
 

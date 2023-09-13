@@ -3,10 +3,9 @@ import {
   Image, List, ListItem, ListIcon, Button, ButtonGroup, Center
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import EducationArray from "../arrays/EducationArray";
-import { getGraphData } from "../utils"
-import ReactFlow from 'reactflow';
+import EduNeuralNet from "./EduNeuralNet";
 
 export default function Education({ color }) {
   const education = EducationArray();
@@ -14,12 +13,10 @@ export default function Education({ color }) {
   const options = education.filter((edu) =>
     Number.isInteger(edu.node) && edu.node > 0).map((edu) => ({ node: edu.node, title: edu.title }));
 
-  const [nodes, edges] = getGraphData(education);
-
-  const handleSelected = (value) => {
-    const picks = education.filter((edu) => (edu.node - value < 1) && (edu.node >= value)).map((edu) => (edu.node));
+  const handleSelected = (value: number) => {
+    const picks = education.filter((edu) => (edu.node - value < 1) &&
+      (edu.node >= value)).map((edu) => (edu.node));
     const intersection = selected.filter((val) => picks.includes(val));
-    console.log(value, selected, picks, intersection)
     if (intersection.length > 0) {
       setSelected(selected.filter((val) => !intersection.includes(val)));
     } else {
@@ -46,13 +43,14 @@ export default function Education({ color }) {
             <Divider orientation="horizontal" />
           </Stack>
           <Center px={4}>
-            <ReactFlow nodes={nodes} edges={edges} />
+            <EduNeuralNet education={education}/>
           </Center>
           <Center px={4}>
             <ButtonGroup variant="outline">
               {options.map((option) => (
                 <Button
-                  colorScheme={ selected.includes(option.node) ? `${color}` : "gray"}
+                  key={option.node}
+                  colorScheme={selected.includes(option.node) ? `${color}` : "gray"}
                   onClick={() => handleSelected(option.node)}
                 >
                   {option.title}
@@ -69,21 +67,22 @@ export default function Education({ color }) {
                     <Flex justifyContent="space-between">
                       <HStack>
                         <Image src={edu.image} h={50} />
-                        <Box alignContent={'left'} px={2} >
-                          <Text fontWeight={600}>{edu.degree}</Text>
-                          <Text>{edu.institution}</Text>
+                        <Box px={2} >
+                          <Text align='left' fontWeight={600}>{edu.degree}</Text>
+                          <Text align='left'>{edu.institution}</Text>
                         </Box>
                       </HStack>
-                      <Text px={2} fontWeight={300}>
-                        {edu.period}
-                      </Text>
+                      <Box px={2}>
+                        <Text align='left' fontWeight={300}>{edu.period}</Text>
+                        <Text align='left' fontWeight={300}>{edu.grade}</Text>
+                      </Box>
                     </Flex>
                   </CardHeader>
                   <CardBody>
                     <Flex>
-                      <List spacing={3}>
+                      <List spacing={1}>
                         {edu.description.map((item, index) => (
-                          <ListItem key={index}>
+                          <ListItem key={index} textAlign={'left'}>
                             <ListIcon
                               boxSize={6}
                               as={ChevronRightIcon}
@@ -96,16 +95,16 @@ export default function Education({ color }) {
                     </Flex>
                   </CardBody>
                   <CardFooter>
-                    {/* <HStack spacing={2}>
+                    <HStack spacing={2}>
                       {edu.badges.map((badge) => (
                         <Badge
-                          key={badge.name}
-                          colorScheme={badge.colorScheme}
+                          key={badge}
+                          colorScheme={'blue'}
                         >
-                          {badge.name}
+                          {badge}
                         </Badge>
                       ))}
-                    </HStack> */}
+                    </HStack>
                   </CardFooter>
                 </Card>
               ))}

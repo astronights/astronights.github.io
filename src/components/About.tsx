@@ -8,7 +8,7 @@ import {
   } from "@chakra-ui/react";
   import ProfileArray from "../arrays/ProfileArray";
   
-  export default function About({ color }) {
+  const About = (props: {color: string}) => {
     const profile = ProfileArray();
       return (
         <>
@@ -21,7 +21,7 @@ import {
             >
               <Stack align="center" direction="row" px={4}>
                 <HStack mx={4}>
-                  <Text color={`${color}.400`} fontWeight={800}>
+                  <Text color={`${props.color}.400`} fontWeight={800}>
                     01
                   </Text>
                   <Text fontWeight={800}>About</Text>
@@ -36,3 +36,5 @@ import {
         </>
       );
   }
+
+export default About;

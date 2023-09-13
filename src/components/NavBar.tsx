@@ -7,7 +7,7 @@ import { useState } from "react";
 import ProfileArray from "../arrays/ProfileArray";
 const TbIcons = require("react-icons/tb");
 
-export default function Nav({ color }) {
+const NavBar = (props: {color: string}) => {
     const profile = ProfileArray();
     const colors = {
         "blue": "#3182CE",
@@ -81,7 +81,7 @@ export default function Nav({ color }) {
                             if (Component.name === "TbSeparator") {
                                 return <Component key={index} color={'transparent'} />;
                             } else {
-                                return <Component key={index} color={colors[color]} />
+                                return <Component key={index} color={colors[props.color]} />
                             }
                         }
                         )}
@@ -148,3 +148,5 @@ export default function Nav({ color }) {
         </>
     );
 }
+
+export default NavBar;

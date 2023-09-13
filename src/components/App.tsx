@@ -1,13 +1,13 @@
 import React from 'react';
 import '../assets/css/app.sass';
-import Nav from './NavBar';
+import NavBar from './NavBar';
 import Header from './Header';
 import About from './About';
 import Education from './Education';
 import Contact from './Contact';
 import Footer from './Footer';
 
-function App() {
+const App = () => {
   // Available Colours:
   // blue, cyan, gray, green, orange, pink, purple, red, teal, yellow
 
@@ -15,7 +15,7 @@ function App() {
   const color = "teal";
   return (
     <>
-      <Nav color={color} />
+      <NavBar color={color} />
       <Header color={color} />
       <About color={color} />
       <Education color={color} />
