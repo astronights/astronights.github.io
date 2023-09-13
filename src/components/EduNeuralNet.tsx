@@ -125,14 +125,15 @@ const Flow = (props: { education: Study[] }) => {
 
         setEdges(outerEdges.concat(innerEdges));
 
-        reactFlowInstance.fitBounds({ x: 100, y: 0, width: xCounter - 50, height: 200 });
+        // TODO: Make this fit Bounds dynamic
+        reactFlowInstance.fitBounds({ x: 90, y: 10, width: xCounter - 50, height: 200 });
 
     }, [props.education, reactFlowInstance]);
 
     console.log(reactFlowInstance);
 
     return (
-        <Card variant='elevated' style={{ width: '100vw', height: '100vh' }}>
+        <Card variant='elevated' style={{ width: '100vw', height: '65vh' }}>
             <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}
                 snapToGrid={true}
                 panOnDrag={false} panOnScroll={false}

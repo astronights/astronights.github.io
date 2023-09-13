@@ -17,7 +17,7 @@
 - Badges:
   - Best Outgoing Student 2016
 
-## Bachelors of Engineering
+## BEng (CS)
 
 - Node: 2
 - Institution: The University of Hong Kong
@@ -89,7 +89,7 @@
   - Student exchange program from Faculty of Engineering
   - Member of NUS Open Source Society
 
-## Masters of Computing
+## MComp (AI)
 
 - Node: 3
 - Institution: National University of Singapore
