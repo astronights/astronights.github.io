@@ -2,7 +2,7 @@ import ReactFlow, { Background, Handle, Position, ReactFlowProvider, useReactFlo
 import { Study } from '../types';
 import { Card, Text } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
-import _ from 'lodash';
+import lodash from 'lodash';
 import 'reactflow/dist/style.css';
 import '../assets/css/neuralnet.sass';
 import range from '../utils';
@@ -49,11 +49,16 @@ const ParentNode = ({ data }) => {
 const nodeTypes = { nnNode: NeuralNetNode, infinityNode: InfinityNode, parentNode: ParentNode };
 const activationFunctions = ['tanh', 'relu', 'tanh']
 
-const Flow = (props: { education: Study[], updateSelected: (value: number) => void }) => {
+const Flow = (props: { education: Study[], updateSelected: (value: number) => void, selected: number[] }) => {
     const reactFlowInstance = useReactFlow();
 
     const [nodes, setNodes] = useState([]);
     const [edges, setEdges] = useState([]);
+
+    const [selected, setSelected] = useState(props.selected);
+    const [hover, setHover] = useState([]);
+
+    console.log(selected, hover);
 
     useEffect(() => {
 
@@ -77,7 +82,7 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
             target: '1',
         })
 
-        const groups = _.groupBy(props.education, (edu) => Math.floor(edu.node));
+        const groups = lodash.groupBy(props.education, (edu) => Math.floor(edu.node));
         Object.entries(groups).forEach(([key, items]) => {
 
             graphNodes.push({
@@ -194,20 +199,27 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
         // TODO: Make this fit Bounds dynamic
         // reactFlowInstance.fitBounds({ x: 90, y: 10, width: xCounter - 50, height: 200 });
 
-    }, [props.education, reactFlowInstance]);
+    }, [props.education, props.selected, reactFlowInstance]);
 
-    const onNodeClick = (_, node) => {
-        console.log(parseFloat(node.id))
+    const handleNodeClick = (_, node) => {
+        setSelected([parseFloat(node.id)]);
         props.updateSelected(parseFloat(node.id))
+    }
+
+    const handleTouchMove = (_, node) => {
+        setHover(nodes.filter((n) => node.id.startsWith(n.id)));
     }
 
     return (
         <Card variant='elevated' style={{ width: '100vw', height: '50vh' }}>
             <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}
-                onNodeClick={onNodeClick}
+                onNodeClick={handleNodeClick}
                 edgesFocusable={false}
                 snapToGrid={true}
                 zoomOnScroll={false} zoomOnDoubleClick={false} panOnScroll={false}
+                onNodeMouseEnter={handleTouchMove}
+                maxZoom={1.1} minZoom={0.9}
+                
             // panOnDrag={false} 
             // zoomOnScroll={false} zoomOnPinch={false} 
             >
@@ -217,7 +229,7 @@ const Flow = (props: { education: Study[], updateSelected: (value: number) => vo
     )
 }
 
-const EduNeuralNet = (props: { education: Study[], updateSelected: (value: number) => void }) => {
+const EduNeuralNet = (props: { education: Study[], updateSelected: (value: number) => void, selected: number[] }) => {
 
     return (
         <ReactFlowProvider>

@@ -14,8 +14,8 @@ export default function Education({ color }) {
     Number.isInteger(edu.node) && edu.node > 0).map((edu) => ({ node: edu.node, title: edu.title }));
 
   const handleSelected = (value: number) => {
-    const picks = education.filter((edu) => (edu.node - value < 1) &&
-      (edu.node >= value)).map((edu) => (edu.node));
+    const picks = education.filter((edu) =>
+      value === (Number.isInteger(value) ? Math.floor(edu.node) : edu.node)).map((edu) => (edu.node));
     const intersection = selected.filter((val) => picks.includes(val));
     if (intersection.length > 0) {
       setSelected(selected.filter((val) => !intersection.includes(val)));
@@ -43,7 +43,7 @@ export default function Education({ color }) {
             <Divider orientation="horizontal" />
           </Stack>
           <Center px={4}>
-            <EduNeuralNet education={education} updateSelected={handleSelected}/>
+            <EduNeuralNet education={education} updateSelected={handleSelected} selected={selected}/>
           </Center>
           <Center px={4}>
             <ButtonGroup variant="outline">
