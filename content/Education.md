@@ -1,4 +1,4 @@
-## High School
+## School
 
 - Node: 1
 - Institution: A.M.M Matriculation Higher Secondary School
