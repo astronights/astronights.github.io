@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Building project
-        run: set \"CI=false\" && npm run build
+        run: npm run build
 
       - name: Uploading production-ready build files
         uses: actions/upload-artifact@v3

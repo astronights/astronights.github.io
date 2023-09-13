@@ -11,7 +11,7 @@ const NeuralNetNode = ({ data }) => {
         <Handle id='left' type="target" position={Position.Left} />
         <Handle id='top' type="target" position={Position.Top} />
         <div>
-          <img src={data.image}/>
+          <img alt={data.alt} src={data.image}/>
         </div>
         <Handle id='right' type="source" position={Position.Right} />
         <Handle id='bottom' type="source" position={Position.Bottom} />
@@ -23,6 +23,8 @@ const Flow = (props: { education: Study[] }) => {
     const reactFlowInstance = useReactFlow();
     const nodeTypes = { nnNode: NeuralNetNode };
 
+    console.log(reactFlowInstance);
+
     const nodes = props.education.map((edu) => ({
         id: edu.node.toString(),
         position: {
@@ -30,7 +32,7 @@ const Flow = (props: { education: Study[] }) => {
             y: Number.isInteger(edu.node) ? 100 : 100 + 100 * (edu.node - Math.floor(edu.node))
         },
         type: 'nnNode',
-        data: { label: edu.node, image: edu.image },
+        data: { label: edu.node, image: edu.image, alt: edu.institution },
     }));
 
     const edges = props.education.filter((edu) =>
