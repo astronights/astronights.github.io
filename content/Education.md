@@ -1,7 +1,3 @@
-## Early Life
-
-- Node: 0
-
 ## High School
 
 - Node: 1
