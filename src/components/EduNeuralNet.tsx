@@ -6,6 +6,8 @@ import { Card } from '@chakra-ui/react';
 const Flow = (props: { education: Study[] }) => {
     const reactFlowInstance = useReactFlow();
 
+    console.log(reactFlowInstance)
+
     const nodes = props.education.map((edu) => ({
         id: edu.node.toString(),
         position: {
