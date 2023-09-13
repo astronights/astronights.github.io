@@ -1,27 +1,24 @@
 import ReactFlow, { Background, Handle, Position, ReactFlowProvider, useReactFlow } from 'reactflow';
 import { Study } from '../types';
-import { Card } from '@chakra-ui/react';
+import { Card, Text } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
+import _ from 'lodash';
 import 'reactflow/dist/style.css';
 import '../assets/css/neuralnet.sass';
+import range from '../utils';
 
 const NeuralNetNode = ({ data }) => {
 
-    const handlers = data.type === 'default' ? ['source', 'target'] : [data.type];
-    const handlerMap = { 'source': 'Right', 'target': 'Left' }
-
     return (
         <div className='nn-node'>
-            {
-                handlers.map((handler, index) => (
-                    <Handle key={index} id={handlerMap[handler]} type={handler}
-                        position={Position[handlerMap[handler]]}
-                        isConnectable={false} />
-                ))
-            }
+            <Handle key={'source'} id={'Right'} type={'source'}
+                position={Position.Right} isConnectable={false} />
+            <Handle key={'target'} id={'Left'} type={'target'}
+                position={Position.Left} isConnectable={false} />
             <img alt={data.alt} src={data.image} />
-            <img alt={data.country} className='flag'
-                src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${data.country}.svg`} />
+            {data.country &&
+                <img alt={data.country} className='flag'
+                    src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${data.country}.svg`} />}
         </div>
     );
 }
@@ -35,11 +32,13 @@ const InfinityNode = ({ data }) => {
             <Handle id={handlerMap[data.type]} type={data.type}
                 position={Position[handlerMap[data.type]]}
                 isConnectable={false} />
+            <Text>{data.text}</Text>
         </div>
     );
 }
 
 const nodeTypes = { nnNode: NeuralNetNode, infinityNode: InfinityNode };
+const activationFunctions = ['tanh', 'relu', 'tanh']
 
 const Flow = (props: { education: Study[] }) => {
     const reactFlowInstance = useReactFlow();
@@ -48,97 +47,147 @@ const Flow = (props: { education: Study[] }) => {
     const [edges, setEdges] = useState([]);
 
     useEffect(() => {
-        let xCounter = 0;
-        let yCounter = -25;
-        const innerNodes = props.education.filter((edu) => edu.node > 0).map((edu) => {
-            if (Number.isInteger(edu.node) || (edu.node - Math.floor(edu.node) < 0.2)) {
-                xCounter += 100;
-            }
-            if (edu.node - Math.floor(edu.node) > 0) {
-                yCounter += 50;
-            } else {
-                yCounter = yCounter !== -25 ? 0 : -25;
-            }
-            return {
-                id: edu.node.toString(),
-                position: {
-                    x: xCounter,
-                    y: edu.node !== Math.floor(edu.node) ? yCounter : 100,
-                },
+
+        let graphNodes = []
+        let graphEdges = []
+        let x = 0;
+        let y = 100;
+
+        graphNodes.push({
+            id: '0',
+            position: { x, y },
+            type: 'infinityNode',
+            data: { label: 0, text: 'Early Life', type: 'source' },
+        })
+
+        graphEdges.push({
+            id: '0to1',
+            source: '0',
+            target: '1',
+        })
+
+        const groups = _.groupBy(props.education, (edu) => Math.floor(edu.node));
+        Object.entries(groups).forEach(([key, items]) => {
+            x += 75;
+
+            graphNodes.push({
+                id: key.toString(),
+                position: { x, y },
                 type: 'nnNode',
                 data: {
-                    label: edu.node, image: edu.image, alt: edu.institution, country: edu.country,
-                    type: 'default'
+                    label: key, image: items[0].image,
+                    alt: items[0].institution,
+                    country: items[0].country
                 }
+            });
+
+            const activations = (items.length > 1) ? 2 : 1;
+
+            if (items.length > 1) {
+                x += 75;
+                const ySplits = range((100 - 15 * (items.length - 1)), (100 + 15 * (items.length - 1)), items.length - 1);
+                items.slice(1).forEach((item, index) => {
+                    graphNodes.push({
+                        id: item.node.toString(),
+                        position: { x, y: ySplits[index] },
+                        type: 'nnNode',
+                        data: {
+                            label: item.node, image: item.image,
+                            alt: item.institution,
+                            country: item.country
+                        }
+                    })
+
+                    graphEdges.push(
+                        {
+                            id: `${key}to${item.node}`,
+                            source: key.toString(),
+                            target: item.node.toString(),
+                            type: 'straight'
+                        });
+
+                    Array(activations).fill(0).forEach((_, index) => {
+                        graphEdges.push(
+                            {
+                                id: `${item.node}to${item.node}a${index + 1}`,
+                                source: item.node.toString(),
+                                target: `${key}a${index + 1}`,
+                                type: 'straight'
+                            });
+                    });
+                });
+            } else {
+                graphEdges = graphEdges.concat([{
+                    id: `${key}to${key}a`,
+                    source: key.toString(),
+                    target: `${key}a1`,
+                    type: 'straight',
+                }, {
+                    id: `${key}ato${parseInt(key) + 1}`,
+                    source: `${key}a1`,
+                    target: (parseInt(key) + 1).toString(),
+                    type: 'straight'
+                }]);
             }
+
+            x += 75;
+
+            Array(activations).fill(0).forEach((_, index) => {
+                graphNodes.push({
+                    id: `${key}a${index + 1}`,
+                    position: { x: x, y: (activations === 1) ? 100 : 80 + 40 * index },
+                    type: 'nnNode',
+                    data: {
+                        label: key, image: `/images/${activationFunctions[index]}.png`,
+                        alt: activationFunctions[index]
+                    }
+                });
+
+                graphEdges.push(
+                    {
+                        id: `${key}a${index + 1}to${parseInt(key) + 1}`,
+                        source: `${key}a${index + 1}`,
+                        target: (parseInt(key) + 1).toString(),
+                        type: 'straight'
+                    });
+            });
+
         });
 
-        const outerNodes = [{
-            id: 'start',
-            position: { x: 0, y: 100 },
+        const lastNode = props.education.length !== 0  ? props.education.slice(-1)[0].node + 1 : 99;
+
+        graphNodes.push({
+            id: lastNode.toString(),
+            position: { x: x + 100, y },
             type: 'infinityNode',
-            data: { label: 0, alt: 'Early Life', type: 'source', country: '', image: '' },
-        },
-        {
-            id: 'end',
-            position: { x: xCounter + 100, y: 100 },
-            type: 'infinityNode',
-            data: { label: 0, alt: 'Present', type: 'target', country: '', image: '' },
-        }];
+            data: {
+                label: lastNode,
+                text: 'Present', type: 'target'
+            },
+        })
 
-        setNodes(outerNodes.concat(innerNodes));
+        console.log(graphNodes);
+        console.log(graphEdges);
 
-        const parentNodes = props.education.filter((edu) =>
-            (edu.node - Math.floor(edu.node)) > 0).map((edu) => Math.floor(edu.node))
 
-        let innerEdges = props.education.filter((edu) =>
-            Number.isInteger(edu.node) && edu.node > 0 && !parentNodes.includes(edu.node)).map((edu) => ({
-                id: `${edu.node}to${edu.node + 1}`,
-                source: edu.node.toString(),
-                target: (edu.node + 1).toString(),
-            }));
-
-        innerEdges = innerEdges.concat(props.education.filter((edu) =>
-            edu.node - Math.floor(edu.node) > 0).map((edu) => ({
-                id: `${edu.node}to${Math.ceil(edu.node)}`,
-                source: (edu.node).toString(),
-                type: 'straight',
-                target: Math.ceil(edu.node).toString(),
-            }))).concat(props.education.filter((edu) =>
-            edu.node - Math.floor(edu.node) > 0).map((edu) => ({
-                id: `${Math.floor(edu.node)}to${edu.node}`,
-                source: (Math.floor(edu.node)).toString(),
-                type: 'straight',
-                target: edu.node.toString(),
-            })));
-
-        const outerEdges = [{
-            id: `startto1`,
-            source: 'start',
-            target: '1',
-        },
-        {
-            id: `${props.education.length}toend`,
-            source: '3',
-            target: 'end',
-        }];
-
-        setEdges(outerEdges.concat(innerEdges));
+        setNodes(graphNodes);
+        setEdges(graphEdges);
 
         // TODO: Make this fit Bounds dynamic
-        reactFlowInstance.fitBounds({ x: 90, y: 10, width: xCounter - 50, height: 200 });
+        // reactFlowInstance.fitBounds({ x: 90, y: 10, width: xCounter - 50, height: 200 });
 
     }, [props.education, reactFlowInstance]);
 
-    console.log(reactFlowInstance);
+    // console.log(reactFlowInstance);
 
     return (
         <Card variant='elevated' style={{ width: '100vw', height: '65vh' }}>
             <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}
                 snapToGrid={true}
-                panOnDrag={false} panOnScroll={false}
-                zoomOnScroll={false} zoomOnPinch={false} zoomOnDoubleClick={false}>
-                <Background />
+            // panOnDrag={false} panOnScroll={false}
+            // zoomOnScroll={false} zoomOnPinch={false} zoomOnDoubleClick={false}
+            >
+                <Background gap={10} />
             </ReactFlow>
         </Card>
     )
