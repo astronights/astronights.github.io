@@ -47,21 +47,31 @@ const Flow = (props: { education: Study[] }) => {
     const [nodes, setNodes] = useState([]);
     const [edges, setEdges] = useState([]);
 
-    const [visibleNodes, setVisibleNodes] = useState([]);
-
     useEffect(() => {
-        const innerNodes = props.education.filter((edu) => edu.node > 0).map((edu) => ({
-            id: edu.node.toString(),
-            position: {
-                x: 100 * edu.node,
-                y: Number.isInteger(edu.node) ? 100 : 100 + 100 * (edu.node - Math.floor(edu.node))
-            },
-            type: 'nnNode',
-            data: {
-                label: edu.node, image: edu.image, alt: edu.institution, country: edu.country,
-                type: 'default'
-            },
-        }));
+        let xCounter = 0;
+        let yCounter = -25;
+        const innerNodes = props.education.filter((edu) => edu.node > 0).map((edu) => {
+            if (Number.isInteger(edu.node) || (edu.node - Math.floor(edu.node) < 0.2)) {
+                xCounter += 100;
+            }
+            if (edu.node - Math.floor(edu.node) > 0) {
+                yCounter += 50;
+            } else {
+                yCounter = yCounter !== -25 ? 0 : -25;
+            }
+            return {
+                id: edu.node.toString(),
+                position: {
+                    x: xCounter,
+                    y: edu.node !== Math.floor(edu.node) ? yCounter : 100,
+                },
+                type: 'nnNode',
+                data: {
+                    label: edu.node, image: edu.image, alt: edu.institution, country: edu.country,
+                    type: 'default'
+                }
+            }
+        });
 
         const outerNodes = [{
             id: 'start',
@@ -71,19 +81,36 @@ const Flow = (props: { education: Study[] }) => {
         },
         {
             id: 'end',
-            position: { x: 100 * (props.education.length + 1), y: 100 },
+            position: { x: xCounter + 100, y: 100 },
             type: 'infinityNode',
             data: { label: 0, alt: 'Present', type: 'target', country: '', image: '' },
         }];
 
         setNodes(outerNodes.concat(innerNodes));
 
-        const innerEdges = props.education.filter((edu) =>
-            Number.isInteger(edu.node) && edu.node > 0).map((edu) => ({
-                id: `${edu.node - 1}to${edu.node}`,
-                source: (edu.node - 1).toString(),
-                target: edu.node.toString(),
+        const parentNodes = props.education.filter((edu) =>
+            (edu.node - Math.floor(edu.node)) > 0).map((edu) => Math.floor(edu.node))
+
+        let innerEdges = props.education.filter((edu) =>
+            Number.isInteger(edu.node) && edu.node > 0 && !parentNodes.includes(edu.node)).map((edu) => ({
+                id: `${edu.node}to${edu.node + 1}`,
+                source: edu.node.toString(),
+                target: (edu.node + 1).toString(),
             }));
+
+        innerEdges = innerEdges.concat(props.education.filter((edu) =>
+            edu.node - Math.floor(edu.node) > 0).map((edu) => ({
+                id: `${edu.node}to${Math.ceil(edu.node)}`,
+                source: (edu.node).toString(),
+                type: 'straight',
+                target: Math.ceil(edu.node).toString(),
+            }))).concat(props.education.filter((edu) =>
+            edu.node - Math.floor(edu.node) > 0).map((edu) => ({
+                id: `${Math.floor(edu.node)}to${edu.node}`,
+                source: (Math.floor(edu.node)).toString(),
+                type: 'straight',
+                target: edu.node.toString(),
+            })));
 
         const outerEdges = [{
             id: `startto1`,
@@ -98,12 +125,9 @@ const Flow = (props: { education: Study[] }) => {
 
         setEdges(outerEdges.concat(innerEdges));
 
-        setVisibleNodes(innerNodes);
-        console.log(outerNodes.concat(innerNodes));
+        reactFlowInstance.fitBounds({ x: 100, y: 0, width: xCounter - 50, height: 200 });
 
-        reactFlowInstance.fitBounds({ x: 150, y: 0, width: 200, height: 200 });
-
-    }, [props.education]);
+    }, [props.education, reactFlowInstance]);
 
     console.log(reactFlowInstance);
 
