@@ -3,13 +3,18 @@ import {
   Image, List, ListItem, ListIcon, Center
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EducationArray from "../arrays/EducationArray";
 import EduNeuralNet from "./EduNeuralNet";
 
-export default function Education({ color }) {
+const Education = (props: {color: string}) => {
   const education = EducationArray();
   const [selected, setSelected] = useState([]);
+
+  useEffect(() => {
+    const selected = education.map((edu) => (edu.node));
+    setSelected(selected);
+  }, [education]);
 
   const handleSelected = (value: number) => {
     const picks = education.filter((edu) =>
@@ -29,19 +34,19 @@ export default function Education({ color }) {
           as={Box}
           textAlign={"center"}
           spacing={{ base: 8, md: 14 }}
-          pb={{ base: 20, md: 36 }}
+          pb={{ base: 20, md: 16 }}
         >
           <Stack align="center" direction="row" px={4}>
             <HStack mx={4}>
-              <Text color={`${color}.400`} fontWeight={800}>
-                02
+              <Text color={`${props.color}.400`} fontWeight={800}>
+                03
               </Text>
               <Text fontWeight={800}>Education</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
           <Center px={4}>
-            <EduNeuralNet education={education} color={color}
+            <EduNeuralNet education={education} color={props.color}
             updateSelected={handleSelected} selected={selected}/>
           </Center>
           <Stack px={4} spacing={4}>
@@ -72,7 +77,7 @@ export default function Education({ color }) {
                             <ListIcon
                               boxSize={6}
                               as={ChevronRightIcon}
-                              color={`${color}.500`}
+                              color={`${props.color}.500`}
                             />
                             {item}
                           </ListItem>
@@ -100,3 +105,5 @@ export default function Education({ color }) {
     </>
   );
 }
+
+export default Education;

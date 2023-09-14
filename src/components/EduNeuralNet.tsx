@@ -9,8 +9,7 @@ import range from '../utils';
 
 const hoverColor = '#7996a04d';
 
-const bgColor = (hover, selected, item, selectColor) => {
-    console.log(selected.map(String), item)
+const bgColor = (hover: string[], selected: number[], item: string, selectColor: string) => {
     return selected.map(String).includes(item.split('a')[0].split('g')[0]) ? selectColor
         : (hover.includes(item) ? hoverColor : 'transparent')
 }
@@ -55,8 +54,6 @@ const Flow = (props: { education: Study[], color: string, updateSelected: (value
         let graphEdges = []
         let x = 0;
         let y = 100;
-
-        console.log(props.selected)
 
         const groups = lodash.groupBy(props.education, (edu) => Math.floor(edu.node));
         Object.entries(groups).forEach(([key, items]) => {

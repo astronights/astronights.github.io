@@ -3,6 +3,7 @@ import '../assets/css/app.sass';
 import NavBar from './NavBar';
 import Header from './Header';
 import About from './About';
+import Experience from './Experience';
 import Education from './Education';
 import Contact from './Contact';
 import Footer from './Footer';
@@ -18,6 +19,7 @@ const App = () => {
       <NavBar color={color} />
       <Header color={color} />
       <About color={color} />
+      <Experience color={color} />
       <Education color={color} />
       {/*
       <Experience color={color} />

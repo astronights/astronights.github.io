@@ -24,3 +24,15 @@ export type Study = {
     description: string[]
     badges?: string[]
 }
+
+export type Work = {
+    node: number
+    firm: string
+    title: string
+    location: string
+    image: string
+    country: string
+    period: string
+    description: string[]
+    badges?: string[]
+}

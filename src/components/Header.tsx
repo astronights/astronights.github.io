@@ -28,8 +28,8 @@ const Header = (props: {color: string}) => {
                     as={Box}
                     textAlign={"center"}
                     spacing={{ base: 8, md: 14 }}
-                    pb={{ base: 20, md: 36 }}
-                    pt={{ base: 36, md: 52 }}
+                    pb={{ base: 20, md: 16 }}
+                    pt={{ base: 36, md: 32 }}
                 >
                     <Heading
                         fontWeight={400}
