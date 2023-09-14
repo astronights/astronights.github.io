@@ -12,7 +12,7 @@ import {
     const profile = ProfileArray();
       return (
         <>
-          <Container maxW={"3xl"} id="about">
+          <Container maxW={"4xl"} id="about">
             <Stack
               as={Box}
               textAlign={"center"}

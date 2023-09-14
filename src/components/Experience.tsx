@@ -11,7 +11,7 @@ const Experience = (props: { color: string }) => {
 
     return (
         <>
-            <Container maxW={"3xl"} id="about">
+            <Container maxW={"4xl"} id="experience">
                 <Stack
                     as={Box}
                     textAlign={"center"}
@@ -35,8 +35,8 @@ const Experience = (props: { color: string }) => {
                                     <Flex justifyContent="space-between">
                                         <HStack>
                                             <Box className='parent'>
-                                                <Image src={exp.image} maxWidth={20} />
-                                                <Image className='flag' src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${exp.country}.svg`} />
+                                                <Image src={exp.image} maxWidth={'3em'} />
+                                                {/* <Image className='flag' src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${exp.country}.svg`} /> */}
                                             </Box>
                                             <Box px={2} >
                                                 <Text align='left' fontWeight={600}>{exp.title}</Text>

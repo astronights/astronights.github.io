@@ -38,6 +38,10 @@ const NavBar = (props: {color: string}) => {
         const experienceSection = document.querySelector("#experience");
         experienceSection.scrollIntoView({ behavior: "smooth" });
     };
+    const scrollToEducation = () => {
+        const experienceSection = document.querySelector("#education");
+        experienceSection.scrollIntoView({ behavior: "smooth" });
+    };
     const scrollToProjects = () => {
         const projectsSection = document.querySelector("#projects");
         projectsSection.scrollIntoView({ behavior: "smooth" });
@@ -100,6 +104,9 @@ const NavBar = (props: {color: string}) => {
                                 </Button>
                                 <Button variant="ghost" onClick={scrollToExperience}>
                                     Experience
+                                </Button>
+                                <Button variant="ghost" onClick={scrollToEducation}>
+                                    Education
                                 </Button>
                                 <Button variant="ghost" onClick={scrollToProjects}>
                                     Projects

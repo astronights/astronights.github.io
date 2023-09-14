@@ -29,7 +29,7 @@ const Education = (props: {color: string}) => {
 
   return (
     <>
-      <Container maxW={"3xl"} id="Education">
+      <Container maxW={"4xl"} id="education">
         <Stack
           as={Box}
           textAlign={"center"}

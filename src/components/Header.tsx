@@ -23,7 +23,7 @@ const Header = (props: {color: string}) => {
                 />
             </Heading>
 
-            <Container maxW={"3xl"} id="header">
+            <Container maxW={"4xl"} id="header">
                 <Stack
                     as={Box}
                     textAlign={"center"}

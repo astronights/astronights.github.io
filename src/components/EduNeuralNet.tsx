@@ -185,7 +185,7 @@ const Flow = (props: { education: Study[], color: string, updateSelected: (value
             <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}
                 onNodeClick={handleNodeClick}
                 edgesFocusable={false}
-                snapToGrid={true}
+                snapToGrid={true} 
                 zoomOnScroll={false} zoomOnDoubleClick={false} panOnScroll={false}
                 onNodeMouseEnter={handleTouchMove}
                 onNodeMouseLeave={() => setHover([])}
