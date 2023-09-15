@@ -4,10 +4,26 @@ import {
 } from "@chakra-ui/react";
 import ExperienceArray from "../arrays/ExperienceArray";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import '../assets/css/general.sass';
+import { useEffect, useState } from "react";
 
 const Experience = (props: { color: string }) => {
     const experience = ExperienceArray();
+
+    const [selected, setSelected] = useState([]);
+    
+    useEffect(() => {
+        const selected = experience.map((edu) => (edu.node));
+        setSelected(selected);
+      }, [experience]);
+
+    const handleClick = (event) => {
+        const pick = parseInt(event.currentTarget.dataset.id);
+        if (selected.includes(pick)) {
+            setSelected(selected.filter((val) => val !== pick));
+        } else {
+            setSelected([...selected, pick]);
+        }
+    }
 
     return (
         <>
@@ -27,10 +43,9 @@ const Experience = (props: { color: string }) => {
                         </HStack>
                         <Divider orientation="horizontal" />
                     </Stack>
-
                     <Stack px={4} spacing={4}>
                         {experience.sort((a, b) => a.node < b.node ? 1 : -1).map((exp) => (
-                            <Card>
+                            <Card onClick={handleClick} key={exp.node} data-id={exp.node}>
                                 <CardHeader>
                                     <Flex justifyContent="space-between">
                                         <HStack>
@@ -49,6 +64,7 @@ const Experience = (props: { color: string }) => {
                                         </Box>
                                     </Flex>
                                 </CardHeader>
+                                { selected.includes(exp.node) ? (
                                 <CardBody>
                                     <Flex>
                                         <List spacing={1}>
@@ -65,6 +81,9 @@ const Experience = (props: { color: string }) => {
                                         </List>
                                     </Flex>
                                 </CardBody>
+                                ) : (
+                                    <></>
+                                )}
                                 <CardFooter display={exp.badges.length > 0 ? 'flex' : 'none'}>
                                     <HStack spacing={2}>
                                         {exp.badges.map((badge) => (

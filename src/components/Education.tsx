@@ -33,10 +33,8 @@ const Education = (props: {color: string}) => {
     const intb = Number.isInteger(b.node)
 
     if (((inta && !intb) || (!inta && intb)) && Math.floor(a.node) === Math.floor(b.node)) {
-      console.log(a.node, b.node, inta, intb, a.node < b.node ? 1 : -1)
       return a.node < b.node ? -1 : 1;
     } else {
-      console.log(a.node, b.node, inta, intb, a.node < b.node ? -1 : 1)
       return a.node < b.node ? 1 : -1;
     }
   }
