@@ -1,6 +1,6 @@
 import {
   Divider, Stack, Text, Container, Box, HStack, Card, CardHeader, CardBody, CardFooter, Flex, Badge,
-  Image, List, ListItem, ListIcon, Center
+  Image, List, ListItem, ListIcon, Center, Collapse
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
@@ -63,9 +63,9 @@ const Education = (props: {color: string}) => {
           </Center>
           <Stack px={4} spacing={4}>
             {education
-              .filter((edu) => selected.includes(edu.node))
               .sort(eduSort)
               .map((edu) => (
+                <Collapse in={selected.includes(edu.node)} animateOpacity>
                 <Card key={edu.title} size="sm">
                   <CardHeader>
                     <Flex justifyContent="space-between">
@@ -111,6 +111,7 @@ const Education = (props: {color: string}) => {
                     </HStack>
                   </CardFooter>
                 </Card>
+                </Collapse>
               ))}
           </Stack>
         </Stack>

@@ -1,5 +1,5 @@
 import {
-    Badge, Box, Card, CardBody, CardFooter, CardHeader, Container, Divider,
+    Badge, Box, Card, CardBody, CardFooter, CardHeader, Collapse, Container, Divider,
     Flex, HStack, Image, List, ListIcon, ListItem, Stack, Text
 } from "@chakra-ui/react";
 import ExperienceArray from "../arrays/ExperienceArray";
@@ -64,7 +64,7 @@ const Experience = (props: { color: string }) => {
                                         </Box>
                                     </Flex>
                                 </CardHeader>
-                                { selected.includes(exp.node) ? (
+                                <Collapse in={selected.includes(exp.node)} animateOpacity>
                                 <CardBody>
                                     <Flex>
                                         <List spacing={1}>
@@ -81,9 +81,7 @@ const Experience = (props: { color: string }) => {
                                         </List>
                                     </Flex>
                                 </CardBody>
-                                ) : (
-                                    <></>
-                                )}
+                                </Collapse>
                                 <CardFooter display={exp.badges.length > 0 ? 'flex' : 'none'}>
                                     <HStack spacing={2}>
                                         {exp.badges.map((badge) => (

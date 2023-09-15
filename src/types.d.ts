@@ -36,3 +36,13 @@ export type Work = {
     description: string[]
     badges?: string[]
 }
+
+export type Project = {
+    node: number
+    title: string
+    location: string
+    period: string
+    link: string
+    badges: string[]
+    description: string[]
+}

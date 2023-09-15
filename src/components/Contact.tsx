@@ -25,7 +25,7 @@ const Contact = (props: { color: string }) => {
           <Stack align="center" direction="row" p={4}>
             <HStack mx={4}>
               <Text color={`${props.color}.400`} fontWeight={800}>
-                04
+                07
               </Text>
               <Text fontWeight={800}>Contact</Text>
             </HStack>
