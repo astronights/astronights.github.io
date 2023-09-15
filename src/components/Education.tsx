@@ -6,6 +6,7 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import EducationArray from "../arrays/EducationArray";
 import EduNeuralNet from "./EduNeuralNet";
+import { Study } from "../types";
 
 const Education = (props: {color: string}) => {
   const education = EducationArray();
@@ -26,6 +27,19 @@ const Education = (props: {color: string}) => {
       setSelected([...selected, ...picks]);
     }
   };
+
+  const eduSort = (a: Study, b: Study) => {
+    const inta = Number.isInteger(a.node)
+    const intb = Number.isInteger(b.node)
+
+    if (((inta && !intb) || (!inta && intb)) && Math.floor(a.node) === Math.floor(b.node)) {
+      console.log(a.node, b.node, inta, intb, a.node < b.node ? 1 : -1)
+      return a.node < b.node ? -1 : 1;
+    } else {
+      console.log(a.node, b.node, inta, intb, a.node < b.node ? -1 : 1)
+      return a.node < b.node ? 1 : -1;
+    }
+  }
 
   return (
     <>
@@ -52,6 +66,7 @@ const Education = (props: {color: string}) => {
           <Stack px={4} spacing={4}>
             {education
               .filter((edu) => selected.includes(edu.node))
+              .sort(eduSort)
               .map((edu) => (
                 <Card key={edu.title} size="sm">
                   <CardHeader>
