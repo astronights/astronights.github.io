@@ -1,14 +1,14 @@
-## Optimizing One Pixel Black Box Attacks
+## Optimizing 1px Black Box Attacks
 
 - Node: 1
 - Link: https://arxiv.org/pdf/2205.02116.pdf
-- Description: Optimized generation of adversarial images targeting state-of-the-art DNNs by reducing the average number of network calls combining simulated annealing and StrAttack.
+- Description: Optimized generation of adversarial images targeting state-of-the-art DNNs reducing the average number of network calls combining simulated annealing and StrAttack.
 
 ## A4 Paper Trading
 
 - Node: 2
 - Link: https://github.com/astronights/A4_Paper_Trading
-- Description: Developed an automated bot with a self-learning multi-agent strategy to manage a BTC portfolio leveraging technical and fundamental indicators as agents to ensure optimal trading decisions.
+- Description: Developed an automated bot with a self-learning multi-agent strategy to manage a BTC portfolio leveraging technical and fundamental indicators to ensure optimal trading decisions.
 
 ## Q-Wordle
 
