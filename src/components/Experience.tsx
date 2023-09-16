@@ -48,11 +48,10 @@ const Experience = (props: { color: string }) => {
                             <Card onClick={handleClick} key={exp.node} data-id={exp.node}>
                                 <CardHeader>
                                     <Flex justifyContent="space-between">
-                                        <HStack backgroundColor={selected.includes(exp.node) ? '' : '#7996a04d'} 
+                                        <HStack backgroundColor={selected.includes(exp.node) ? '' : '#7996a04d'}
                                             px={2} py={2} borderRadius={2}>
                                             <Box>
                                                 <Image src={exp.image} maxWidth={'3em'} />
-                                                {/* <Image className='flag' src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${exp.country}.svg`} /> */}
                                             </Box>
                                             <Box px={2} >
                                                 <Text align='left' fontWeight={600}>{exp.title}</Text>
@@ -61,7 +60,10 @@ const Experience = (props: { color: string }) => {
                                         </HStack>
                                         <Box px={2}>
                                             <Text align='left' fontWeight={300}>{exp.period}</Text>
-                                            <Text align='left' fontWeight={300}>{exp.location}</Text>
+                                            <HStack>
+                                                <Text align='left' fontWeight={300}>{exp.location}</Text>
+                                                <Image width={'1.5em'} src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${exp.country}.svg`} />
+                                            </HStack>
                                         </Box>
                                     </Flex>
                                 </CardHeader>

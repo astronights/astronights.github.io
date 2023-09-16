@@ -40,9 +40,7 @@ export type Work = {
 export type Project = {
     node: number
     title: string
-    location: string
-    period: string
-    link: string
-    badges: string[]
-    description: string[]
+    link?: string
+    badges?: string[]
+    description: string
 }

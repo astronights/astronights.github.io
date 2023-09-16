@@ -14,37 +14,27 @@ const parseProjects = (mdContent: string): Project[] => {
         const details = element.nextElementSibling;
 
         let node = 0;
-        let title = '';
-        let location = '';
-        let period = '';
+        let title = element.textContent;
         let link = '';
         let badges = [];
-        let description = [];
+        let description = '';
 
         Array.from(details.children).forEach((child) => {
 
             if (child.textContent.startsWith('Node')) {
                 node = Number(child.textContent.split('Node: ')[1]);
-            } else if (child.textContent.startsWith('Title')) {
-                title = child.textContent.split('Title: ')[1];
-            } else if (child.textContent.startsWith('Location')) {
-                location = child.textContent.split('Location: ')[1];
-            } else if (child.textContent.startsWith('Period')) {
-                period = child.textContent.split('Period: ')[1];
             } else if (child.textContent.startsWith('Link')) {
                 link = child.textContent.split('Link: ')[1];
             } else if (child.textContent.startsWith('Badges')) {
                 badges = Array.from(child.getElementsByTagName('ul')[0].children).map((li) => li.textContent);
             } else if (child.textContent.startsWith('Description')) {
-                description = Array.from(child.getElementsByTagName('ul')[0].children).map((li) => li.textContent);
+                description = child.textContent.split('Description: ')[1];
             }
         });
 
         projects.push({
             node,
             title,
-            location,
-            period,
             link,
             badges,
             description,
