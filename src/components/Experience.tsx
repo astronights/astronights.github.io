@@ -10,11 +10,11 @@ const Experience = (props: { color: string }) => {
     const experience = ExperienceArray();
 
     const [selected, setSelected] = useState([]);
-    
+
     useEffect(() => {
         const selected = experience.map((edu) => (edu.node));
         setSelected(selected);
-      }, [experience]);
+    }, [experience]);
 
     const handleClick = (event) => {
         const pick = parseInt(event.currentTarget.dataset.id);
@@ -48,8 +48,9 @@ const Experience = (props: { color: string }) => {
                             <Card onClick={handleClick} key={exp.node} data-id={exp.node}>
                                 <CardHeader>
                                     <Flex justifyContent="space-between">
-                                        <HStack>
-                                            <Box className='parent'>
+                                        <HStack backgroundColor={selected.includes(exp.node) ? '' : '#7996a04d'} 
+                                            px={2} py={2} borderRadius={2}>
+                                            <Box>
                                                 <Image src={exp.image} maxWidth={'3em'} />
                                                 {/* <Image className='flag' src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${exp.country}.svg`} /> */}
                                             </Box>
@@ -65,22 +66,22 @@ const Experience = (props: { color: string }) => {
                                     </Flex>
                                 </CardHeader>
                                 <Collapse in={selected.includes(exp.node)} animateOpacity>
-                                <CardBody>
-                                    <Flex>
-                                        <List spacing={1}>
-                                            {exp.description.map((item, index) => (
-                                                <ListItem key={index} textAlign={'left'}>
-                                                    <ListIcon
-                                                        boxSize={6}
-                                                        as={ChevronRightIcon}
-                                                        color={`${props.color}.500`}
-                                                    />
-                                                    {item}
-                                                </ListItem>
-                                            ))}
-                                        </List>
-                                    </Flex>
-                                </CardBody>
+                                    <CardBody>
+                                        <Flex>
+                                            <List spacing={1}>
+                                                {exp.description.map((item, index) => (
+                                                    <ListItem key={index} textAlign={'left'}>
+                                                        <ListIcon
+                                                            boxSize={6}
+                                                            as={ChevronRightIcon}
+                                                            color={`${props.color}.500`}
+                                                        />
+                                                        {item}
+                                                    </ListItem>
+                                                ))}
+                                            </List>
+                                        </Flex>
+                                    </CardBody>
                                 </Collapse>
                                 <CardFooter display={exp.badges.length > 0 ? 'flex' : 'none'}>
                                     <HStack spacing={2}>
