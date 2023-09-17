@@ -35,7 +35,37 @@
 ## Flow Monster
 
 - Node: 6
-- Description: Developed trading strategies for optimal RFQ price matching and trading on the dealer market,
+- Description: Developed trading strategies for optimal RFQ price matching and trading on client and dealer market,
  prioritizing risk, PnL, activity, and generating post trade reports.
 - Badges:
   - JPMC Hackathon Runner Up
+
+## Arthistle
+
+- Node: -1
+- Description: A Wordle spin off to guess an artist by their work.
+- Link: https://github.com/astronights/arthistle
+
+## Online Crypt Hunt
+
+- Node: -2
+- Description: Online cryptic/scavenger hunt through the web.
+- Link: https://github.com/astronights/OnlineTreasureHunt
+
+## Dino Bot
+
+- Node: -3
+- Description: Automated Python Bot to play the Chrome Dino game.
+- Link: https://github.com/astronights/dino-bot
+
+## Jigsaw Sudoku
+
+- Node: -4
+- Description: Haskell sudoku puzzle and solver.
+- Link: https://github.com/astronights/JigsawSudoku
+
+## Guess That Song
+
+- Node: -5
+- Description: Sample application with a song guessing game.
+- Link: https://github.com/astronights/guess_that_song
