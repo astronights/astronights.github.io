@@ -65,7 +65,7 @@ const Education = (props: {color: string}) => {
             {education
               .sort(eduSort)
               .map((edu) => (
-                <Collapse in={selected.includes(edu.node)} animateOpacity>
+                <Collapse in={selected.includes(edu.node)} animateOpacity key={edu.title}>
                 <Card key={edu.title} size="sm">
                   <CardHeader>
                     <Flex justifyContent="space-between">
