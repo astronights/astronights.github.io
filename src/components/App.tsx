@@ -1,4 +1,3 @@
-import React from 'react';
 import '../assets/css/app.sass';
 import NavBar from './NavBar';
 import Header from './Header';
@@ -6,6 +5,7 @@ import About from './About';
 import Experience from './Experience';
 import Education from './Education';
 import Projects from './Projects';
+import Skills from './Skills';
 import Contact from './Contact';
 import Footer from './Footer';
 
@@ -23,6 +23,7 @@ const App = () => {
       <Experience color={color} />
       <Education color={color} />
       <Projects color={color} />
+      <Skills color={color} />
       <Contact color={color} />
       <Footer />
     </>

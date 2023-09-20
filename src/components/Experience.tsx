@@ -85,7 +85,7 @@ const Experience = (props: { color: string }) => {
                                         </Flex>
                                     </CardBody>
                                 </Collapse>
-                                <CardFooter display={exp.badges.length > 0 ? 'flex' : 'none'}>
+                                <CardFooter display={exp.badges.length > 0 ? 'flex' : 'none'} pt={0}>
                                     <HStack spacing={2}>
                                         {exp.badges.map((badge) => (
                                             <Badge

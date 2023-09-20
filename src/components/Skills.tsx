@@ -1,17 +1,17 @@
 import {
-    Container, Stack, Box, HStack, Text, Divider,
-    Card, SimpleGrid, CardBody, Heading, Link, Badge, CardHeader, Flex, Button,
+    Container, Stack, Box, HStack, Text, Divider, Card, SimpleGrid, CardBody,
+    Heading, Image, CardHeader, Flex, List, ListIcon, ListItem, Grid, GridItem,
 } from "@chakra-ui/react";
-// import SkillsArray from "../arrays/SkillsArray";
-import { ChevronRightIcon, LinkIcon, LockIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import SkillsArray from "../arrays/SkillsArray";
+import { ChevronRightIcon } from "@chakra-ui/icons";
+// import { useEffect, useState } from "react";
 
 const Skills = (props: { color: string }) => {
-    const skills = []//SkillsArray();
+    const skills = SkillsArray();
 
     return (
         <>
-            <Container maxW={"4xl"} id="projects">
+            <Container maxW={"4xl"} id="skills">
                 <Stack
                     as={Box}
                     textAlign={"center"}
@@ -28,44 +28,50 @@ const Skills = (props: { color: string }) => {
                         <Divider orientation="horizontal" />
                     </Stack>
                     <SimpleGrid columns={[1, 2]} px={4} spacing={4}>
-                        {skills.filter((project) => project.node > 0).map((project) => (
-                            <Card key={project.title}>
-                                <Stack>
-                                    <CardHeader pb={0}>
-                                        <Flex justifyContent="space-between">
-                                            <Heading textAlign='left' size="sm">{project.title}</Heading>
-                                            <Box>
-                                                {project.link ? (
-
-                                                    <Button size='xs' leftIcon={<LinkIcon />} colorScheme={props.color}>
-                                                        <Link href={project.link} isExternal>Link</Link>
-                                                    </Button>
-
-                                                ) : <Button size='xs' isDisabled={true} leftIcon={<LockIcon />} colorScheme={props.color}></Button>}
-                                            </Box>
-                                        </Flex>
-                                    </CardHeader>
-                                    <CardBody textAlign="left" h={[null, "40vh"]} pt={0} pb={0}>
-                                        <Text fontSize="sm" py={2}>
-                                            {project.description}
-                                        </Text>
-                                        <HStack flexWrap="wrap" pt={1} spacing={1}>
-                                            {project.badges.map((badge) => (
-                                                <Badge
-                                                    my={2}
-                                                    key={badge}
-                                                    colorScheme={'blue'}
-                                                >
-                                                    {badge}
-                                                </Badge>
+                        <Card key={'programming-languages'}>
+                            <Stack>
+                                <CardHeader pb={0}>
+                                    <Heading textAlign='left' size="sm">{'Programming Languages'}</Heading>
+                                </CardHeader>
+                                <CardBody>
+                                    <Flex>
+                                        <List spacing={1}>
+                                            {Object.keys(skills.technology.languages).map((lang, i) => (
+                                                <ListItem key={lang} textAlign={'left'}>
+                                                    <ListIcon
+                                                        boxSize={6}
+                                                        as={ChevronRightIcon}
+                                                        color={`${props.color}.500`}
+                                                    />
+                                                    {lang}
+                                                </ListItem>
                                             ))}
-                                        </HStack>
-                                    </CardBody>
-                                </Stack>
-                            </Card>
-                        ))}
+                                        </List>
+                                    </Flex>
+                                </CardBody>
+                            </Stack>
+                        </Card>
+                        <Card key={'frameworks'}>
+                            <Stack>
+                                <CardHeader pb={0}>
+                                    <Heading textAlign='left' size="sm">{'Frameworks Recently Used'}</Heading>
+                                </CardHeader>
+                                <CardBody>
+                                    <Flex>
+                                        <List spacing={1}>
+                                            <Grid>
+                                                {Object.keys(skills.technology.frameworks).map((fw, i) => (
+                                                    <GridItem key={fw}>
+                                                        <Image src={skills.technology.frameworks[fw]} alt={fw} maxHeight={'5em'} />
+                                                    </GridItem>
+                                                ))}
+                                            </Grid>
+                                        </List>
+                                    </Flex>
+                                </CardBody>
+                            </Stack>
+                        </Card>
                     </SimpleGrid>
-                    
                 </Stack>
             </Container>
         </>);

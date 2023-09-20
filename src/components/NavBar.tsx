@@ -46,6 +46,10 @@ const NavBar = (props: {color: string}) => {
         const projectsSection = document.querySelector("#projects");
         projectsSection.scrollIntoView({ behavior: "smooth" });
     };
+    const scrollToSkills = () => {
+        const skillsSection = document.querySelector("#skills");
+        skillsSection.scrollIntoView({ behavior: "smooth" });
+    };
     const scrollToContact = () => {
         const contactSection = document.querySelector("#contact");
         contactSection.scrollIntoView({ behavior: "smooth" });
@@ -110,6 +114,9 @@ const NavBar = (props: {color: string}) => {
                                 </Button>
                                 <Button variant="ghost" onClick={scrollToProjects}>
                                     Projects
+                                </Button>
+                                <Button variant="ghost" onClick={scrollToSkills}>
+                                    Skills
                                 </Button>
                                 <Button variant="ghost" onClick={scrollToContact}>
                                     Contact

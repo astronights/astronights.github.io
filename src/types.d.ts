@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export type Profile = {
     siteName: string
     headerName: string
@@ -43,4 +45,21 @@ export type Project = {
     link?: string
     badges?: string[]
     description: string
+}
+
+export type Languages = {
+    [key: string]: number
+}
+
+export type Skills = {
+    technology: {
+        languages: Languages
+        frameworks: {
+            [key: string]: string
+        }
+        ds: string[]
+        db: string[]
+    }
+    languages: Languages
+    others: string[]
 }
