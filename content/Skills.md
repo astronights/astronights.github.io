@@ -3,10 +3,10 @@
 ### Programming Languages
 
 - Python: 4.5
-- R: 4
-- Typescript: 3
-- Java: 3
-- C++: 1
+- R: 4.2
+- Typescript: 3.8
+- Java: 3.5
+- C++: 1.5
 
 ### Data Science
 - Machine Learning
@@ -14,6 +14,7 @@
 - Natural Language Processing
 - Distributed Computing
 - Deep Learning
+- Data Visualization
 
 ### Database
 - SQL
@@ -22,18 +23,18 @@
 - ElasticSearch
 
 ### Frameworks
-- Pandas @_@ /images/pandas.png
-- Polars @_@ /images/polars.svg
-- DuckDB @_@ /images/duckdb.png
-- Kafka @_@ /images/kafka.png
-- Hive @_@ /images/hive.png
-- Spark @_@ /images/spark.png
-- NLTK @_@ /images/nltk.png
-- Scikit-Learn @_@ /images/scikit.png
-- PyTorch @_@ /images/pytorch.png
-- Springboot @_@ /images/springboot.png
-- NodeJS @_@ /images/node.png
-- React @_@ /images/react.png
+- Pandas
+- Polars
+- DuckDB
+- Kafka
+- Hive
+- Spark
+- NLTK
+- Scikit-Learn
+- PyTorch
+- Springboot 
+- NodeJS
+- React
 
 ## Languages
 - English: 5
