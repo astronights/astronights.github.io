@@ -1,6 +1,6 @@
 import {
     Container, Stack, Box, HStack, Text, Divider, Card, SimpleGrid, CardBody,
-    Heading, Image, CardHeader, Flex, List, ListIcon, ListItem, Grid, GridItem,
+    Heading, Image, CardHeader, Flex, List, ListIcon, ListItem
 } from "@chakra-ui/react";
 import SkillsArray from "../arrays/SkillsArray";
 import { ChevronRightIcon } from "@chakra-ui/icons";
@@ -8,6 +8,8 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 
 const Skills = (props: { color: string }) => {
     const skills = SkillsArray();
+
+    const midFw = Math.floor(Object.keys(skills.technology.frameworks).length / 2);
 
     return (
         <>
@@ -57,17 +59,28 @@ const Skills = (props: { color: string }) => {
                                     <Heading textAlign='left' size="sm">{'Frameworks Recently Used'}</Heading>
                                 </CardHeader>
                                 <CardBody>
-                                    <Flex>
-                                        <List spacing={1}>
-                                            <Grid>
-                                                {Object.keys(skills.technology.frameworks).map((fw, i) => (
-                                                    <GridItem key={fw}>
-                                                        <Image src={skills.technology.frameworks[fw]} alt={fw} maxHeight={'5em'} />
-                                                    </GridItem>
-                                                ))}
-                                            </Grid>
+                                    <SimpleGrid columns={[1, 2]} px={2} spacing={1}>
+                                        <List spacing={1.5}>
+                                            {Object.keys(skills.technology.frameworks).slice(0, midFw).map((fw, i) => (
+                                                <ListItem key={fw} textAlign={'left'}>
+                                                    <SimpleGrid columns={[1, 2]} px={1}>
+                                                        <Image src={skills.technology.frameworks[fw]} alt={fw} maxHeight={'1.5em'} />
+                                                        <Text>{fw}</Text>
+                                                    </SimpleGrid>
+                                                </ListItem>
+                                            ))}
                                         </List>
-                                    </Flex>
+                                        <List spacing={1.5}>
+                                            {Object.keys(skills.technology.frameworks).slice(midFw).map((fw, i) => (
+                                                <ListItem key={fw} textAlign={'left'}>
+                                                    <SimpleGrid columns={[1, 2]} px={1}>
+                                                        <Image src={skills.technology.frameworks[fw]} alt={fw} maxHeight={'1.5em'} />
+                                                        <Text>{fw}</Text>
+                                                    </SimpleGrid>
+                                                </ListItem>
+                                            ))}
+                                        </List>
+                                    </SimpleGrid>
                                 </CardBody>
                             </Stack>
                         </Card>

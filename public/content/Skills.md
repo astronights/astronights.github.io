@@ -22,15 +22,18 @@
 - ElasticSearch
 
 ### Frameworks
-- Pandas @_@ https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/2560px-Pandas_logo.svg.png
-- Polars @_@ https://raw.githubusercontent.com/pola-rs/polars-static/master/web/polars-logo-python.svg
-- DuckDB @_@ https://duckdb.org/images/DuckDB_Logo_dl.png
-- Kafka @_@ https://assets.stickpng.com/images/584809c9cef1014c0b5e4909.png
-- Hive @_@ https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Apache_Hive_logo.svg/1138px-Apache_Hive_logo.svg.png
-- Spark @_@ https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Apache_Spark_logo.svg/375px-Apache_Spark_logo.svg.png
-- NLTK @_@ https://miro.medium.com/v2/resize:fit:592/1*YM2HXc7f4v02pZBEO8h-qw.png
-- Scikit-Learn @_@ https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/2560px-Scikit_learn_logo_small.svg.png
-- PyTorch @_@ https://upload.wikimedia.org/wikipedia/commons/9/96/Pytorch_logo.png?20211003060202
+- Pandas @_@ /images/pandas.png
+- Polars @_@ /images/polars.svg
+- DuckDB @_@ /images/duckdb.png
+- Kafka @_@ /images/kafka.png
+- Hive @_@ /images/hive.png
+- Spark @_@ /images/spark.png
+- NLTK @_@ /images/nltk.png
+- Scikit-Learn @_@ /images/scikit.png
+- PyTorch @_@ /images/pytorch.png
+- Springboot @_@ /images/springboot.png
+- NodeJS @_@ /images/node.png
+- React @_@ /images/react.png
 
 ## Languages
 - English: 5
