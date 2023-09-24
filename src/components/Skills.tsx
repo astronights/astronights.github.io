@@ -1,6 +1,6 @@
 import {
     Container, Stack, Box, HStack, Text, Divider, Card, SimpleGrid, CardBody, CircularProgress,
-    Heading, Image, CardHeader, List, ListItem, Table, TableContainer, Tbody, Td, Tr, Badge
+    Heading, Image, CardHeader, List, ListItem, Table, TableContainer, Tbody, Td, Tr, Badge, Code, CardFooter
 } from "@chakra-ui/react";
 import SkillsArray from "../arrays/SkillsArray";
 import { ChevronRightIcon } from "@chakra-ui/icons";
@@ -44,7 +44,7 @@ const Skills = (props: { color: string }) => {
                                                     progressValues.push(langSkills % 1 * 100);
                                                     return (
                                                         <Tr key={lang}>
-                                                            <Td px={0} paddingTop={1} paddingBottom={0}><Image src={`/images/${lang}.png`} alt={lang} maxHeight={'1.5em'} /></Td>
+                                                            <Td px={1} paddingTop={1} paddingBottom={0}><Image src={`/images/${lang}.png`} alt={lang} maxHeight={'1.5em'} /></Td>
                                                             <Td px={0} paddingTop={1} paddingBottom={0}>{lang}</Td>
                                                             <Td px={0} paddingTop={1} paddingBottom={0}>{
                                                                 progressValues.map((val) => (
@@ -91,18 +91,24 @@ const Skills = (props: { color: string }) => {
                                 <CardHeader pb={0}>
                                     <Heading textAlign='left' size="sm">{'Experience with Databases'}</Heading>
                                 </CardHeader>
-                                <CardBody>
+                                <CardBody paddingBottom={0}>
                                     <List spacing={1}>
                                         {skills.technology.db.map((data) => (
                                             <ListItem key={data} textAlign={'left'}>
                                                 <SimpleGrid columns={2} px={1} spacing={1}>
-                                                    <Image src={skills.technology.frameworks[data]} alt={data} maxHeight={'1.5em'} />
+                                                    <Image src={`/images/${data.toLowerCase()}.png`} alt={data} maxHeight={'1.5em'} />
                                                     <Text>{data}</Text>
                                                 </SimpleGrid>
                                             </ListItem>
                                         ))}
                                     </List>
                                 </CardBody>
+                                <CardFooter>
+                                <Code textAlign={'left'}>
+                                    SELECT DB.LOGO, DB.NAME 
+                                    FROM DATABASES DB <br />
+                                    WHERE PROFICIENT='SHUBHANKAR'</Code>
+                                </CardFooter>
                             </Stack>
                         </Card>
                         <Card key={'frameworks'}>
