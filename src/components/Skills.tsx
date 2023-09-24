@@ -56,24 +56,24 @@ const Skills = (props: { color: string }) => {
                         <Card key={'frameworks'}>
                             <Stack>
                                 <CardHeader pb={0}>
-                                    <Heading textAlign='left' size="sm">{'Frameworks Recently Used'}</Heading>
+                                    <Heading textAlign='left' size="sm">{'Frameworks Extensively Used'}</Heading>
                                 </CardHeader>
                                 <CardBody>
-                                    <SimpleGrid columns={[1, 2]} px={2} spacing={1}>
-                                        <List spacing={1.5}>
-                                            {Object.keys(skills.technology.frameworks).slice(0, midFw).map((fw, i) => (
+                                    <SimpleGrid columns={[1, 2]} px={1} spacing={1}>
+                                        <List spacing={1}>
+                                            {Object.keys(skills.technology.frameworks).slice(0, midFw).map((fw) => (
                                                 <ListItem key={fw} textAlign={'left'}>
-                                                    <SimpleGrid columns={[1, 2]} px={1}>
+                                                    <SimpleGrid columns={[1, 2]} px={1} spacing={1}>
                                                         <Image src={skills.technology.frameworks[fw]} alt={fw} maxHeight={'1.5em'} />
                                                         <Text>{fw}</Text>
                                                     </SimpleGrid>
                                                 </ListItem>
                                             ))}
                                         </List>
-                                        <List spacing={1.5}>
-                                            {Object.keys(skills.technology.frameworks).slice(midFw).map((fw, i) => (
+                                        <List spacing={1}>
+                                            {Object.keys(skills.technology.frameworks).slice(midFw).map((fw) => (
                                                 <ListItem key={fw} textAlign={'left'}>
-                                                    <SimpleGrid columns={[1, 2]} px={1}>
+                                                    <SimpleGrid columns={[1, 2]} px={1} spacing={1}>
                                                         <Image src={skills.technology.frameworks[fw]} alt={fw} maxHeight={'1.5em'} />
                                                         <Text>{fw}</Text>
                                                     </SimpleGrid>
