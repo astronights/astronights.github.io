@@ -9,6 +9,10 @@ const Skills = (props: { color: string }) => {
     const skills = SkillsArray();
 
     const midFw = Math.floor(Object.keys(skills.technology.frameworks).length / 2);
+    const langmap = {
+        'English': 'GB', 'Hindi': 'IN', 'French': 'FR', 'Tamil': 'IN',
+        'Latin': 'IT', 'Greek': 'GR', 'Spanish': 'ES'
+    }
 
     return (
         <>
@@ -45,13 +49,14 @@ const Skills = (props: { color: string }) => {
                                                     return (
                                                         <Tr key={lang}>
                                                             <Td px={1} paddingTop={1} paddingBottom={0}><Image src={`/images/${lang.toLowerCase()}.png`} alt={lang} maxHeight={'1.5em'} /></Td>
-                                                            <Td px={0} paddingTop={1} paddingBottom={0}>{lang}</Td>
-                                                            { window.visualViewport.width > 512 ? <Td px={0} paddingTop={1} paddingBottom={0}>{
+                                                            <Td px={1} paddingTop={1} paddingBottom={0}>{lang}</Td>
+                                                            {window.visualViewport.width > 512 ? <Td px={0} paddingTop={1} paddingBottom={0}>{
                                                                 progressValues.map((val) => (
-                                                                    <CircularProgress value={val} p={1} size={'1.2em'} color={props.color} trackColor="transparent" />
+                                                                    <CircularProgress value={val} p={1} size={'1.2em'}
+                                                                        color={props.color} trackColor="transparent" />
                                                                 ))
-                                                            }</Td> : <></> }
-                                                            <Td px={0} paddingTop={1} paddingBottom={0}><Badge
+                                                            }</Td> : <></>}
+                                                            <Td px={1} paddingTop={1} paddingBottom={0}><Badge
                                                                 key={lang}
                                                                 colorScheme={'blue'}
                                                             >{langSkills > 4 ? 'Advanced' : (langSkills > 3 ? 'Intermediate' : 'Basic')}
@@ -92,10 +97,10 @@ const Skills = (props: { color: string }) => {
                                     <Heading textAlign='left' size="sm">{'Experience with Databases'}</Heading>
                                 </CardHeader>
                                 <CardBody paddingBottom={0}>
-                                    <List spacing={1}>
+                                    <List spacing={1.5}>
                                         {skills.technology.db.map((data) => (
                                             <ListItem key={data} textAlign={'left'}>
-                                                <SimpleGrid columns={2} px={1} spacing={1}>
+                                                <SimpleGrid columns={2} px={0} spacing={1}>
                                                     <Image src={`/images/${data.toLowerCase()}.png`} alt={data} maxHeight={'1.5em'} />
                                                     <Text>{data}</Text>
                                                 </SimpleGrid>
@@ -104,10 +109,10 @@ const Skills = (props: { color: string }) => {
                                     </List>
                                 </CardBody>
                                 <CardFooter>
-                                <Code textAlign={'left'}>
-                                    SELECT DB.LOGO, DB.NAME 
-                                    FROM DATABASES DB <br />
-                                    WHERE PROFICIENT='SHUBHANKAR'</Code>
+                                    <Code textAlign={'left'}>
+                                        SELECT DB.LOGO, DB.NAME
+                                        FROM DATABASES DB <br />
+                                        WHERE PROFICIENT='SHUBHANKAR'</Code>
                                 </CardFooter>
                             </Stack>
                         </Card>
@@ -139,6 +144,58 @@ const Skills = (props: { color: string }) => {
                                             ))}
                                         </List>
                                     </SimpleGrid>
+                                </CardBody>
+                            </Stack>
+                        </Card>
+                        <Card key={'languages'}>
+                            <Stack>
+                                <CardHeader pb={0}>
+                                    <Heading textAlign='left' size="sm">{'Languages'}</Heading>
+                                </CardHeader>
+                                <CardBody>
+                                    <TableContainer>
+                                        <Table variant='simple'>
+                                            <Tbody>
+                                                {Object.keys(skills.languages).map((lang) => {
+                                                    const langSkills = skills.languages[lang];
+                                                    return (
+                                                        <Tr key={lang}>
+                                                            <Td px={1} paddingTop={1} paddingBottom={0}>
+                                                                <Image width={'1.5em'} src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${langmap[lang]}.svg`} />
+                                                            </Td>
+                                                            <Td px={1} paddingTop={1} paddingBottom={0}>{lang}</Td>
+                                                            <Td px={1} paddingTop={1} paddingBottom={0}><Badge
+                                                                key={lang}
+                                                                colorScheme={'blue'}
+                                                            >{langSkills >= 4 ? 'Native / Bilingual' : (langSkills >= 3 ? 'Business Proficiency' : (langSkills >= 2 ? 'Conversational' : 'Beginner'))}
+                                                            </Badge></Td>
+                                                        </Tr>
+                                                    )
+                                                })}
+                                            </Tbody>
+                                        </Table>
+                                    </TableContainer>
+                                </CardBody>
+                            </Stack>
+                        </Card>
+                        <Card key={'soft-skills'}>
+                            <Stack>
+                                <CardHeader pb={0}>
+                                    <Heading textAlign='left' size="sm">{'Soft Skills'}</Heading>
+                                </CardHeader>
+                                <CardBody paddingLeft={2}>
+                                    <List spacing={1}>
+                                        {skills.others.map((skill) => (
+                                            <ListItem key={skill} textAlign={'left'}>
+                                                <ChevronRightIcon
+                                                    boxSize={6}
+                                                    as={ChevronRightIcon}
+                                                    color={`${props.color}.500`}
+                                                />
+                                                {skill}
+                                            </ListItem>
+                                        ))}
+                                    </List>
                                 </CardBody>
                             </Stack>
                         </Card>

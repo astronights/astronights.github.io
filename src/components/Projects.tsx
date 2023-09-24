@@ -78,7 +78,7 @@ const Projects = (props: { color: string }) => {
                     <Text color={"gray.600"} fontSize={"xl"} px={2}>
                         Other Projects
                     </Text>
-                    <Card px={2} py={2}>
+                    <Card px={2} py={2} mx={4}>
                         <List spacing={2}>
                             {projects.filter((project) => project.node < 0).map((project) => (
                                 <ListItem key={project.title} textAlign={'left'}>
