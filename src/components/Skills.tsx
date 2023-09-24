@@ -1,6 +1,6 @@
 import {
     Container, Stack, Box, HStack, Text, Divider, Card, SimpleGrid, CardBody,
-    Heading, Image, CardHeader, Flex, List, ListIcon, ListItem
+    Heading, Image, CardHeader, Flex, List, ListIcon, ListItem, Center
 } from "@chakra-ui/react";
 import SkillsArray from "../arrays/SkillsArray";
 import { ChevronRightIcon } from "@chakra-ui/icons";
@@ -59,21 +59,21 @@ const Skills = (props: { color: string }) => {
                                     <Heading textAlign='left' size="sm">{'Frameworks Extensively Used'}</Heading>
                                 </CardHeader>
                                 <CardBody>
-                                    <SimpleGrid columns={[1, 2]} px={1} spacing={1}>
-                                        <List spacing={1}>
+                                    <SimpleGrid columns={[1,2]} px={1} spacing={1}>
+                                        <List key={'left'} spacing={1.5}>
                                             {Object.keys(skills.technology.frameworks).slice(0, midFw).map((fw) => (
                                                 <ListItem key={fw} textAlign={'left'}>
-                                                    <SimpleGrid columns={[1, 2]} px={1} spacing={1}>
+                                                    <SimpleGrid columns={2} px={1} spacing={1}>
                                                         <Image src={skills.technology.frameworks[fw]} alt={fw} maxHeight={'1.5em'} />
                                                         <Text>{fw}</Text>
                                                     </SimpleGrid>
                                                 </ListItem>
                                             ))}
                                         </List>
-                                        <List spacing={1}>
+                                        <List key={'right'} spacing={1.5} float={'right'}>
                                             {Object.keys(skills.technology.frameworks).slice(midFw).map((fw) => (
                                                 <ListItem key={fw} textAlign={'left'}>
-                                                    <SimpleGrid columns={[1, 2]} px={1} spacing={1}>
+                                                    <SimpleGrid columns={2} px={1} spacing={1}>
                                                         <Image src={skills.technology.frameworks[fw]} alt={fw} maxHeight={'1.5em'} />
                                                         <Text>{fw}</Text>
                                                     </SimpleGrid>
