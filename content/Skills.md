@@ -21,6 +21,7 @@
 - Hadoop
 - MongoDB
 - ElasticSearch
+- PostgreSQL
 
 ### Frameworks
 - Pandas
@@ -32,9 +33,11 @@
 - NLTK
 - Scikit-Learn
 - PyTorch
-- Springboot 
+- Springboot
 - NodeJS
 - React
+- Kibana
+- Grafana
 
 ## Languages
 - English: 5
