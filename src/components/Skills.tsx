@@ -44,7 +44,7 @@ const Skills = (props: { color: string }) => {
                                                     progressValues.push(langSkills % 1 * 100);
                                                     return (
                                                         <Tr key={lang}>
-                                                            <Td px={1} paddingTop={1} paddingBottom={0}><Image src={`/images/${lang}.png`} alt={lang} maxHeight={'1.5em'} /></Td>
+                                                            <Td px={1} paddingTop={1} paddingBottom={0}><Image src={`/images/${lang.toLowerCase()}.png`} alt={lang} maxHeight={'1.5em'} /></Td>
                                                             <Td px={0} paddingTop={1} paddingBottom={0}>{lang}</Td>
                                                             <Td px={0} paddingTop={1} paddingBottom={0}>{
                                                                 progressValues.map((val) => (
