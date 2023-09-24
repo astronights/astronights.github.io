@@ -9,7 +9,7 @@ const parseSkills = (mdContent: string): Skills => {
             languages: {},
             ds: [],
             db: [],
-            frameworks: {},
+            frameworks: [],
         },
         languages: {},
         others: []
@@ -32,10 +32,7 @@ const parseSkills = (mdContent: string): Skills => {
                 } else if (child.innerText === 'Database') {
                     skills.technology.db = Array.from(child.nextElementSibling.children).map((child) => child.textContent);
                 } else if (child.innerText === 'Frameworks') {
-                    skills.technology.frameworks = Array.from(child.nextElementSibling.children).reduce((acc, child) => {
-                        acc[child.textContent.split('@_@')[0]] = child.textContent.split('@_@')[1];
-                        return acc;
-                    }, {});
+                    skills.technology.frameworks = Array.from(child.nextElementSibling.children).map((child) => child.textContent);
                 }
             });
 
@@ -62,7 +59,7 @@ const SkillsArray = (): Skills => {
             languages: {},
             ds: [],
             db: [],
-            frameworks: {},
+            frameworks: [],
         },
         languages: {},
         others: []

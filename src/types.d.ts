@@ -54,9 +54,7 @@ export type Languages = {
 export type Skills = {
     technology: {
         languages: Languages
-        frameworks: {
-            [key: string]: string
-        }
+        frameworks: string[]
         ds: string[]
         db: string[]
     }
