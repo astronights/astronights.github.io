@@ -7,7 +7,7 @@ import { useState } from "react";
 import ProfileArray from "../arrays/ProfileArray";
 const TbIcons = require("react-icons/tb");
 
-const NavBar = (props: {color: string}) => {
+const NavBar = (props: { color: string }) => {
     const profile = ProfileArray();
     const colors = {
         "blue": "#3182CE",
@@ -148,8 +148,14 @@ const NavBar = (props: {color: string}) => {
                                             <Button variant="ghost" onClick={scrollToExperience}>
                                                 Experience
                                             </Button>
+                                            <Button variant="ghost" onClick={scrollToEducation}>
+                                                Education
+                                            </Button>
                                             <Button variant="ghost" onClick={scrollToProjects}>
                                                 Projects
+                                            </Button>
+                                            <Button variant="ghost" onClick={scrollToSkills}>
+                                                Skills
                                             </Button>
                                             <Button variant="ghost" onClick={scrollToContact}>
                                                 Contact
