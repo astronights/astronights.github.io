@@ -1,6 +1,6 @@
 import {
     Container, Stack, Box, HStack, Text, Divider, Card, SimpleGrid, CardBody,
-    Heading, Image, CardHeader, Flex, List, ListIcon, ListItem, Center
+    Heading, Image, CardHeader, Flex, List, ListIcon, ListItem
 } from "@chakra-ui/react";
 import SkillsArray from "../arrays/SkillsArray";
 import { ChevronRightIcon } from "@chakra-ui/icons";
