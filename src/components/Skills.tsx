@@ -1,9 +1,10 @@
 import {
     Container, Stack, Box, HStack, Text, Divider, Card, SimpleGrid, CardBody, CircularProgress,
-    Heading, Image, CardHeader, List, ListItem, Table, TableContainer, Tbody, Td, Tr, Badge, Code, CardFooter
+    Heading, Image, CardHeader, List, ListItem, Table, TableContainer, Tbody, Td, Tr, Badge, Code, CardFooter, Center
 } from "@chakra-ui/react";
 import SkillsArray from "../arrays/SkillsArray";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import SkillNet from "./SkillGraph";
 
 const Skills = (props: { color: string }) => {
     const skills = SkillsArray();
@@ -32,6 +33,11 @@ const Skills = (props: { color: string }) => {
                         </HStack>
                         <Divider orientation="horizontal" />
                     </Stack>
+                    <Center px={4}>
+                        {window.visualViewport.width > 768 ?
+                            <SkillNet skills={skills} color={props.color}/> :
+                            <Code>&lt;p&gt; A Graph rendition of my skills, optimized for widescreen views. &lt;p&gt;</Code>}
+                    </Center>
                     <SimpleGrid columns={[1, 2]} px={4} spacing={4}>
                         <Card key={'programming-languages'}>
                             <Stack>

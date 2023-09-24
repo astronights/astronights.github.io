@@ -47,8 +47,6 @@ const parseSkills = (mdContent: string): Skills => {
 
     })
 
-    console.log(skills);
-
     return skills;
 
 };

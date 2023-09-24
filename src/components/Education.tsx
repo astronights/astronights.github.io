@@ -1,6 +1,6 @@
 import {
   Divider, Stack, Text, Container, Box, HStack, Card, CardHeader, CardBody, CardFooter, Flex, Badge,
-  Image, List, ListItem, ListIcon, Center, Collapse
+  Image, List, ListItem, ListIcon, Center, Collapse, Code
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
@@ -58,8 +58,10 @@ const Education = (props: {color: string}) => {
             <Divider orientation="horizontal" />
           </Stack>
           <Center px={4}>
+            { window.visualViewport.width > 768 ? 
             <EduNeuralNet education={education} color={props.color}
-            updateSelected={handleSelected} selected={selected}/>
+            updateSelected={handleSelected} selected={selected}/> : 
+            <Code>&lt;p&gt; A Neural Network rendition of my education, optimized for widescreen views. &lt;p&gt;</Code> }
           </Center>
           <Stack px={4} spacing={4}>
             {education
