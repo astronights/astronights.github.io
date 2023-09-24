@@ -46,11 +46,11 @@ const Skills = (props: { color: string }) => {
                                                         <Tr key={lang}>
                                                             <Td px={1} paddingTop={1} paddingBottom={0}><Image src={`/images/${lang.toLowerCase()}.png`} alt={lang} maxHeight={'1.5em'} /></Td>
                                                             <Td px={0} paddingTop={1} paddingBottom={0}>{lang}</Td>
-                                                            <Td px={0} paddingTop={1} paddingBottom={0}>{
+                                                            { window.visualViewport.width > 512 ? <Td px={0} paddingTop={1} paddingBottom={0}>{
                                                                 progressValues.map((val) => (
                                                                     <CircularProgress value={val} p={1} size={'1.2em'} color={props.color} trackColor="transparent" />
                                                                 ))
-                                                            }</Td>
+                                                            }</Td> : <></> }
                                                             <Td px={0} paddingTop={1} paddingBottom={0}><Badge
                                                                 key={lang}
                                                                 colorScheme={'blue'}
