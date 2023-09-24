@@ -49,8 +49,9 @@
 - Greek: 0.5
 
 ## Others
-- Problem solving
+- Problem Solving
 - Teamwork & Collaboration
+- Effective Communication
+- Critical Thinking
 - Adaptability
 - Multitasking
-- Work Ethic
