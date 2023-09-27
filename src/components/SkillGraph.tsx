@@ -1,4 +1,4 @@
-import ForceGraph3D from 'react-force-graph-3d';
+import ForceGraph3D, { ForceGraphMethods } from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
 import { Skills } from "../types";
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
@@ -7,6 +7,7 @@ import lodash from 'lodash';
 const SkillNet = (props: { skills: Skills, color: string }) => {
 
     const ref = useRef(null);
+    const graphRef = useRef<ForceGraphMethods>();
     const [width, setWidth] = useState(0);
     const [data, setData] = useState({ nodes: [], links: [] });
 
@@ -90,9 +91,15 @@ const SkillNet = (props: { skills: Skills, color: string }) => {
         }
     }, [props.skills]);
 
+    useEffect(() => {
+        graphRef.current.cameraPosition({ x: 0, y: 0, z: 350 }, { x: 0, y: 0, z: 0 }, 1000);
+        graphRef.current.zoomToFit(1000, 1000);
+    }, [graphRef]);
+
     return (
         <div ref={ref}>
             <ForceGraph3D
+                ref={graphRef}
                 graphData={data}
                 nodeAutoColorBy="group"
                 nodeThreeObject={node => {
@@ -101,7 +108,7 @@ const SkillNet = (props: { skills: Skills, color: string }) => {
                     sprite.textHeight = 10;
                     return sprite;
                 }}
-                
+                height={window.visualViewport.height / 1.3}
                 width={width > 0 ? width : 800} />
         </div>
     )
