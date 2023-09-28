@@ -4,6 +4,7 @@ import {
 } from "@chakra-ui/react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import ProfileArray from "../arrays/ProfileArray";
+import { useState, useEffect } from "react";
 
 const Contact = (props: { color: string }) => {
   const profile = ProfileArray();
@@ -16,6 +17,13 @@ const Contact = (props: { color: string }) => {
   const email = () => {
     window.open(`mailto:${profile.email}`, "_blank", "noreferrer,noopener");
   };
+
+  const [views, setViews] = useState(42);
+
+  useEffect(() => {
+    setViews(42 + Math.floor(Math.random() * (21 + 1)));
+  }, [views]);
+
   return (
     <>
       <Container maxW={"4xl"} id="contact">
@@ -54,10 +62,10 @@ const Contact = (props: { color: string }) => {
                 borderColor={"#b3aeae2e"} borderWidth={1} borderRadius={3}>
                 <Stat>
                   <StatLabel>Page Visits</StatLabel>
-                  <StatNumber>345,670</StatNumber>
+                  <StatNumber>{views}</StatNumber>
                   <StatHelpText>
                     <StatArrow type='increase' />
-                    {Math.round(Math.random()*10*100)/100}%
+                    {Math.round((views - 42)*10000/42)/100}%
                   </StatHelpText>
                 </Stat>
               </StatGroup>
