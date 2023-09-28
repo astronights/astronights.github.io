@@ -1,4 +1,7 @@
-import { Divider, Stack, Text, Container, Box, HStack, Heading, Center } from "@chakra-ui/react";
+import {
+  Divider, Stack, Text, Container, Box, HStack, Heading,
+  Center, Stat, StatArrow, StatHelpText, StatLabel, StatNumber, StatGroup
+} from "@chakra-ui/react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import ProfileArray from "../arrays/ProfileArray";
 
@@ -45,6 +48,19 @@ const Contact = (props: { color: string }) => {
                 <FaGithub style={{ 'cursor': 'pointer' }} onClick={github} size={28} />
                 <FaEnvelope style={{ 'cursor': 'pointer' }} onClick={email} size={28} />
               </HStack>
+            </Center>
+            <Center >
+              <StatGroup marginTop={2} px={4} py={1}
+                borderColor={"#b3aeae2e"} borderWidth={1} borderRadius={3}>
+                <Stat>
+                  <StatLabel>Page Visits</StatLabel>
+                  <StatNumber>345,670</StatNumber>
+                  <StatHelpText>
+                    <StatArrow type='increase' />
+                    {Math.round(Math.random()*42*100)/100}%
+                  </StatHelpText>
+                </Stat>
+              </StatGroup>
             </Center>
           </Stack>
         </Stack>
