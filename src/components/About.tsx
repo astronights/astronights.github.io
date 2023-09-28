@@ -36,7 +36,7 @@ const About = (props: { color: string }) => {
           </Text>
           <Center >
           <Button leftIcon={<AttachmentIcon />} 
-          onClick={() => window.open('cv.pdf', "_blank", "noreferrer,noopener")}
+          onClick={() => window.open('CV.pdf', "_blank", "noreferrer,noopener")}
           colorScheme={props.color} variant='outline'>
             Curriculum Vitae
           </Button>

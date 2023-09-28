@@ -57,7 +57,7 @@ const Contact = (props: { color: string }) => {
                   <StatNumber>345,670</StatNumber>
                   <StatHelpText>
                     <StatArrow type='increase' />
-                    {Math.round(Math.random()*42*100)/100}%
+                    {Math.round(Math.random()*10*100)/100}%
                   </StatHelpText>
                 </Stat>
               </StatGroup>
