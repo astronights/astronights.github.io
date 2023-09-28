@@ -1,13 +1,4 @@
-import {
-  Divider,
-  Stack,
-  Text,
-  Container,
-  Box,
-  HStack,
-  Button,
-  Center,
-} from "@chakra-ui/react";
+import { Divider, Stack, Text, Container, Box, HStack, Button, Center } from "@chakra-ui/react";
 import ProfileArray from "../arrays/ProfileArray";
 import { AttachmentIcon } from "@chakra-ui/icons";
 
@@ -31,15 +22,19 @@ const About = (props: { color: string }) => {
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
-          <Text color={"gray.600"} fontSize={"xl"} px={4}>
-            {profile.about}
-          </Text>
+          <Stack>
+            {profile.about.split('\n').map((item, i) => {
+              return <Text color={"gray.600"} fontSize={"xl"} px={4} py={0} key={i}>
+                {item}
+              </Text>
+            })}
+          </Stack>
           <Center >
-          <Button leftIcon={<AttachmentIcon />} 
-          onClick={() => window.open('CV.pdf', "_blank", "noreferrer,noopener")}
-          colorScheme={props.color} variant='outline'>
-            Curriculum Vitae
-          </Button>
+            <Button leftIcon={<AttachmentIcon />}
+              onClick={() => window.open('CV.pdf', "_blank", "noreferrer,noopener")}
+              colorScheme={props.color} variant='outline'>
+              Curriculum Vitae
+            </Button>
           </Center>
         </Stack>
       </Container>

@@ -30,7 +30,11 @@ const parseProfile = (mdContent: string): Profile => {
                 });
                 break;
             case "About":
-                profile.about = element.nextElementSibling.textContent;
+                let sibling = element.nextElementSibling;
+                while (sibling.tagName !== "H2") {
+                    profile.about += "\n" + sibling.textContent;
+                    sibling = sibling.nextElementSibling;
+                }
                 break;
             case "Contact":
                 profile.contact = element.nextElementSibling.textContent;
