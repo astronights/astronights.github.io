@@ -6,6 +6,7 @@ import Experience from './Experience';
 import Education from './Education';
 import Projects from './Projects';
 import Skills from './Skills';
+import Interests from './Interests';
 import Contact from './Contact';
 import Footer from './Footer';
 
@@ -24,6 +25,7 @@ const App = () => {
       <Education color={color} />
       <Projects color={color} />
       <Skills color={color} />
+      <Interests color={color} />
       <Contact color={color} />
       <Footer />
     </>

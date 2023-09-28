@@ -50,6 +50,10 @@ const NavBar = (props: { color: string }) => {
         const skillsSection = document.querySelector("#skills");
         skillsSection.scrollIntoView({ behavior: "smooth" });
     };
+    const scrollToInterests = () => {
+        const interestsSection = document.querySelector("#interests");
+        interestsSection.scrollIntoView({ behavior: "smooth" });
+    };
     const scrollToContact = () => {
         const contactSection = document.querySelector("#contact");
         contactSection.scrollIntoView({ behavior: "smooth" });
@@ -100,7 +104,7 @@ const NavBar = (props: { color: string }) => {
                 </Link>
 
                 <Flex alignItems={"center"}>
-                    <Stack direction={"row"} spacing={5}>
+                    <Stack direction={"row"} spacing={3}>
                         {isLargerThanMD ? (
                             <>
                                 <Button variant="ghost" onClick={scrollToAbout}>
@@ -117,6 +121,9 @@ const NavBar = (props: { color: string }) => {
                                 </Button>
                                 <Button variant="ghost" onClick={scrollToSkills}>
                                     Skills
+                                </Button>
+                                <Button variant="ghost" onClick={scrollToInterests}>
+                                    Interests
                                 </Button>
                                 <Button variant="ghost" onClick={scrollToContact}>
                                     Contact
@@ -156,6 +163,9 @@ const NavBar = (props: { color: string }) => {
                                             </Button>
                                             <Button variant="ghost" onClick={scrollToSkills}>
                                                 Skills
+                                            </Button>
+                                            <Button variant="ghost" onClick={scrollToInterests}>
+                                                Interests
                                             </Button>
                                             <Button variant="ghost" onClick={scrollToContact}>
                                                 Contact

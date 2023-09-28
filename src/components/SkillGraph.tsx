@@ -3,6 +3,7 @@ import SpriteText from 'three-spritetext';
 import { Skills } from "../types";
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import lodash from 'lodash';
+import { useColorMode } from '@chakra-ui/react';
 
 const SkillNet = (props: { skills: Skills, color: string }) => {
 
@@ -10,6 +11,7 @@ const SkillNet = (props: { skills: Skills, color: string }) => {
     const graphRef = useRef<ForceGraphMethods>();
     const [width, setWidth] = useState(0);
     const [data, setData] = useState({ nodes: [], links: [] });
+    const { colorMode } = useColorMode()
 
     useLayoutEffect(() => {
         if (ref && ref.current) {
@@ -108,6 +110,9 @@ const SkillNet = (props: { skills: Skills, color: string }) => {
                     sprite.textHeight = 10;
                     return sprite;
                 }}
+                linkWidth={colorMode === 'dark' ? 0.2 : 0.9}
+                linkColor={colorMode === 'dark' ? '#A0AEC0' : '#FFFFFF'}
+                backgroundColor={colorMode === 'dark' ? '#171923' : '#EDF2F7'}
                 height={window.visualViewport.height / 1.3}
                 width={width > 0 ? width : 800} />
         </div>

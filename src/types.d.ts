@@ -61,3 +61,10 @@ export type Skills = {
     languages: Languages
     others: string[]
 }
+
+export type Hobbies = {
+    interests: {
+        [key: string]: number
+    }
+    activities: string[]
+}

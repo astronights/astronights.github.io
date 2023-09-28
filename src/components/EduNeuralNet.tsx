@@ -189,7 +189,7 @@ const Flow = (props: { education: Study[], color: string, updateSelected: (value
                 zoomOnScroll={false} zoomOnDoubleClick={false} panOnScroll={false}
                 onNodeMouseEnter={handleTouchMove}
                 onNodeMouseLeave={() => setHover([])}
-                maxZoom={1.1} minZoom={0.9}
+                maxZoom={1.25} minZoom={1.15}
                 translateExtent={[[50, -35], [600, 200]]}
             >
                 <Background gap={10} />
