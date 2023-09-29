@@ -42,6 +42,8 @@
 - Description:
   - Common Purpose Leadership Development Program
   - Collaborated with the Oscar M. Lopez Center on a data analytics project focused on devising strategies to promote awareness of scientific grants.
+- Badges:
+  - HKSAR Reaching Out Award
 
 ## Tianjin Interflow Program
 
@@ -70,6 +72,8 @@
 - Description:
   - Embarked on an immersive month-long French language course that delved into culture, art, and literature, igniting a deep appreciation for the language's nuances.
   - Participated in a memorable cultural exchange program gaining invaluable insights beyond the classroom.
+- Badges:
+  - Legion d'Honneur HK Chapter Scholarship
 
 ## Semester Exchange
 
