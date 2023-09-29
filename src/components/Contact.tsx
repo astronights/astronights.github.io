@@ -61,7 +61,7 @@ const Contact = (props: { color: string }) => {
               <StatGroup marginTop={2} px={4} py={1}
                 borderColor={"#b3aeae2e"} borderWidth={1} borderRadius={3}>
                 <Stat>
-                  <StatLabel>Page Visits</StatLabel>
+                  <StatLabel>Page Visits (Weekly)</StatLabel>
                   <StatNumber>{views}</StatNumber>
                   <StatHelpText>
                     <StatArrow type='increase' />

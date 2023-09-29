@@ -41,7 +41,7 @@
 - Degree: Leadership Development Programme
 - Description:
   - Common Purpose Leadership Development Program
-  - Worked on the Oscar M Lopez Center to analyze data on a case study how to spread awareness on scientific grants.
+  - Collaborated with the Oscar M. Lopez Center on a data analytics project focused on devising strategies to promote awareness of scientific grants.
 
 ## Tianjin Interflow Program
 
@@ -53,8 +53,8 @@
 - Image: /images/tju.png
 - Degree: Tianjin Interflow Program
 - Description:
-  - Tianjin Interflow Program where I learnt to code Arduino
-  - Build a line following robot from scratch
+  - Participated in the Tianjin Interflow Program, embarking on a coding odyssey to master Arduino 
+  - Engineered a remarkable line-following robot entirely from scratch showcasing my technical prowess.
 
 
 ## Immersive Overseas Language Program
@@ -68,8 +68,8 @@
 - Image: /images/ucly.png
 - Grades: Score: 19.13 / 20.00
 - Description:
-  - Immersive month long course learning French through various aspects of culture, art and literature
-  - Cultural exchange where we visited UN and learnt a lot
+  - Embarked on an immersive month-long French language course that delved into culture, art, and literature, igniting a deep appreciation for the language's nuances.
+  - Participated in a memorable cultural exchange program gaining invaluable insights beyond the classroom.
 
 ## Semester Exchange
 
@@ -82,7 +82,7 @@
 - Degree: Semester Exchange
 - Grades: GPA: 4.31 / 5.00
 - Description:
-  - Student exchange program from Faculty of Engineering
+  - Student Exchange Program from the Faculty of Engineering
   - Member of NUS Open Source Society
 
 ## MComp (AI)
