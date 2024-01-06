@@ -8,7 +8,7 @@
 - Period: Feb 2018 - Jun 2018
 - Description: 
   - Explored and implemented mathematical models for cryptocurrency price evaluation in trade analysis.
-  - Automated the daily pipeline to update portfolio allocation, expediting the process saving 30 minutes.
+  - Automated the daily pipeline to update portfolio allocation, expediting the process runtime by 70%.
 
 ## JP Morgan Chase
 
@@ -32,7 +32,7 @@
 - Period: Aug 2020 - Dec 2021
 - Description: 
   - Delivered new features and enhancements as a server-side developer on a suite of investor CRM apps.
-  - Streamlined support diagnosis and reconciliation creating an NLP solution, saving 10 hours weekly.
+  - Streamlined support diagnosis and reconciliation creating an NLP solution, saving 10 hours per week.
   - Created a CTF challenge as part of global graduate onboarding to firmwide cloud and data platforms.
 - Badges:
   - Ignite ML Lead - APAC 2021
@@ -58,7 +58,8 @@
 - Title: Data Scientist, Monetization
 - Period: Jan 2023 - Present
 - Description: 
-  - Implemented propensity models driving credit and treasury product adoption with a 3x uplift across marketing campaigns and an average increase of $5 million in annual revenue for the bank.
+  - Transforming SG Point of Sale transactions with AI, advancing customer acquisition across segments.
+  - Developed propensity-based models driving credit and treasury product adoption with a 3x uplift across marketing campaigns and an average increase of $2 million in annual revenue.
   - Enhanced customer retention using LLMs to score surveys and identify pertinent product use cases.
   - Led a team to develop a standardized ML framework optimizing the AI Lab data and model pipelines.
 - Badges:
