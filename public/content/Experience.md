@@ -55,7 +55,7 @@
 - Location: Singapore
 - Country: SG
 - Image: /images/ocbc.png
-- Title: Data Scientist, Monetization
+- Title: Data Scientist, Corporate and Commercial Banking
 - Period: Jan 2023 - Present
 - Description: 
   - Transforming SG Point of Sale transactions with AI, advancing customer acquisition across segments.

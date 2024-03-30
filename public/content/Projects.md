@@ -40,32 +40,38 @@
 - Badges:
   - JPMC Hackathon Runner Up
 
+## Cryptle
+
+- Node: -9
+- Description: A Daily Puzzle to solve a Cryptic Crossword clue.
+- Link: https://daily-cryptic-iief.vercel.app/
+
 ## Arthistle
 
-- Node: -1
+- Node: -10
 - Description: A Wordle spin off to guess an artist by their work.
 - Link: https://github.com/astronights/arthistle
 
 ## Online Crypt Hunt
 
-- Node: -2
+- Node: -11
 - Description: Online cryptic/scavenger hunt through the web.
 - Link: https://github.com/astronights/OnlineTreasureHunt
 
 ## Dino Bot
 
-- Node: -3
+- Node: -12
 - Description: Automated Python Bot to play the Chrome Dino game.
 - Link: https://github.com/astronights/dino-bot
 
 ## Jigsaw Sudoku
 
-- Node: -4
+- Node: -13
 - Description: Haskell sudoku puzzle and solver.
 - Link: https://github.com/astronights/JigsawSudoku
 
 ## Guess That Song
 
-- Node: -5
+- Node: -14
 - Description: Sample application with a song guessing game.
 - Link: https://github.com/astronights/guess_that_song

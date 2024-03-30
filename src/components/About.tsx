@@ -24,7 +24,7 @@ const About = (props: { color: string }) => {
           </Stack>
           <Stack>
             {profile.about.split('\n').map((item, i) => {
-              return <Text color={"gray.600"} fontSize={"xl"} px={4} py={0} key={i}>
+              return <Text color={"gray.500"} fontSize={"xl"} px={4} py={0} key={i} textAlign={'left'}>
                 {item}
               </Text>
             })}

@@ -12,7 +12,7 @@ const Experience = (props: { color: string }) => {
     const [selected, setSelected] = useState([]);
 
     useEffect(() => {
-        const selected = experience.map((edu) => (edu.node));
+        const selected = experience.filter((exp) => !exp.title.includes('Intern')).map((exp) => (exp.node));
         setSelected(selected);
     }, [experience]);
 
