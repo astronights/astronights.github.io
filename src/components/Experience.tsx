@@ -44,7 +44,7 @@ const Experience = (props: { color: string }) => {
                         <Divider orientation="horizontal" />
                     </Stack>
                     <Stack px={4} spacing={4}>
-                        {experience.sort((a, b) => a.node < b.node ? 1 : -1).map((exp) => (
+                        {experience.sort((a, b) => a.node < b.node ? 1 : -1).filter((exp) => exp.node > 0).map((exp) => (
                             <Card onClick={handleClick} key={exp.node} data-id={exp.node}>
                                 <CardHeader>
                                     <Flex justifyContent="space-between">
