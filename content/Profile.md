@@ -3,7 +3,7 @@ Shubhankar Agrawal
 
 ## Header
 - Hi, my name is Shubhankar. 
-- I'm a Data Scientist.
+- Data Scientist | Machine Learning Engineer
 - A passionate data science enthusiast with a curiosity driven mindset, I love exploring new domains and creating innovative solutions with technology.
 
 ## About
