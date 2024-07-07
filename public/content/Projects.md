@@ -4,11 +4,11 @@
 - Link: https://arxiv.org/pdf/2205.02116.pdf
 - Description: Optimized generation of adversarial images targeting state-of-the-art DNNs reducing the average number of network calls combining simulated annealing and StrAttack.
 
-## A4 Paper Trading
+## Cryptle
 
 - Node: 2
-- Link: https://github.com/astronights/A4_Paper_Trading
-- Description: Developed an automated bot with a self-learning multi-agent strategy to manage a BTC portfolio leveraging technical and fundamental indicators to ensure optimal trading decisions.
+- Link: https://daily-cryptic-iief.vercel.app/
+- Description: Developed a daily crossword clue puzzle (Wordle inspired) using the MERN stack + Typescript to enhance web skills. 
 
 ## Q-Wordle
 
@@ -40,11 +40,11 @@
 - Badges:
   - JPMC Hackathon Runner Up
 
-## Cryptle
+## A4 Paper Trading
 
 - Node: -9
-- Description: A Daily Puzzle to solve a Cryptic Crossword clue.
-- Link: https://daily-cryptic-iief.vercel.app/
+- Description: An automated BTC trading bot with a self-learning multi-agent strategy.
+- Link: https://github.com/astronights/A4_Paper_Trading
 
 ## Arthistle
 
