@@ -118,7 +118,7 @@ const Skills = (props: { color: string }) => {
                                     <Code textAlign={'left'}>
                                         SELECT DB.LOGO, DB.NAME
                                         FROM DATABASES DB <br />
-                                        WHERE PROFICIENT='SHUBHANKAR'</Code>
+                                        WHERE USER='SHUBHANKAR'</Code>
                                 </CardFooter>
                             </Stack>
                         </Card>
