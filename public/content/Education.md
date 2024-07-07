@@ -100,6 +100,6 @@
 - Degree: Masters of Computing (Artificial Intelligence)
 - Grades: CGPA: 4.65 / 5.00
 - Description: 
-  - Honours: OCBC AI Scholarship
+  - Honours: Postgradute AI Scholarship
 - Badges:
   - OCBC AI Scholar 2022
