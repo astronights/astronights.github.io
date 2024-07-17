@@ -4,17 +4,17 @@ Shubhankar Agrawal
 ## Header
 - Hi, my name is Shubhankar
 - I'm a Data Science Engineer
-- A passionate data science enthusiast with a curiosity driven mindset, I love exploring new domains and creating innovative solutions with technology.
+- A passionate data science enthusiast with a curios mindset, I love to create innovative solutions with technology.
 
 ## About
 
-📈 With a passion for solving complex puzzles and crunching numbers, I'm your go-to data wizard. From driving revenue optimization at financial institutions to crafting innovative data-driven strategies, I've charted a path through the expansive realm of data science.
+📈 With a passion for solving puzzles and working with numbers, I love building with data. With projects spanning recommendation systems, time series forecasting and large language models, I have worked extensively with data science.
 
-🚀 My professional journey includes roles at OCBC, where I elevated earnings with machine learning solutions, and at JP Morgan Chase, where I introduced data science to optimize workflows. I've demonstrated my expertise in deciphering data challenges and driving actionable insights.
+🚀 My professional journey includes OCBC, where I led several projects driving revenue with machine learning, and JP Morgan Chase, where I introduced data science to optimize workflows beyong my scope of a server side developer.
 
-🎓 Equipped with a Master's in Artificial Intelligence and a Bachelor's in Computer Science (with a dash of Finance and French), I've earned several accolades, including university scholarships and Dean's Honour Lists.
+🎓 Equipped with a Master's in Machine Learning and a Bachelor's in Computer Science (with a minor of Finance and French), I've earned several accolades, including university scholarships and Dean's Honour Lists.
 
-🤖 When I'm not diving into data, you'll find me exploring the realms of trivia, linguistics, art history, puzzles, and strumming some tunes on my ukulele.
+🤖 When I'm not diving into data, you'll find me exploring trivia, linguistics, art history, puzzles, and learning the guitar.
 
 ## Contact
 Drop me an email to reach out!
