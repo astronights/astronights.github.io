@@ -1,19 +1,6 @@
 import { Box, Container, Link, Stack, Text, useColorModeValue } from "@chakra-ui/react";
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const Footer = () => {
-
-  const gcUrl = 'https://astronights.goatcounter.com/counter//.json'
-
-  const [visitCount, setVisitCount] = useState(42);
-
-  useEffect(() => {
-    axios.get(gcUrl).then(res => {
-      setVisitCount(res.data?.count || 42);
-    });
-  }, []);
-
   return (
     <Box
       bg={useColorModeValue("gray.50", "gray.900")}
