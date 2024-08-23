@@ -5,6 +5,7 @@ import {
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import ProfileArray from "../arrays/ProfileArray";
 import { useState, useEffect } from "react";
+import axios from 'axios';
 
 const Contact = (props: { color: string }) => {
   const profile = ProfileArray();
@@ -18,10 +19,13 @@ const Contact = (props: { color: string }) => {
     window.open(`mailto:${profile.email}`, "_blank", "noreferrer,noopener");
   };
 
+  const gcUrl = 'https://astronights.goatcounter.com/counter//.json'
   const [views, setViews] = useState(42);
 
   useEffect(() => {
-    setViews(42 + Math.floor(Math.random() * (21 + 1)));
+    axios.get(gcUrl).then(res => {
+      setViews(res.data?.count || 42);
+    });
   }, [views]);
 
   return (
@@ -61,11 +65,11 @@ const Contact = (props: { color: string }) => {
               <StatGroup marginTop={2} px={4} py={1}
                 borderColor={"#b3aeae2e"} borderWidth={1} borderRadius={3}>
                 <Stat>
-                  <StatLabel>Page Visits (Weekly)</StatLabel>
+                  <StatLabel>Page Visits</StatLabel>
                   <StatNumber>{views}</StatNumber>
                   <StatHelpText>
                     <StatArrow type='increase' />
-                    {Math.round((views - 42)*10000/42)/100}%
+                    {Math.round(((views % 42) + (views / 4200.0)) * 100) / 100}%
                   </StatHelpText>
                 </Stat>
               </StatGroup>

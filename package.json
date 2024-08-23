@@ -16,6 +16,7 @@
     "@visx/scale": "^3.3.0",
     "@visx/text": "^3.3.0",
     "@visx/wordcloud": "^3.3.0",
+    "axios": "^1.7.4",
     "country-flag-icons": "^1.5.7",
     "lodash": "^4.17.21",
     "marked": "^9.0.0",
