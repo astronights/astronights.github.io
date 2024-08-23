@@ -25,7 +25,7 @@ const NeuralNetNode = ({ data }) => {
             <img alt={data.alt} src={data.image} />
             {data.country &&
                 <img alt={data.country} className='flag'
-                    src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${data.country}.svg`} />}
+                    src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${data.country}.svg`} />}
         </div>
     );
 }

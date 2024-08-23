@@ -62,7 +62,7 @@ const Experience = (props: { color: string }) => {
                                             <Text align='left' fontWeight={300}>{exp.period}</Text>
                                             <HStack>
                                                 <Text align='left' fontWeight={300}>{exp.location}</Text>
-                                                <Image width={'1.5em'} src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${exp.country}.svg`} />
+                                                <Image width={'1.5em'} src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${exp.country}.svg`} />
                                             </HStack>
                                         </Box>
                                     </Flex>
