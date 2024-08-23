@@ -167,7 +167,7 @@ const Skills = (props: { color: string }) => {
                                                     return (
                                                         <Tr key={lang}>
                                                             <Td px={1} paddingTop={1} paddingBottom={0}>
-                                                                <Image width={'1.5em'} src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${langmap[lang]}.svg`} />
+                                                                <Image width={'1.5em'} src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${langmap[lang]}.svg`} />
                                                             </Td>
                                                             <Td px={1} paddingTop={1} paddingBottom={0}>{lang}</Td>
                                                             <Td px={1} paddingTop={1} paddingBottom={0}><Badge
