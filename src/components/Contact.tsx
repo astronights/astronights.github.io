@@ -56,7 +56,7 @@ const Contact = (props: { color: string }) => {
             </Text>
             <Center>
               <HStack pt={4} spacing={4}>
-                <FaLinkedin style={{ 'cursor': 'pointer' }} onClick={linkedin} size={28} />
+                <FaLinkedin style={{ 'cursor': 'pointer' }} onClick={linkedin} href={profile.linkedin} size={28} />
                 <FaGithub style={{ 'cursor': 'pointer' }} onClick={github} size={28} />
                 <FaEnvelope style={{ 'cursor': 'pointer' }} onClick={email} size={28} />
               </HStack>
