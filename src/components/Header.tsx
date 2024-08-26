@@ -91,7 +91,7 @@ const Header = (props: {color: string}) => {
                                 top={"-15px"}
                                 transform={"rotate(10deg)"}
                             >
-                                Click me!
+                                LinkedIn
                             </Text>
                         </Box>
                     </Stack>
