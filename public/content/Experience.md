@@ -1,4 +1,4 @@
-## CryptAM Funds
+## CryptAM.Fund
 
 - Node: 1
 - Location: Hong Kong
@@ -19,7 +19,7 @@
 - Title: Data Science Summer Analyst, Asset Management
 - Period: Jun 2019 - Aug 2019
 - Description: 
-  - Improved digital marketing with fund flow projections applying time series forecasting models.
+  - Improved digital marketing with fund flow projections for asset management applying time series forecasting models (ARIMAs).
   - Boosted global application uptime by 20%, building a classification-based instance autoscaling system for services deployed across AWS cloud platforms.
 
 ## JP Morgan Chase
@@ -31,9 +31,10 @@
 - Title: Software Engineer, Global Private Bank
 - Period: Aug 2020 - Dec 2021
 - Description: 
-  - Delivered new features and enhancements as a server-side developer on a suite of advisor CRM apps, working with asynchronous (Reactive) Java, SpringBoot, Kafka and the Elastic stack in agile sprints.
-  -  Streamlined support diagnosis and reconciliation by introducing an NLP solution to auto-reconcile data discrepancies saving 10 hours of manual intervention weekly.
-  - Created a Capture the Flag challenge as part of onboarding for 100+ graduates to firmwide cloud and data platforms.
+  - Delivered new features and enhancements as a server-side developer on a suite of advisor CRM apps, working with asynchronous (Reactive) Java, SpringBoot, Kafka and the ELK stack in agile sprints.
+  - Streamlined support diagnosis and reconciliation by introducing an NLP solution to auto-reconcile data discrepancies saving 10 hours of manual intervention weekly increasing operational efficiency.
+  - Organized ML hackathons and technical sharing sessions as the Ignite APAC ML Community Lead 2021.
+  - Created a Capture the Flag challenge as part of onboarding for 100+ graduates to firmwide cloud and data platforms
 - Badges:
   - Ignite ML Lead - APAC 2021
 
@@ -46,8 +47,8 @@
 - Title: Data Science Intern, Risk & Compliance
 - Period: May 2022 - Jul 2022
 - Description: 
-  - Improved risk assessment by building a Proof-of-Concept model to quantify risk in customer networks.
-  - Optimised and back tested an in-house fraud detection model achieving a 5% performance increase.
+  - Improved customer risk assessment building a Proof-of-Concept message propagation model to quantify risk in customer networks.
+  - Optimised and back tested an in-house fraud detection model implementing a hyperparameter tuning approach resulting in a 5% performance increase.
 
 ## OCBC
 
@@ -58,9 +59,10 @@
 - Title: Data Scientist, Corporate and Commercial Banking
 - Period: Jan 2023 - Present
 - Description: 
-  - Developed recommendation models for user personalization, driving conversion rates of credit and treasury products, with a 3x uplift across marketing campaigns and $2 million revenue increase across customer segments.
-  - Incorporated Large Language Models to optimize investment advice through a RAG-based text summarization project analysing over 2000 research documents across financial instruments.
-  - Enhanced customer satisfaction scores by 30% building a customer feedback scorer to identify critical concerns.
+  - Developed recommender systems for real-time user personalization, driving conversion rates of credit and treasury products, with a 3x uplift across marketing campaigns and $2 million revenue increase across customer segments.
+  - Incorporated Large Language Modelling frameworks to generate investment advice through a RAG-based text summarization project analysing over 2000 research documents across financial instruments.
+  - Enhanced customer satisfaction scores by 30% building a customer feedback scorer to prioritize critical concerns.
   - Led a team to develop a standardized ML framework for the AI Lab, accelerating model deployment timelines by 50%, integrating big data and modelling libraries across the Python data science stack.
+  - Created Flask based applications to serve models via APIs, improved model monitoring, back-testing and A/B testing modules.
 - Badges:
   - Current Role
