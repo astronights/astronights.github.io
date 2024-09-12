@@ -1,12 +1,17 @@
 import { Box, Heading, Container, Text, Button, Stack, Icon, useColorModeValue, createIcon } from "@chakra-ui/react";
 import ProfileArray from "../arrays/ProfileArray";
+import { useEffect, useState } from "react";
 
-const Header = (props: {color: string}) => {
+const Header = (props: { color: string }) => {
     const profile = ProfileArray();
     const scrollToContact = () => {
         const contactSection = document.querySelector("#contact");
         contactSection.scrollIntoView({ behavior: "smooth" });
     };
+    const [roleIndex, setRoleIndex] = useState(0);
+    const [visible, setVisible] = useState(true);
+    const roles = profile.headerRole.split(';')
+
     const linkedin = () => {
         window.open(
             `${profile.linkedin}`,
@@ -14,6 +19,20 @@ const Header = (props: {color: string}) => {
             "noreferrer,noopener"
         );
     };
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          setVisible(false);
+    
+          setTimeout(() => {
+            setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+            setVisible(true);
+          }, 500);
+        }, 5000);
+    
+        return () => clearInterval(interval); 
+      }, [roles.length]);
+
     return (
         <>
             <Heading>
@@ -37,8 +56,15 @@ const Header = (props: {color: string}) => {
                         lineHeight={"110%"}
                     >
                         {profile.headerName} <br />
-                        <Text as={"span"} color={`${props.color}.400`}>
-                            {profile.headerRole}
+                        <Text
+                            as="span"
+                            color={`${props.color}.400`}
+                            style={{
+                                opacity: visible ? 1 : 0, // Toggle opacity
+                                transition: "opacity 0.5s ease-in-out", // Smooth transition for opacity
+                            }}
+                        >
+                            {roles[roleIndex]}
                         </Text>
                     </Heading>
                     <Text
