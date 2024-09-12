@@ -12,7 +12,7 @@
 - Machine Learning
 - Statistical Analysis
 - Natural Language Processing
-- Distributed Computing
+- Time Series Forecasting
 - Deep Learning
 - Data Visualization
 
