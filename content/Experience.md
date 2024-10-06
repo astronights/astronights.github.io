@@ -32,7 +32,7 @@
 - Period: Aug 2020 - Dec 2021
 - Description: 
   - Delivered new features and enhancements as a server-side developer on a suite of advisor CRM apps, working with asynchronous (Reactive) Java, SpringBoot, Kafka and the ELK stack in agile sprints.
-  - Streamlined support diagnosis and reconciliation by introducing an NLP solution to auto-reconcile data discrepancies saving 10 hours of manual intervention weekly increasing operational efficiency.
+  - Streamlined support diagnosis and ticket resolution by introducing an NLP solution to auto-reconcile data discrepancies saving 10 hours of manual intervention weekly increasing operational efficiency.
   - Organized ML hackathons and technical sharing sessions as the Ignite APAC ML Community Lead 2021.
   - Created a Capture the Flag challenge as part of onboarding for 100+ graduates to firmwide cloud and data platforms
 - Badges:
