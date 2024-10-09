@@ -1,36 +1,36 @@
 ## Optimizing 1px Black Box Attacks
 
-- Node: 1
+- Node: 92
 - Link: https://arxiv.org/pdf/2205.02116.pdf
 - Description: Optimized generation of adversarial images targeting state-of-the-art DNNs reducing the average number of network calls combining simulated annealing and StrAttack.
 
 ## Options Pricing
 
-- Node: 2
+- Node: 93
 - Link: https://github.com/astronights/option-pricing-rusty
 - Description: Implemented various Options Pricing strategies (including Black Scholes, Monte Carlo) and Greeks calculation methods developing Rust skills. 
 
 ## LLM Amazing Race
 
-- Node: 3
+- Node: 94
 - Link: https://github.com/astronights/llm-amazing-race-ai
 - Description: Created an LLM based Amazing Race on a global scale to generate city exploration puzzles supported with a MERN web component.
 
 ## Cryptle
 
-- Node: 4
+- Node: 95
 - Link: https://daily-cryptic-iief.vercel.app/
 - Description: Developed a daily crossword clue puzzle using the MERN stack + Typescript enhancing web skills powered by Open Source data. 
 
 ## Q-Wordle
 
-- Node: 5
+- Node: 96
 - Link: https://github.com/astronights/q_wordle
 - Description: Designed and implemented a reinforcement learning agent to learn to play the game of Wordle with a success rate of 80% over 20000 trials.
 
 ## Financial Data Forecaster
 
-- Node: 6
+- Node: 97
 - Link: https://i.cs.hku.hk/fyp/2019/fyp19020/
 - Description: Built a forecaster that predicts cross-domain index and forex price movement across 17 APAC countries with 10-year historical prices and sentiment of geo-political tags on social media.
 - Badges:
@@ -38,7 +38,7 @@
 
 ## Gadong
 
-- Node: 7
+- Node: 98
 - Link: https://devpost.com/software/fossasia
 - Description: Ideated and created a web application providing a crowdsourced dictionary for indigenous languages utilizing the MERN stack, augmenting semantics with phonetic and visual elements.
 - Badges:
@@ -46,7 +46,7 @@
 
 ## Flow Monster
 
-- Node: 8
+- Node: 99
 - Description: Developed trading strategies for optimal RFQ price matching and trading on client and dealer market,
  prioritizing risk, PnL, activity, and generating post trade reports.
 - Badges:
