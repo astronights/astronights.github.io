@@ -7,14 +7,16 @@
 - Typescript: 3.8
 - Java: 3.5
 - C++: 1.5
+- Rust: 1.5
 
 ### Data Science
-- Machine Learning
-- Statistical Analysis
 - Natural Language Processing
 - Time Series Forecasting
 - Deep Learning
+- Large Language Modelling
+- A/B Testing
 - Data Visualization
+- Data Storytelling
 
 ### Database
 - SQL
@@ -53,6 +55,5 @@
 - Teamwork & Collaboration
 - Effective Communication
 - Critical Thinking
-- Data Storytelling
 - Adaptability
 - Multitasking

@@ -4,7 +4,7 @@ Shubhankar Agrawal
 ## Header
 - Hi, I'm Shubhankar
 - Machine Learning Engineer;Data Scientist;Python Engineer
-- A data enthusiast with a curios mindset and a knack for numbers, I love to create innovative solutions with technology.
+- A data enthusiast with a curious mindset and a knack for numbers, I love to create innovative solutions with technology.
 
 ## About
 
