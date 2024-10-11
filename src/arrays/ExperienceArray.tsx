@@ -66,19 +66,22 @@ const ExperienceArray = (): Work[] => {
     const [experience, setExperience] = useState([]);
 
     useEffect(() => {
-        fetch("/content/Experience.md")
-            .then((response) => {
+        const fetchAndParseExperience = async () => {
+            try {
+                const response = await fetch("/content/Experience.md");
                 if (!response.ok) {
                     throw new Error("Failed to fetch markdown content");
                 }
-                return response.text();
-            })
-            .then((mdContent) => {
-                setExperience(parseExperience(marked(mdContent)));
-            })
-            .catch((error) => {
+
+                const mdContent = await response.text();
+                const htmlContent = await Promise.resolve(marked(mdContent));
+                setExperience(parseExperience(htmlContent));
+            } catch (error) {
                 console.error("Error fetching markdown content:", error);
-            });
+            }
+        };
+
+        fetchAndParseExperience();
     }, []);
 
     return experience;

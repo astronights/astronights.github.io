@@ -64,19 +64,22 @@ const SkillsArray = (): Skills => {
     });
 
     useEffect(() => {
-        fetch("/content/Skills.md")
-            .then((response) => {
+        const fetchAndParseSkills = async () => {
+            try {
+                const response = await fetch("/content/Skills.md");
                 if (!response.ok) {
                     throw new Error("Failed to fetch markdown content");
                 }
-                return response.text();
-            })
-            .then((mdContent) => {
-                setSkills(parseSkills(marked(mdContent)));
-            })
-            .catch((error) => {
+
+                const mdContent = await response.text();
+                const htmlContent = await Promise.resolve(marked(mdContent));
+                setSkills(parseSkills(htmlContent));
+            } catch (error) {
                 console.error("Error fetching markdown content:", error);
-            });
+            }
+        };
+
+        fetchAndParseSkills();
     }, []);
 
     return skills;

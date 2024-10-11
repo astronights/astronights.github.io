@@ -68,19 +68,22 @@ const ProfileArray = ():Profile => {
     });
 
     useEffect(() => {
-        fetch("../content/Profile.md")
-            .then((response) => {
+        const fetchAndParseProfile = async () => {
+            try {
+                const response = await fetch("/content/Profile.md");
                 if (!response.ok) {
                     throw new Error("Failed to fetch markdown content");
                 }
-                return response.text();
-            })
-            .then((mdContent) => {
-                setProfile(parseProfile(marked(mdContent)));
-            })
-            .catch((error) => {
+
+                const mdContent = await response.text();
+                const htmlContent = await Promise.resolve(marked(mdContent));
+                setProfile(parseProfile(htmlContent));
+            } catch (error) {
                 console.error("Error fetching markdown content:", error);
-            });
+            }
+        };
+
+        fetchAndParseProfile();
     }, []);
 
     return profile;

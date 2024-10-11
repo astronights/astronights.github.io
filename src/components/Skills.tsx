@@ -79,7 +79,7 @@ const Skills = (props: { color: string }) => {
                         <Card key={'data-science'}>
                             <Stack>
                                 <CardHeader pb={0}>
-                                    <Heading textAlign='left' size="sm">{'Data Science'}</Heading>
+                                    <Heading textAlign='left' size="sm">{'Data Science and Machine Learning'}</Heading>
                                 </CardHeader>
                                 <CardBody paddingLeft={2}>
                                     <List spacing={1}>

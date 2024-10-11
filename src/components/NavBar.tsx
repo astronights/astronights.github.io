@@ -5,7 +5,7 @@ import {
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import ProfileArray from "../arrays/ProfileArray";
-const TbIcons = require("react-icons/tb");
+import * as TbIcons from "react-icons/tb";
 
 const NavBar = (props: { color: string }) => {
     const profile = ProfileArray();

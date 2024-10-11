@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { marked } from 'marked'
 import { Study } from "../types";
 
-const parseEducation = (mdContent: string):Study[] => {
+const parseEducation = (mdContent: string): Study[] => {
 
   const education = [];
 
@@ -65,7 +65,7 @@ const parseEducation = (mdContent: string):Study[] => {
     });
 
   })
-  
+
   return education;
 
 };
@@ -74,19 +74,22 @@ const EducationArray = (): Study[] => {
   const [education, setEducation] = useState([]);
 
   useEffect(() => {
-    fetch("/content/Education.md")
-      .then((response) => {
+    const fetchAndParseEducation = async () => {
+      try {
+        const response = await fetch("/content/Education.md");
         if (!response.ok) {
           throw new Error("Failed to fetch markdown content");
         }
-        return response.text();
-      })
-      .then((mdContent) => {
-        setEducation(parseEducation(marked(mdContent)));
-      })
-      .catch((error) => {
+
+        const mdContent = await response.text();
+        const htmlContent = await Promise.resolve(marked(mdContent));
+        setEducation(parseEducation(htmlContent));
+      } catch (error) {
         console.error("Error fetching markdown content:", error);
-      });
+      }
+    };
+
+    fetchAndParseEducation();
   }, []);
 
   return education;

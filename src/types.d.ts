@@ -44,6 +44,7 @@ export type Project = {
     title: string
     link?: string
     badges?: string[]
+    images?: string[]
     description: string
 }
 

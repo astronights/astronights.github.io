@@ -37,19 +37,22 @@ const HobbiesArray = (): Hobbies => {
     });
 
     useEffect(() => {
-        fetch("/content/Hobbies.md")
-            .then((response) => {
+        const fetchAndParseHobbies = async () => {
+            try {
+                const response = await fetch("/content/Hobbies.md");
                 if (!response.ok) {
                     throw new Error("Failed to fetch markdown content");
                 }
-                return response.text();
-            })
-            .then((mdContent) => {
-                setHobbies(parseHobbies(marked(mdContent)));
-            })
-            .catch((error) => {
+
+                const mdContent = await response.text();
+                const htmlContent = await Promise.resolve(marked(mdContent));
+                setHobbies(parseHobbies(htmlContent));
+            } catch (error) {
                 console.error("Error fetching markdown content:", error);
-            });
+            }
+        };
+
+        fetchAndParseHobbies();
     }, []);
 
     return hobbies;
