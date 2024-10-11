@@ -53,5 +53,6 @@
 - Teamwork & Collaboration
 - Effective Communication
 - Critical Thinking
+- Data Storytelling
 - Adaptability
 - Multitasking
