@@ -13,3 +13,7 @@ The project is built primarily on React with Typescript as the framework to deve
 #### Skills Interactive Knowledge Graph
 
 ![Skills Interactive Knowledge Graph](https://github.com/user-attachments/assets/75f4aa14-af75-4365-ae72-3e09ba2b6f27)
+
+#### Interests World Cloud
+
+![Interests World Cloud](https://github.com/user-attachments/assets/ac041707-4f7a-44c3-aa2a-e0c90ff20b6e)
