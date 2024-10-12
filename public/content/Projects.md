@@ -31,7 +31,7 @@
 ## Options Pricing
 
 - Node: 93
-- Link: https://github.com/astronights/option-pricing-rusty
+- Link: https://github.com/astronights/options-rusty
 - Description: Implemented various Options Pricing strategies (including Black Scholes, Monte Carlo) and Greeks calculation methods developing Rust skills. 
 - Images:
   - /images/option-pricing.png
@@ -98,13 +98,13 @@
 
 - Node: -9
 - Description: Marketing Tool to boost engagement with LLM generated captions.
-- Link: https://github.com/astronights/instagram-marketing-llm
+- Link: https://github.com/astronights/insta-llm
 
-## A4 Paper Trading
+## A4 Trading
 
 - Node: -10
 - Description: Automated BTC trading bot with a self-learning multi-agent strategy.
-- Link: https://github.com/astronights/A4_Paper_Trading
+- Link: https://github.com/astronights/A4-Trading
 
 ## Arthistle
 
