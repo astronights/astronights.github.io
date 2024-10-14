@@ -94,8 +94,9 @@ const SkillNet = (props: { skills: Skills, color: string }) => {
     }, [props.skills]);
 
     useEffect(() => {
-        graphRef.current.cameraPosition({ x: 0, y: 0, z: 320 }, { x: 0, y: 0, z: 0 }, 1000);
-        graphRef.current.zoomToFit(1000, 1000);
+        graphRef.current.cameraPosition({ x: 20, y: 0, z: 320 }, { x: 0, y: 0, z: 0 }, 1000);
+        graphRef.current.zoomToFit(1500, 1500);
+
     }, [graphRef]);
 
     return (
