@@ -1,6 +1,6 @@
 import { Divider, Stack, Text, Container, Box, HStack, Button, Center } from "@chakra-ui/react";
 import ProfileArray from "../arrays/ProfileArray";
-import { AttachmentIcon } from "@chakra-ui/icons";
+import { AttachmentIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
 
 const About = (props: { color: string }) => {
   const profile = ProfileArray();
@@ -30,11 +30,18 @@ const About = (props: { color: string }) => {
             })}
           </Stack>
           <Center >
+            <HStack spacing={4}>
             <Button leftIcon={<AttachmentIcon />}
               onClick={() => window.open('CV.pdf', "_blank", "noreferrer,noopener")}
               colorScheme={props.color} variant='outline'>
               Curriculum Vitae
             </Button>
+            <Button leftIcon={<QuestionOutlineIcon />}
+              onClick={() => window.open('https://astronights.github.io/quizzing', "_blank", "noreferrer,noopener")}
+              colorScheme={props.color} variant='outline'>
+              Quiz With Me!
+            </Button>
+            </HStack>
           </Center>
         </Stack>
       </Container>
