@@ -1,4 +1,4 @@
-## CryptAM.Fund
+## CryptAM Funds
 
 - Node: 1
 - Location: Hong Kong
@@ -40,7 +40,7 @@
 - Badges:
   - Ignite ML Lead - APAC 2021
 
-## OCBC
+## OCBC Bank
 
 - Node: -1
 - Location: Singapore
@@ -52,7 +52,7 @@
   - Improved customer risk assessment building a Proof-of-Concept message propagation model to quantify risk in customer networks.
   - Optimised and back tested an in-house fraud detection model implementing a hyperparameter tuning approach resulting in a 5% performance increase.
 
-## OCBC
+## OCBC Bank
 
 - Node: 4
 - Location: Singapore
