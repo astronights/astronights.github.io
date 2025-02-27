@@ -12,7 +12,7 @@
     "@visx/scale": "^3.5.0",
     "@visx/text": "^3.3.0",
     "@visx/wordcloud": "^3.3.0",
-    "@vitejs/plugin-react-swc": "^3.7.1",
+    "@vitejs/plugin-react-swc": "^3.8.0",
     "axios": "^1.7.7",
     "country-flag-icons": "^1.5.13",
     "lodash": "^4.17.21",
@@ -26,7 +26,7 @@
     "three": "^0.169.0",
     "three-spritetext": "^1.9.0",
     "typescript": "^5.6.3",
-    "vite": "^5.4.14",
+    "vite": "^6.2.0",
     "vite-plugin-svgr": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vite-vitals": "^1.0.2"
