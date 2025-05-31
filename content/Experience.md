@@ -70,7 +70,7 @@
 - Badges:
   - Rookie of the Year 2023
 
-## GIC
+## GIC [Government of Singapore Investment Corporation]
 
 - Node: 5
 - Location: Singapore
@@ -79,6 +79,6 @@
 - Title: AIML Engineer
 - Period: May 2025 - Present
 - Description
-  - Building AI Tools for Financial Services
+  - Building AI Tools for Investment and Risk Management, automating processes and workflows, and delivering real-time analytics and insights.
 - Badges:
   - Current Role
