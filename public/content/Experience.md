@@ -59,7 +59,7 @@
 - Country: SG
 - Image: /images/ocbc.png
 - Title: Data Scientist, Corporate and Commercial Banking
-- Period: Jan 2023 - Present
+- Period: Jan 2023 - Apr 2025
 - Description: 
   - Developed recommendation systems for real-time personalization with distributed frameworks generating a 3x uplift in conversions across marketing campaigns and a $2 million revenue increase.
   - Modernized investment advisory creating a Large Language Model (LLM) agent pipeline using LangChain with a RAG-powered text summarization tool, multithreaded to analyse 2000+ research documents across financial assets.
@@ -67,5 +67,18 @@
   - Built solutions to serve models using Flask and modules for model monitoring, back-testing and A/B testing.
   - Implemented Forex models: identifying optimal trades for business banking and automated hedging for profitability.
   - Enhanced customer satisfaction scores by 30% building a customer feedback scorer to prioritize critical concerns.
+- Badges:
+  - Rookie of the Year 2023
+
+## GIC
+
+- Node: 5
+- Location: Singapore
+- Country: SG
+- Image: /images/gic.png
+- Title: AIML Engineer
+- Period: May 2025 - Present
+- Description
+  - Building AI Tools for Financial Services
 - Badges:
   - Current Role
