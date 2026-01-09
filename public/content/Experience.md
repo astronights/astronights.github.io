@@ -77,8 +77,24 @@
 - Country: SG
 - Image: /images/gic.png
 - Title: AIML Engineer
-- Period: May 2025 - Present
+- Period: May 2025 - Dec 2025
 - Description
-  - Building AI Tools for Investment and Risk Management, automating processes and workflows, and delivering real-time analytics and insights.
+  - Engineered data pipelines and agentic tools on AWS to prototype a Research Assistant for Investment Committees.
+  - Upgraded low-code AI platforms, enabling Private Equity teams to automate and streamline post-trade workflows.
+
+- Badges:
+  - Engineering Academy 2025
+
+## Barclays
+
+- Node: 6
+- Location: Singapore
+- Country: SG
+- Image: /images/barclays.png
+- Title: AIML Engineer - Markets
+- Period: Dec 2025 - Present
+- Description
+  - Building with Data and AI as part of the Global Markets Team
+
 - Badges:
   - Current Role
