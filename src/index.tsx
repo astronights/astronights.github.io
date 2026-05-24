@@ -1,20 +1,17 @@
 import React from 'react';
+if (typeof window !== 'undefined') history.scrollRestoration = 'manual';
 import ReactDOM from 'react-dom/client';
-import { ColorModeScript } from "@chakra-ui/react";
-import './assets/css/index.sass';
+import './index.css';
 import App from './components/App';
-import theme from "./theme";
-import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from "@chakra-ui/react";
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { ThemeProvider } from './context/ThemeContext';
+import { ProfileProvider } from './context/ProfileContext';
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
-  <ChakraProvider theme={theme}>
-    <React.StrictMode>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-      <App />
-    </React.StrictMode>
-  </ChakraProvider>
+  <ThemeProvider>
+    <ProfileProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ProfileProvider>
+  </ThemeProvider>
 );
-
-reportWebVitals();

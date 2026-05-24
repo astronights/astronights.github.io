@@ -1,185 +1,97 @@
-import {
-    Flex, Button, Drawer, DrawerBody, DrawerOverlay, DrawerContent, useColorModeValue,
-    Stack, useColorMode, IconButton, useMediaQuery, useDisclosure, HStack, Link,
-} from "@chakra-ui/react";
-import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useState } from "react";
-import ProfileArray from "../arrays/ProfileArray";
-import * as TbIcons from "react-icons/tb";
+import { useState, useEffect } from 'react';
+import { FiMoon, FiSun, FiMenu, FiX } from 'react-icons/fi';
+import { useTheme } from '../context/ThemeContext';
+import { useProfile } from '../context/ProfileContext';
 
-const NavBar = (props: { color: string }) => {
-    const profile = ProfileArray();
-    const colors = {
-        "blue": "#3182CE",
-        "cyan": "#00B5D8",
-        "gray": "#718096",
-        "green": "#38A169",
-        "orange": "#DD6B20",
-        "pink": "#D53F8C",
-        "purple": "#805AD5",
-        "red": "#E53E3E",
-        "teal": "#319795",
-        "yellow": "#D69E2E"
-    };
-    const [scroll, setScroll] = useState(false);
-    const { colorMode, toggleColorMode } = useColorMode();
-    const { isOpen, onOpen, onClose } = useDisclosure();
+const navLinks = [
+  { label: 'About',      id: 'about' },
+  { label: 'Experience', id: 'experience' },
+  { label: 'Education',  id: 'education' },
+  { label: 'Projects',   id: 'projects' },
+  { label: 'Skills',     id: 'skills' },
+  { label: 'Interests',  id: 'interests' },
+  { label: 'Contact',    id: 'contact' },
+];
 
-    const [isLargerThanMD] = useMediaQuery("(min-width: 48em)");
-    const scrollToHeader = () => {
-        const heroSection = document.querySelector("#header");
-        heroSection.scrollIntoView({ behavior: "smooth" });
-    };
-    const scrollToAbout = () => {
-        const aboutSection = document.querySelector("#about");
-        aboutSection.scrollIntoView({ behavior: "smooth" });
-    };
-    const scrollToExperience = () => {
-        const experienceSection = document.querySelector("#experience");
-        experienceSection.scrollIntoView({ behavior: "smooth" });
-    };
-    const scrollToEducation = () => {
-        const experienceSection = document.querySelector("#education");
-        experienceSection.scrollIntoView({ behavior: "smooth" });
-    };
-    const scrollToProjects = () => {
-        const projectsSection = document.querySelector("#projects");
-        projectsSection.scrollIntoView({ behavior: "smooth" });
-    };
-    const scrollToSkills = () => {
-        const skillsSection = document.querySelector("#skills");
-        skillsSection.scrollIntoView({ behavior: "smooth" });
-    };
-    const scrollToInterests = () => {
-        const interestsSection = document.querySelector("#interests");
-        interestsSection.scrollIntoView({ behavior: "smooth" });
-    };
-    const scrollToContact = () => {
-        const contactSection = document.querySelector("#contact");
-        contactSection.scrollIntoView({ behavior: "smooth" });
-    };
-    const changeScroll = () =>
-        document.body.scrollTop > 80 || document.documentElement.scrollTop > 80
-            ? setScroll(true)
-            : setScroll(false);
+const NavBar = () => {
+  const { isDark, toggle } = useTheme();
+  const { logoFull, logoShort } = useProfile();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    window.addEventListener("scroll", changeScroll);
+  useEffect(() => {
+    const handler = () => setScrolled(document.documentElement.scrollTop > 60);
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
+  }, []);
 
-    const TbLetterComponents = [];
+  const scrollTo = (id: string) => {
+    document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
+    setMenuOpen(false);
+  };
 
-    for (let i = 0; i < profile.logo.length; i++) {
-        const letter = profile.logo[i].toUpperCase();
-        if (window.visualViewport.width <= 768 && letter === " ") {
-            break;
-        }
-        const component = letter === " " ? TbIcons['TbSeparator'] : TbIcons[`TbLetter${letter}`];
-        TbLetterComponents.push(component);
-    }
+  return (
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-200 ${
+        scrolled
+          ? 'bg-zinc-50/90 dark:bg-zinc-900/90 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800 shadow-sm'
+          : 'bg-zinc-50 dark:bg-zinc-900'
+      }`}
+    >
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <button
+          onClick={() => scrollTo('header')}
+          className="font-bold text-lg text-teal-600 dark:text-teal-400 hover:opacity-75 transition-opacity"
+        >
+          <span className="hidden sm:inline">{logoFull}</span>
+          <span className="sm:hidden">{logoShort}</span>
+        </button>
 
-    return (
-        <>
-            <Flex
-                bg={useColorModeValue("gray.100", "gray.900")}
-                px={4}
-                h={16}
-                boxShadow={scroll ? "base" : "none"}
-                zIndex="sticky"
-                position="fixed"
-                as="header"
-                alignItems={"center"}
-                justifyContent={"space-between"}
-                w="100%"
+        <nav className="hidden md:flex items-center gap-0.5">
+          {navLinks.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => scrollTo(id)}
+              className="px-3 py-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors"
             >
-                <Link onClick={scrollToHeader}>
-                    <HStack gap={'0.3rm'}>
-                        {TbLetterComponents.map((Component, index) => {
-                            if (Component.name === "TbSeparator") {
-                                return <Component key={index} color={'transparent'} />;
-                            } else {
-                                return <Component key={index} color={colors[props.color]} />
-                            }
-                        }
-                        )}
-                    </HStack>
-                </Link>
+              {label}
+            </button>
+          ))}
+        </nav>
 
-                <Flex alignItems={"center"}>
-                    <Stack direction={"row"} spacing={3}>
-                        {isLargerThanMD ? (
-                            <>
-                                <Button variant="ghost" onClick={scrollToAbout}>
-                                    About
-                                </Button>
-                                <Button variant="ghost" onClick={scrollToExperience}>
-                                    Experience
-                                </Button>
-                                <Button variant="ghost" onClick={scrollToEducation}>
-                                    Education
-                                </Button>
-                                <Button variant="ghost" onClick={scrollToProjects}>
-                                    Projects
-                                </Button>
-                                <Button variant="ghost" onClick={scrollToSkills}>
-                                    Skills
-                                </Button>
-                                <Button variant="ghost" onClick={scrollToInterests}>
-                                    Interests
-                                </Button>
-                                <Button variant="ghost" onClick={scrollToContact}>
-                                    Contact
-                                </Button>
-                            </>
-                        ) : (
-                            <></>
-                        )}
-                        <Button onClick={toggleColorMode}>
-                            {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-                        </Button>
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={toggle}
+            className="p-2 rounded-lg text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            {isDark ? <FiSun size={16} /> : <FiMoon size={16} />}
+          </button>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2 rounded-lg text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+          </button>
+        </div>
+      </div>
 
-                        {isLargerThanMD ? (
-                            <></>
-                        ) : (
-                            <>
-                                <Button
-                                    as={IconButton}
-                                    icon={<HamburgerIcon />}
-                                    onClick={onOpen}
-                                ></Button>
-                                <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
-                                    <DrawerOverlay />
-                                    <DrawerContent>
-                                        <DrawerBody>
-                                            <Button variant="ghost" onClick={scrollToAbout}>
-                                                About
-                                            </Button>
-                                            <Button variant="ghost" onClick={scrollToExperience}>
-                                                Experience
-                                            </Button>
-                                            <Button variant="ghost" onClick={scrollToEducation}>
-                                                Education
-                                            </Button>
-                                            <Button variant="ghost" onClick={scrollToProjects}>
-                                                Projects
-                                            </Button>
-                                            <Button variant="ghost" onClick={scrollToSkills}>
-                                                Skills
-                                            </Button>
-                                            <Button variant="ghost" onClick={scrollToInterests}>
-                                                Interests
-                                            </Button>
-                                            <Button variant="ghost" onClick={scrollToContact}>
-                                                Contact
-                                            </Button>
-                                        </DrawerBody>
-                                    </DrawerContent>
-                                </Drawer>
-                            </>
-                        )}
-                    </Stack>
-                </Flex>
-            </Flex>
-        </>
-    );
-}
+      {menuOpen && (
+        <div className="md:hidden bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 px-4 py-3 flex flex-col gap-0.5">
+          {navLinks.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => scrollTo(id)}
+              className="text-left py-2 px-3 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
+    </header>
+  );
+};
 
 export default NavBar;

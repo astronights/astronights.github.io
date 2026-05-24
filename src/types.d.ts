@@ -6,11 +6,11 @@ export type Profile = {
     headerRole: string
     headerDesc: string
     about: string
-    contact: string
     linkedin: string
     github: string
     email: string
-    logo: string
+    logoFull: string
+    logoShort: string
 };
 
 export type Study = {
@@ -25,6 +25,8 @@ export type Study = {
     grade?: string
     description: string[]
     badges?: string[]
+    skills?: string[]
+    netLabel?: string
 }
 
 export type Work = {
@@ -52,15 +54,51 @@ export type Languages = {
     [key: string]: number
 }
 
+export type SkillNode = {
+    id: string
+    group: number
+}
+
+export type SkillLink = {
+    source: string
+    target: string
+    level: number
+}
+
+export type SkillGraph = {
+    nodes: SkillNode[]
+    links: SkillLink[]
+}
+
+export type AiMl = {
+    ai: string[]
+    rag: string[]
+    ml: string[]
+    techniques: string[]
+}
+
+export type DataEngineering = {
+    databases: string[]
+    frameworks: string[]
+}
+
+export type MlOps = {
+    devops: string[]
+    aws: string[]
+    observability: string[]
+}
+
 export type Skills = {
     technology: {
         languages: Languages
-        frameworks: string[]
-        ds: string[]
-        db: string[]
     }
+    aiml: AiMl
+    data: DataEngineering
+    mlops: MlOps
+    also: string[]
     languages: Languages
     others: string[]
+    graph: SkillGraph
 }
 
 export type Hobbies = {

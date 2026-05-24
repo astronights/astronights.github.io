@@ -1,213 +1,298 @@
-import ReactFlow, { Background, Handle, Position, ReactFlowProvider } from 'reactflow';
+import ReactFlow, { Background, Handle, Position, ReactFlowProvider, useNodesState, useEdgesState } from 'reactflow';
+import type { Node, Edge } from 'reactflow';
+import { useEffect, useRef, useState } from 'react';
 import { Study } from '../types';
-import { Card, Text } from '@chakra-ui/react';
-import { useState, useEffect } from 'react';
-import lodash from 'lodash';
 import 'reactflow/dist/style.css';
-import '../assets/css/neuralnet.sass';
-import range from '../utils';
 
-const hoverColor = '#7996a04d';
+const InstitutionNode = ({ data }: { data: any }) => (
+  <div style={{ position: 'relative', width: 44, height: 44 }}>
+    <Handle type="target" position={Position.Left} style={{ opacity: 0, pointerEvents: 'none' }} />
+    <div style={{
+      width: 44, height: 44, borderRadius: '50%', overflow: 'hidden',
+      border: `2px solid ${data.active ? (data.dark ? '#a1a1aa' : '#52525b') : (data.dark ? '#3f3f46' : '#d4d4d8')}`,
+      background: data.dark ? '#71717a' : 'white',
+      boxShadow: data.active ? `0 0 0 3px ${data.dark ? '#52525b' : '#d4d4d8'}` : 'none',
+      opacity: data.active ? 1 : 0.25,
+      transition: 'all 0.2s',
+    }}>
+      <img src={data.image} alt={data.label} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 4 }} />
+    </div>
+    {data.country && (
+      <img
+        src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${data.country}.svg`}
+        alt={data.country}
+        style={{
+          position: 'absolute', bottom: 1, right: 0,
+          width: 15, height: 10, objectFit: 'cover',
+          borderRadius: 2, border: '1px solid rgba(0,0,0,0.15)',
+          opacity: data.active ? 1 : 0.25, transition: 'opacity 0.2s',
+        }}
+      />
+    )}
+    <Handle type="source" position={Position.Right} style={{ opacity: 0, pointerEvents: 'none' }} />
+  </div>
+);
 
-const bgColor = (hover: string[], selected: number[], item: string, selectColor: string) => {
-    return selected.map(String).includes(item.split('a')[0].split('g')[0]) ? selectColor
-        : (hover.includes(item) ? hoverColor : 'transparent')
-}
+const SkillNode = ({ data }: { data: any }) => (
+  <div style={{ position: 'relative', width: 72, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Handle type="target" position={Position.Left} style={{ opacity: 0, pointerEvents: 'none' }} />
+    <div style={{
+      width: '100%', textAlign: 'center',
+      padding: '2px 0', borderRadius: 99,
+      border: `1px solid ${data.active ? (data.dark ? '#71717a' : '#71717a') : (data.dark ? '#3f3f46' : '#e4e4e7')}`,
+      background: data.active ? (data.dark ? '#27272a' : '#f4f4f5') : 'transparent',
+      fontSize: 10, fontWeight: 500,
+      color: data.active ? (data.dark ? '#d4d4d8' : '#27272a') : (data.dark ? '#52525b' : '#a1a1aa'),
+      whiteSpace: 'nowrap', userSelect: 'none',
+      transition: 'all 0.2s', cursor: 'default',
+    }}>
+      {data.label}
+    </div>
+    <Handle type="source" position={Position.Right} style={{ opacity: 0, pointerEvents: 'none' }} />
+  </div>
+);
 
-const NeuralNetNode = ({ data }) => {
+const GroupBoxNode = ({ data }: { data: any }) => (
+  <div style={{
+    width: '100%', height: '100%', borderRadius: 8,
+    border: `1px solid ${data.dark ? '#3f3f46' : '#d4d4d8'}`,
+    background: data.dark ? 'rgba(39,39,42,0.25)' : 'rgba(244,244,245,0.35)',
+    display: 'flex', flexDirection: 'column',
+    overflow: 'hidden', pointerEvents: 'none',
+  }}>
+    <div style={{
+      textAlign: 'center', padding: '6px 4px 5px',
+      borderBottom: `1px solid ${data.dark ? '#3f3f46' : '#d4d4d8'}`,
+    }}>
+      <span style={{
+        fontSize: 12, fontWeight: 700, letterSpacing: '0.02em',
+        color: data.dark ? '#14b8a6' : '#0d9488',
+        userSelect: 'none',
+      }}>
+        {data.label}
+      </span>
+    </div>
+  </div>
+);
 
-    return (
-        <div className='nn-node' style={data.style}>
-            <Handle key={'source'} id={'Right'} type={'source'}
-                position={Position.Right} isConnectable={false} />
-            <Handle key={'target'} id={'Left'} type={'target'}
-                position={Position.Left} isConnectable={false} />
-            <img alt={data.alt} src={data.image} />
-            {data.country &&
-                <img alt={data.country} className='flag'
-                    src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${data.country}.svg`} />}
-        </div>
+const nodeTypes = { institution: InstitutionNode, skill: SkillNode, groupbox: GroupBoxNode };
+
+function buildGraph(
+  education: Study[],
+  expanded: number[],
+  isDark: boolean,
+): { nodes: Node[]; edges: Edge[] } {
+  const nodes: Node[] = [];
+  const edges: Edge[] = [];
+
+  const backbone = education
+    .filter(e => Number.isInteger(e.node))
+    .sort((a, b) => a.node - b.node);
+
+  if (backbone.length < 1) return { nodes, edges };
+
+  const CW = 125; const CY = 125;
+  const EX_GAP = 62; const ACT_GAP = 50;
+  const PAD = 6; const HDR = 40; const FOOT = 8; const LIFT = 4;
+
+  const isOn = (n: number) => expanded.includes(n);
+  const activeStroke   = isDark ? '#71717a' : '#52525b';
+  const inactiveStroke = isDark ? '#3f3f46' : '#d4d4d8';
+
+  const eStyle = (active: boolean) => ({
+    stroke: active ? activeStroke : inactiveStroke,
+    strokeWidth: 1,
+    opacity: active ? 0.7 : 0.18,
+  });
+
+  const instData = (edu: Study, active: boolean) => ({
+    label: edu.institution, image: edu.image, country: edu.country,
+    active, dark: isDark,
+  });
+
+  const skillData = (label: string, active: boolean) => ({
+    label, active, dark: isDark,
+  });
+
+  const actY = (count: number, i: number) =>
+    CY - ((count - 1) * ACT_GAP) / 2 + i * ACT_GAP;
+
+  const mkGroup = (id: string, col: number, count: number, label: string) => ({
+    id, type: 'groupbox' as const,
+    draggable: false, selectable: false,
+    position: { x: col * CW - PAD, y: actY(count, 0) - HDR - LIFT },
+    style: { width: 72 + PAD * 2, height: (count - 1) * ACT_GAP + 44 + HDR + FOOT, pointerEvents: 'none' as const },
+    data: { label, dark: isDark },
+  });
+
+  let col = 0;
+  let prevActIds: string[] = [];
+  let prevAnyActive = false;
+
+  for (const inst of backbone) {
+    const id = inst.node.toString();
+    const instExchanges = education
+      .filter(e => !Number.isInteger(e.node) && Math.floor(e.node) === inst.node)
+      .sort((a, b) => a.node - b.node);
+    const skills = inst.skills ?? [];
+    const isActive = isOn(inst.node);
+    const anyInGroup = [inst, ...instExchanges].some(e => isOn(e.node));
+
+    // Place institution node
+    nodes.push({ id, type: 'institution', position: { x: col * CW, y: CY }, data: instData(inst, isActive) });
+
+    // Edges: previous activations → this institution
+    prevActIds.forEach(actId =>
+      edges.push({ id: `${actId}-${id}`, source: actId, target: id, type: 'straight', style: eStyle(prevAnyActive || isActive) })
     );
-}
+    col++;
 
-const ParentNode = ({ data }) => {
-
-    return (
-        <div className='parent-node' style={data.style}>
-            <Text>{data.text}</Text>
-        </div>
-    );
-}
-
-const nodeTypes = { nnNode: NeuralNetNode, parentNode: ParentNode };
-const activationFunctions = ['tanh', 'relu', 'tanh']
-
-const Flow = (props: { education: Study[], color: string, updateSelected: (value: number) => void, selected: number[] }) => {
-
-    const [nodes, setNodes] = useState([]);
-    const [edges, setEdges] = useState([]);
-    const [hover, setHover] = useState([]);
-
-    useEffect(() => {
-
-        let graphNodes = []
-        let graphEdges = []
-        let x = 0;
-        let y = 100;
-
-        const groups = lodash.groupBy(props.education, (edu) => Math.floor(edu.node));
-        Object.entries(groups).forEach(([key, items]) => {
-
-            graphNodes.push({
-                id: `${key}g`,
-                position: { x: x + 70, y: y - 120 },
-                type: 'parentNode',
-                data: {
-                    label: key, text: items[0].title,
-                    style: { backgroundColor: bgColor(hover, props.selected, `${key}g`, props.color) }
-                },
-                style: { width: `${120 + (items.length > 1 ? 80 : 0)}px` }
-            });
-
-            x += 75;
-
-            graphNodes.push({
-                id: key,
-                position: { x, y },
-                type: 'nnNode',
-                data: {
-                    label: key, image: items[0].image,
-                    alt: items[0].institution,
-                    country: items[0].country,
-                    style: { backgroundColor: bgColor(hover, props.selected, key, props.color) }
-                }
-            });
-
-            const activations = (items.length > 1) ? 2 : 1;
-
-            if (items.length > 1) {
-                x += 75;
-                const ySplits = range((100 - 15 * (items.length - 1)), (100 + 15 * (items.length - 1)), items.length - 1);
-                items.slice(1).forEach((item, index) => {
-                    graphNodes.push({
-                        id: item.node.toString(),
-                        position: { x, y: ySplits[index] },
-                        type: 'nnNode',
-                        data: {
-                            label: item.node, image: item.image,
-                            alt: item.institution,
-                            country: item.country,
-                            style: { backgroundColor: bgColor(hover, props.selected, item.node.toString(), props.color) }
-                        }
-                    })
-
-                    graphEdges.push(
-                        {
-                            id: `${key}to${item.node}`,
-                            source: key.toString(),
-                            target: item.node.toString(),
-                            type: 'straight'
-                        });
-
-                    Array(activations).fill(0).forEach((_, index) => {
-                        graphEdges.push(
-                            {
-                                id: `${item.node}to${item.node}a${index + 1}`,
-                                source: item.node.toString(),
-                                target: `${key}a${index + 1}`,
-                                type: 'straight'
-                            });
-                    });
-                });
-            } else {
-                graphEdges = graphEdges.concat([{
-                    id: `${key}to${key}a`,
-                    source: key.toString(),
-                    target: `${key}a1`,
-                    type: 'straight',
-                }, {
-                    id: `${key}ato${parseInt(key) + 1}`,
-                    source: `${key}a1`,
-                    target: (parseInt(key) + 1).toString(),
-                    type: 'straight'
-                }]);
-            }
-
-            x += 75;
-
-            Array(activations).fill(0).forEach((_, index) => {
-                graphNodes.push({
-                    id: `${key}a${index + 1}`,
-                    position: { x: x, y: (activations === 1) ? 100 : 80 + 40 * index },
-                    type: 'nnNode',
-                    data: {
-                        label: key, image: `/images/${activationFunctions[index]}.png`,
-                        alt: activationFunctions[index],
-                        style: { backgroundColor: bgColor(hover, props.selected, `${key}a${index + 1}`, props.color) }
-                    }
-                });
-
-                graphEdges.push(
-                    {
-                        id: `${key}a${index + 1}to${parseInt(key) + 1}`,
-                        source: `${key}a${index + 1}`,
-                        target: (parseInt(key) + 1).toString(),
-                        type: 'straight'
-                    });
-            });
-
-        });
-
-        setNodes(graphNodes);
-        setEdges(graphEdges);
-
-    }, [props.education, props.selected, hover, props.color]);
-
-    const handleNodeClick = (_, node) => {
-        props.updateSelected(parseFloat(node.id))
+    // Place exchange sub-nodes (if any)
+    const exIds: string[] = [];
+    if (instExchanges.length > 0) {
+      const exStartY = CY - ((instExchanges.length - 1) * EX_GAP) / 2;
+      instExchanges.forEach((ex, i) => {
+        const exId = ex.node.toString();
+        nodes.push({ id: exId, type: 'institution', position: { x: col * CW, y: exStartY + i * EX_GAP }, data: instData(ex, isOn(ex.node)) });
+        edges.push({ id: `${id}-${exId}`, source: id, target: exId, type: 'straight', style: eStyle(isActive || isOn(ex.node)) });
+        exIds.push(exId);
+      });
+      col++;
     }
 
-    const handleTouchMove = (_, node) => {
-        if (node.id.includes('.')) {
-            setHover([node.id]);
-        } else if (node.id.includes('a')) {
-            setHover(nodes.filter((n) => n.id.startsWith(node.id.split('a')[0])
-                && !n.id.includes('.')).map((n) => n.id));
-        } else {
-            setHover(nodes.filter((n) => n.id.startsWith(node.id.replace('g', ''))).map((n) => n.id));
-        }
+    // Place skill activations (if any)
+    const isFirstBackbone = backbone.indexOf(inst) === 0;
+    if (skills.length > 0) {
+      if (!isFirstBackbone) nodes.push(mkGroup(`group_${id}`, col, skills.length, inst.netLabel ?? inst.title));
+      const actIds: string[] = [];
+      const sources = exIds.length > 0 ? exIds : [id];
+      skills.forEach((sk, i) => {
+        const actId = `a${inst.node}_${i}`;
+        nodes.push({ id: actId, type: 'skill', position: { x: col * CW, y: actY(skills.length, i) }, data: skillData(sk, anyInGroup) });
+        sources.forEach(src =>
+          edges.push({ id: `${src}-${actId}`, source: src, target: actId, type: 'straight', style: eStyle(anyInGroup) })
+        );
+        actIds.push(actId);
+      });
+      prevActIds = actIds;
+      prevAnyActive = anyInGroup;
+      col++;
+    } else {
+      prevActIds = [id];
+      prevAnyActive = isActive;
     }
+  }
 
-    const height = window.visualViewport.width < 512 ? 35 : (window.visualViewport.width < 968 ? 25 : 50)
-
-    return (
-        <Card variant='elevated' style={{ width: '100vw', height: `${height}vh` }}>
-            <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}
-                onNodeClick={handleNodeClick}
-                edgesFocusable={false}
-                snapToGrid={true} 
-                zoomOnScroll={false} zoomOnDoubleClick={false} panOnScroll={false}
-                onNodeMouseEnter={handleTouchMove}
-                onNodeMouseLeave={() => setHover([])}
-                maxZoom={1.25} minZoom={1.15}
-                translateExtent={[[50, -35], [600, 200]]}
-            >
-                <Background gap={10} />
-            </ReactFlow>
-        </Card>
-    )
+  return { nodes, edges };
 }
+
+const Flow = ({ education, expanded, onToggleNode, onToggleGroup: _onToggleGroup, isDark }: {
+  education: Study[];
+  expanded: number[];
+  onToggleNode: (n: number) => void;
+  onToggleGroup: (group: number) => void;
+  isDark: boolean;
+}) => {
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges] = useEdgesState([]);
+  const [hasDragged, setHasDragged] = useState(false);
+  const originalPositions = useRef<Record<string, { x: number; y: number }>>({});
+
+  useEffect(() => {
+    const result = buildGraph(education, expanded, isDark);
+    setEdges(result.edges);
+    setNodes(prev => {
+      if (prev.length === 0 || prev.length !== result.nodes.length) {
+        originalPositions.current = Object.fromEntries(result.nodes.map(n => [n.id, n.position]));
+        setHasDragged(false);
+        return result.nodes;
+      }
+      return prev.map(n => {
+        const next = result.nodes.find(nn => nn.id === n.id);
+        if (!next) return n;
+        // Non-draggable nodes (group boxes) always use the computed position
+        if (next.draggable === false) return next;
+        // Draggable nodes preserve the user's moved position
+        return { ...next, position: n.position };
+      });
+    });
+  }, [education, expanded, isDark]);
+
+  const handleReset = () => {
+    setNodes(prev => prev.map(n => {
+      if (n.draggable === false) return n;
+      return { ...n, position: originalPositions.current[n.id] ?? n.position };
+    }));
+    setHasDragged(false);
+  };
+
+  const handleNodeClick = (_: React.MouseEvent, node: Node) => {
+    if (node.type === 'institution') {
+      onToggleNode(parseFloat(node.id));
+    }
+  };
+
+  return (
+    <div className="w-full rounded-xl overflow-hidden" style={{
+      position: 'relative', height: 280,
+      background: isDark ? '#18181b' : '#fafafa',
+      border: `1px solid ${isDark ? '#52525b' : '#a1a1aa'}`,
+    }}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        nodeTypes={nodeTypes}
+        onNodeClick={handleNodeClick}
+        onNodesChange={onNodesChange}
+        onNodeDragStop={() => setHasDragged(true)}
+        defaultEdgeOptions={{ type: 'straight' }}
+        edgesFocusable={false}
+        nodesConnectable={false}
+        autoPanOnNodeDrag={false}
+        snapToGrid
+        snapGrid={[25, 25]}
+        zoomOnScroll={false}
+        zoomOnDoubleClick={false}
+        zoomOnPinch={false}
+        panOnScroll={false}
+        panOnDrag={false}
+        minZoom={0.5}
+        maxZoom={1.2}
+        fitView
+        fitViewOptions={{ padding: 0.15 }}
+        proOptions={{ hideAttribution: true }}
+      >
+        <Background color={isDark ? '#3f3f46' : '#d4d4d8'} gap={25} size={1.5} />
+      </ReactFlow>
+      {hasDragged && (
+        <button
+          onClick={handleReset}
+          style={{
+            position: 'absolute', bottom: 8, right: 8, zIndex: 10,
+            fontSize: 10, padding: '2px 8px', borderRadius: 4,
+            border: `1px solid ${isDark ? '#3f3f46' : '#d4d4d8'}`,
+            background: isDark ? '#27272a' : '#f4f4f5',
+            color: isDark ? '#71717a' : '#a1a1aa',
+            cursor: 'pointer', opacity: 0.75,
+          }}
+        >
+          ↺ reset layout
+        </button>
+      )}
+    </div>
+  );
+};
 
 const EduNeuralNet = (props: {
-    education: Study[], color: string,
-    updateSelected: (value: number) => void, selected: number[]
-}) => {
-
-    return (
-        <ReactFlowProvider>
-            <Flow {...props} />
-        </ReactFlowProvider>
-    );
-}
+  education: Study[];
+  expanded: number[];
+  onToggleNode: (n: number) => void;
+  onToggleGroup: (group: number) => void;
+  isDark: boolean;
+}) => (
+  <ReactFlowProvider>
+    <Flow {...props} />
+  </ReactFlowProvider>
+);
 
 export default EduNeuralNet;
