@@ -1,0 +1,322 @@
+technology:
+  languages:
+    Python: 4.5
+    TypeScript: 3.8
+    Java: 3.5
+    R: 3.1
+    C++: 1.5
+    Rust: 1.5
+
+aiml:
+  ai:
+    - LangGraph
+    - LangFlow
+    - LangChain
+    - Anthropic
+    - OpenAI
+    - AWS Bedrock
+    - Claude Code
+  rag:
+    - pgvector
+    - OpenSearch
+  ml:
+    - MLflow
+    - PyTorch
+    - Scikit-Learn
+  techniques:
+    - Natural Language Processing
+    - Time Series Forecasting
+    - Causal Inference
+    - A/B Testing
+    - Data Visualization
+    - Data Storytelling
+
+data:
+  databases:
+    - PostgreSQL
+    - MongoDB
+    - ElasticSearch
+    - Hadoop
+    - SQL
+  frameworks:
+    - Pandas
+    - Polars
+    - DuckDB
+    - Kafka
+    - Hive
+    - Spark
+
+mlops:
+  devops:
+    - Docker
+    - Kubernetes
+    - Terraform
+    - Vercel
+    - Git
+    - GitHub Actions
+  aws:
+    - EKS
+    - ECS
+    - Lambda
+    - Glue
+    - S3
+  observability:
+    - Kibana
+    - Grafana
+    - CloudWatch
+
+also:
+  - FastAPI
+  - Springboot
+  - NodeJS
+  - React
+  - OpenAPI
+
+languages:
+  English: 5
+  Hindi: 5
+  French: 3
+  Tamil: 2
+  Mandarin: 0.5
+  Russian: 0.5
+
+others:
+  - Problem Solving
+  - Teamwork & Collaboration
+  - Effective Communication
+  - Critical Thinking
+  - Adaptability
+  - Multitasking
+
+graph:
+  nodes:
+    # root
+    - { id: Shubhankar,        group: 0 }
+    # level 1 — main branches
+    - { id: Technical Skills,  group: 1 }
+    - { id: Spoken Languages,  group: 8 }
+    - { id: Soft Skills,       group: 9 }
+    # level 2 — tech sub-branches
+    - { id: Programming Languages, group: 2 }
+    - { id: AI & ML,               group: 3 }
+    - { id: Engineering Stack,     group: 5 }
+    - { id: MLOps & DevOps,        group: 6 }
+    # programming languages (group 2)
+    - { id: Python,      group: 2 }
+    - { id: TypeScript,  group: 2 }
+    - { id: Java,        group: 2 }
+    - { id: R,           group: 2 }
+    - { id: C++,         group: 2 }
+    - { id: Rust,        group: 2 }
+    # AI & ML sub-branches (group 3)
+    - { id: AI Tools,   group: 3 }
+    - { id: RAG,        group: 3 }
+    - { id: ML,         group: 3 }
+    - { id: Techniques, group: 4 }
+    # AI tools (group 3)
+    - { id: LangGraph,   group: 3 }
+    - { id: LangFlow,    group: 3 }
+    - { id: LangChain,   group: 3 }
+    - { id: Anthropic,   group: 3 }
+    - { id: OpenAI,      group: 3 }
+    - { id: AWS Bedrock, group: 3 }
+    - { id: Claude Code, group: 3 }
+    # RAG tools (group 3)
+    - { id: pgvector,   group: 3 }
+    - { id: OpenSearch, group: 3 }
+    # ML tools (group 3)
+    - { id: MLflow,       group: 3 }
+    - { id: PyTorch,      group: 3 }
+    - { id: Scikit-Learn, group: 3 }
+    # techniques (group 4)
+    - { id: Natural Language Processing, group: 4 }
+    - { id: Time Series Forecasting,     group: 4 }
+    - { id: Causal Inference,            group: 4 }
+    - { id: A/B Testing,                 group: 4 }
+    - { id: Data Visualization,          group: 4 }
+    - { id: Data Storytelling,           group: 4 }
+    # Engineering Stack sub-branches
+    - { id: Databases,  group: 5 }
+    - { id: Frameworks, group: 5 }
+    - { id: Web,        group: 7 }
+    # databases (group 5)
+    - { id: PostgreSQL,    group: 5 }
+    - { id: MongoDB,       group: 5 }
+    - { id: ElasticSearch, group: 5 }
+    - { id: Hadoop,        group: 5 }
+    - { id: SQL,           group: 5 }
+    # data frameworks (group 5)
+    - { id: Pandas, group: 5 }
+    - { id: Polars, group: 5 }
+    - { id: DuckDB, group: 5 }
+    - { id: Kafka,  group: 5 }
+    - { id: Hive,   group: 5 }
+    - { id: Spark,  group: 5 }
+    # web frameworks (group 7)
+    - { id: FastAPI,    group: 7 }
+    - { id: Springboot, group: 7 }
+    - { id: NodeJS,     group: 7 }
+    - { id: React,      group: 7 }
+    - { id: OpenAPI,    group: 7 }
+    # MLOps sub-branches (group 6)
+    - { id: DevOps,       group: 6 }
+    - { id: AWS,          group: 6 }
+    - { id: Observability, group: 6 }
+    # DevOps (group 6)
+    - { id: Docker,         group: 6 }
+    - { id: Kubernetes,     group: 6 }
+    - { id: Terraform,      group: 6 }
+    - { id: Vercel,         group: 6 }
+    - { id: Git,            group: 6 }
+    - { id: GitHub Actions, group: 6 }
+    # AWS (group 6)
+    - { id: EKS,    group: 6 }
+    - { id: ECS,    group: 6 }
+    - { id: Lambda, group: 6 }
+    - { id: Glue,   group: 6 }
+    - { id: S3,     group: 6 }
+    # observability (group 6)
+    - { id: Kibana,     group: 6 }
+    - { id: Grafana,    group: 6 }
+    - { id: CloudWatch, group: 6 }
+    # spoken languages (group 8)
+    - { id: English,  group: 8 }
+    - { id: Hindi,    group: 8 }
+    - { id: French,   group: 8 }
+    - { id: Tamil,    group: 8 }
+    - { id: Mandarin, group: 8 }
+    - { id: Russian,  group: 8 }
+    # soft skills (group 9)
+    - { id: Problem Solving,           group: 9 }
+    - { id: Teamwork & Collaboration,  group: 9 }
+    - { id: Effective Communication,   group: 9 }
+    - { id: Critical Thinking,         group: 9 }
+    - { id: Adaptability,              group: 9 }
+    - { id: Multitasking,              group: 9 }
+
+  links:
+    # level 1 — root to main branches
+    - { source: Shubhankar, target: Technical Skills,  level: 1 }
+    - { source: Shubhankar, target: Spoken Languages,  level: 1 }
+    - { source: Shubhankar, target: Soft Skills,       level: 1 }
+    # level 2 — Technical Skills to card branches
+    - { source: Technical Skills, target: Programming Languages, level: 2 }
+    - { source: Technical Skills, target: AI & ML,               level: 2 }
+    - { source: Technical Skills, target: Engineering Stack,     level: 2 }
+    - { source: Technical Skills, target: MLOps & DevOps,        level: 2 }
+    # level 3 — card branches to column sub-branches
+    - { source: AI & ML, target: AI Tools,   level: 3 }
+    - { source: AI & ML, target: RAG,        level: 3 }
+    - { source: AI & ML, target: ML,         level: 3 }
+    - { source: AI & ML, target: Techniques, level: 3 }
+    - { source: Engineering Stack, target: Databases,  level: 3 }
+    - { source: Engineering Stack, target: Frameworks, level: 3 }
+    - { source: Engineering Stack, target: Web,        level: 3 }
+    - { source: MLOps & DevOps, target: DevOps,        level: 3 }
+    - { source: MLOps & DevOps, target: AWS,           level: 3 }
+    - { source: MLOps & DevOps, target: Observability, level: 3 }
+    # level 4 — sub-branches to items
+    - { source: Programming Languages, target: Python,      level: 4 }
+    - { source: Programming Languages, target: TypeScript,  level: 4 }
+    - { source: Programming Languages, target: Java,        level: 4 }
+    - { source: Programming Languages, target: R,           level: 4 }
+    - { source: Programming Languages, target: C++,         level: 4 }
+    - { source: Programming Languages, target: Rust,        level: 4 }
+    - { source: AI Tools, target: LangGraph,   level: 4 }
+    - { source: AI Tools, target: LangFlow,    level: 4 }
+    - { source: AI Tools, target: LangChain,   level: 4 }
+    - { source: AI Tools, target: Anthropic,   level: 4 }
+    - { source: AI Tools, target: OpenAI,      level: 4 }
+    - { source: AI Tools, target: AWS Bedrock, level: 4 }
+    - { source: AI Tools, target: Claude Code, level: 4 }
+    - { source: RAG, target: pgvector,   level: 4 }
+    - { source: RAG, target: OpenSearch, level: 4 }
+    - { source: ML, target: MLflow,       level: 4 }
+    - { source: ML, target: PyTorch,      level: 4 }
+    - { source: ML, target: Scikit-Learn, level: 4 }
+    - { source: Techniques, target: Natural Language Processing, level: 4 }
+    - { source: Techniques, target: Time Series Forecasting,     level: 4 }
+    - { source: Techniques, target: Causal Inference,            level: 4 }
+    - { source: Techniques, target: A/B Testing,                 level: 4 }
+    - { source: Techniques, target: Data Visualization,          level: 4 }
+    - { source: Techniques, target: Data Storytelling,           level: 4 }
+    - { source: Databases, target: PostgreSQL,    level: 4 }
+    - { source: Databases, target: MongoDB,       level: 4 }
+    - { source: Databases, target: ElasticSearch, level: 4 }
+    - { source: Databases, target: Hadoop,        level: 4 }
+    - { source: Databases, target: SQL,           level: 4 }
+    - { source: Frameworks, target: Pandas, level: 4 }
+    - { source: Frameworks, target: Polars, level: 4 }
+    - { source: Frameworks, target: DuckDB, level: 4 }
+    - { source: Frameworks, target: Kafka,  level: 4 }
+    - { source: Frameworks, target: Hive,   level: 4 }
+    - { source: Frameworks, target: Spark,  level: 4 }
+    - { source: Web, target: FastAPI,    level: 4 }
+    - { source: Web, target: Springboot, level: 4 }
+    - { source: Web, target: NodeJS,     level: 4 }
+    - { source: Web, target: React,      level: 4 }
+    - { source: Web, target: OpenAPI,    level: 4 }
+    - { source: DevOps, target: Docker,         level: 4 }
+    - { source: DevOps, target: Kubernetes,     level: 4 }
+    - { source: DevOps, target: Terraform,      level: 4 }
+    - { source: DevOps, target: Vercel,         level: 4 }
+    - { source: DevOps, target: Git,            level: 4 }
+    - { source: DevOps, target: GitHub Actions, level: 4 }
+    - { source: AWS, target: EKS,    level: 4 }
+    - { source: AWS, target: ECS,    level: 4 }
+    - { source: AWS, target: Lambda, level: 4 }
+    - { source: AWS, target: Glue,   level: 4 }
+    - { source: AWS, target: S3,     level: 4 }
+    - { source: Observability, target: Kibana,     level: 4 }
+    - { source: Observability, target: Grafana,    level: 4 }
+    - { source: Observability, target: CloudWatch, level: 4 }
+    - { source: Spoken Languages, target: English,  level: 4 }
+    - { source: Spoken Languages, target: Hindi,    level: 4 }
+    - { source: Spoken Languages, target: French,   level: 4 }
+    - { source: Spoken Languages, target: Tamil,    level: 4 }
+    - { source: Spoken Languages, target: Mandarin, level: 4 }
+    - { source: Spoken Languages, target: Russian,  level: 4 }
+    - { source: Soft Skills, target: Problem Solving,           level: 4 }
+    - { source: Soft Skills, target: Teamwork & Collaboration,  level: 4 }
+    - { source: Soft Skills, target: Effective Communication,   level: 4 }
+    - { source: Soft Skills, target: Critical Thinking,         level: 4 }
+    - { source: Soft Skills, target: Adaptability,              level: 4 }
+    - { source: Soft Skills, target: Multitasking,              level: 4 }
+    # cross-links
+    - { source: Python,        target: Pandas,       level: 5 }
+    - { source: Python,        target: Polars,       level: 5 }
+    - { source: Python,        target: DuckDB,       level: 5 }
+    - { source: Python,        target: Kafka,        level: 5 }
+    - { source: Python,        target: Hive,         level: 5 }
+    - { source: Python,        target: Spark,        level: 5 }
+    - { source: Python,        target: Scikit-Learn, level: 5 }
+    - { source: Python,        target: PyTorch,      level: 5 }
+    - { source: Python,        target: MLflow,       level: 5 }
+    - { source: Python,        target: FastAPI,      level: 5 }
+    - { source: Python,        target: pgvector,     level: 5 }
+    - { source: Java,          target: Springboot,   level: 5 }
+    - { source: Java,          target: Kafka,        level: 5 }
+    - { source: TypeScript,    target: NodeJS,       level: 5 }
+    - { source: TypeScript,    target: React,        level: 5 }
+    - { source: SQL,           target: Python,       level: 5 }
+    - { source: SQL,           target: Java,         level: 5 }
+    - { source: SQL,           target: Kibana,       level: 5 }
+    - { source: SQL,           target: Grafana,      level: 5 }
+    - { source: MongoDB,       target: TypeScript,   level: 5 }
+    - { source: MongoDB,       target: Python,       level: 5 }
+    - { source: MongoDB,       target: NodeJS,       level: 5 }
+    - { source: MongoDB,       target: React,        level: 5 }
+    - { source: Hadoop,        target: Hive,         level: 5 }
+    - { source: Hadoop,        target: Spark,        level: 5 }
+    - { source: Hadoop,        target: Python,       level: 5 }
+    - { source: Hadoop,        target: DuckDB,       level: 5 }
+    - { source: Hadoop,        target: Polars,       level: 5 }
+    - { source: ElasticSearch, target: Java,         level: 5 }
+    - { source: ElasticSearch, target: Kibana,       level: 5 }
+    - { source: ElasticSearch, target: Grafana,      level: 5 }
+    - { source: LangChain,     target: pgvector,     level: 5 }
+    - { source: LangChain,     target: OpenSearch,   level: 5 }
+    - { source: LangGraph,     target: LangChain,    level: 5 }
+    - { source: Docker,        target: Kubernetes,   level: 5 }
+    - { source: Kubernetes,    target: EKS,          level: 5 }
+    - { source: Techniques,    target: Python,       level: 5 }

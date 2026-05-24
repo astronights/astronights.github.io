@@ -1,0 +1,89 @@
+- node: 6
+  firm: Barclays
+  title: AIML Engineer - Markets
+  location: Singapore
+  country: SG
+  image: /images/barclays.png
+  period: Dec 2025 - Present
+  description:
+    - Building with Data and AI as part of the Global Markets Team.
+  badges:
+    - Current Role
+
+- node: 5
+  firm: GIC (Government of Singapore Investment Corporation)
+  title: AIML Engineer
+  location: Singapore
+  country: SG
+  image: /images/gic.png
+  period: May 2025 - Dec 2025
+  description:
+    - Engineered data pipelines and agentic tools on AWS to prototype a Research Assistant for Investment Committees.
+    - Upgraded low-code AI platforms, enabling Private Equity teams to automate and streamline post-trade workflows.
+  badges:
+    - Engineering Academy 2025
+
+- node: 4
+  firm: OCBC Bank
+  title: Data Scientist, Corporate and Commercial Banking
+  location: Singapore
+  country: SG
+  image: /images/ocbc.png
+  period: Jan 2023 - Apr 2025
+  description:
+    - Developed recommendation systems for real-time personalization with distributed frameworks generating a 3x uplift in conversions across marketing campaigns and a $2 million revenue increase.
+    - Modernized investment advisory creating a Large Language Model (LLM) agent pipeline using LangChain with a RAG-powered text summarization tool, multithreaded to analyse 2000+ research documents across financial assets.
+    - Led a team to engineer a standardized Python Machine Learning utilities framework for the AI Lab, integrating big data, feature engineering and modelling libraries with scalable I/O, accelerating development timelines by 50%.
+    - Built solutions to serve models using Flask and modules for model monitoring, back-testing and A/B testing.
+    - "Implemented Forex models: identifying optimal trades for business banking and automated hedging for profitability."
+    - Enhanced customer satisfaction scores by 30% building a customer feedback scorer to prioritize critical concerns.
+  badges:
+    - Rookie of the Year 2023
+
+- node: -1
+  firm: OCBC Bank
+  title: Data Science Intern, Risk & Compliance
+  location: Singapore
+  country: SG
+  image: /images/ocbc.png
+  period: May 2022 - Jul 2022
+  description:
+    - Improved customer risk assessment building a Proof-of-Concept message propagation model to quantify risk in customer networks.
+    - Optimised and back tested an in-house fraud detection model implementing a hyperparameter tuning approach resulting in a 5% performance increase.
+
+- node: 3
+  firm: JP Morgan Chase
+  title: Software Engineer, Global Private Bank
+  location: Hong Kong
+  country: HK
+  image: /images/jpmc.png
+  period: Aug 2020 - Dec 2021
+  description:
+    - Delivered new features and enhancements as a server-side developer for a suite of advisor CRM applications, utilizing asynchronous (Reactive) Java, SpringBoot, Kafka and the Elastic stack in biweekly agile sprints.
+    - Streamlined technical support creating an innovative NLP solution with an analytics dashboard, to auto-reconcile data discrepancies, saving 10 hours of manual intervention weekly increasing operational efficiency.
+    - Won prizes at internal hackathons and, as an Ignite APAC ML Community Lead organized technical sharing sessions.
+    - Built a Capture the Flag for the graduate onboarding of 100+ technologists using Kubernetes on Amazon Web Services (AWS) cloud platforms.
+  badges:
+    - Ignite ML Lead - APAC 2021
+
+- node: 2
+  firm: JP Morgan Chase
+  title: Data Science Summer Analyst, Asset Management
+  location: Hong Kong
+  country: HK
+  image: /images/jpmc.png
+  period: Jun 2019 - Aug 2019
+  description:
+    - Improved digital marketing with fund flow projections for asset management applying time series forecasting models (ARIMAs).
+    - Boosted global application uptime by 20%, building a classification-based instance autoscaling system for services deployed across AWS cloud platforms.
+
+- node: 1
+  firm: CryptAM Funds
+  title: Part Time Quantitative Developer
+  location: Hong Kong
+  country: HK
+  image: /images/cryptam.png
+  period: Feb 2018 - Jun 2018
+  description:
+    - Researched and introduced mathematical models in R and VBA for cryptocurrency price evaluation in trade analysis.
+    - Automated daily portfolio allocation pipeline migrating it to Azure, expediting daily runtime by 70%.
