@@ -6,7 +6,7 @@ import { scaleLog } from '@visx/scale';
 
 const InterestCloud = (props: { hobbies: Hobbies, color: string }) => {
 
-    const ref = useRef(null);
+    const ref = useRef<HTMLDivElement>(null);
     const [width, setWidth] = useState(0);
 
     useLayoutEffect(() => {
@@ -23,14 +23,14 @@ const InterestCloud = (props: { hobbies: Hobbies, color: string }) => {
         range: [30, 65],
     });
 
-    const fontSizeSetter = (data) => fontScale(data.value);
+    const fontSizeSetter = (data: { text: string; value: number }) => fontScale(data.value);
 
     return (
         <div ref={ref} style={{}}>
             <Wordcloud
                 words={freqs}
                 width={width > 0 ? width : 800}
-                height={window.visualViewport.height / 2}
+                height={window.visualViewport!.height / 2}
                 fontSize={fontSizeSetter}
                 font={'Impact'}
                 padding={0}

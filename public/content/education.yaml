@@ -1,0 +1,107 @@
+- node: 1
+  title: School
+  institution: A.M.M Matriculation Higher Secondary School
+  location: Chennai, India
+  country: IN
+  image: /images/amm.png
+  degree: High School Certificate
+  period: May 2016
+  grade: "Grade: 98.4%"
+  skills:
+    - High School
+  description:
+    - "Honours: Student Council Executive 2015-2016 | School Editorial Board 2015"
+  badges:
+    - Best Outgoing Student 2016
+
+- node: 2
+  title: BEng (CS)
+  netLabel: BEng
+  institution: The University of Hong Kong
+  location: Hong Kong S.A.R
+  country: HK
+  image: /images/hku.png
+  degree: Bachelors of Engineering (Computer Science)
+  period: Sep 2016 - Jun 2020
+  grade: "CGPA: 3.72 / 4.30"
+  skills:
+    - CS
+    - Finance
+    - French
+  description:
+    - "Major: Computer Science | Minor: Finance, French"
+    - "Honours: Dean's Honour List, HKU Foundation Scholarship, HKSAR Reaching Out Award"
+    - "Teaching Assistant: Programming Technologies and Tools, Computing Programming I"
+  badges:
+    - First Class Honours
+
+- node: 2.3
+  title: Immersive Overseas Language Program
+  institution: Universite Catholique de Lyon
+  location: Lyon, France
+  country: FR
+  image: /images/ucly.png
+  degree: "Intensive Summer French Programme (B1)"
+  period: Jul 2018
+  grade: "Score: 19.13 / 20.00"
+  description:
+    - Embarked on an immersive month-long French language course that delved into culture, art, and literature, igniting a deep appreciation for the language's nuances.
+    - Participated in a memorable cultural exchange program gaining invaluable insights beyond the classroom.
+  badges:
+    - "Legion d'Honneur HK Chapter Scholarship"
+
+- node: 2.2
+  title: Tianjin Interflow Program
+  institution: Tianjin University
+  location: Tianjin, China
+  country: CN
+  image: /images/tju.png
+  degree: Tianjin Interflow Program
+  period: Jul 2017
+  description:
+    - Participated in the Tianjin Interflow Program, embarking on a coding odyssey to master Arduino.
+    - Engineered a remarkable line-following robot entirely from scratch showcasing my technical prowess.
+
+- node: 2.1
+  title: Semester Exchange
+  institution: Nanyang Technological University
+  location: Singapore
+  country: SG
+  image: /images/ntu.png
+  degree: Semester Exchange
+  period: Jan 2019 - May 2019
+  grade: "GPA: 4.31 / 5.00"
+  description:
+    - Student Exchange Program from the Faculty of Engineering
+    - Member of NUS Open Source Society
+
+- node: 2.4
+  title: Leadership Development Programme
+  institution: Common Purpose
+  location: Manila, Philippines
+  country: PH
+  image: /images/ldp.png
+  degree: Leadership Development Programme
+  period: Jun 2017
+  description:
+    - Common Purpose Leadership Development Program
+    - Collaborated with the Oscar M. Lopez Center on a data analytics project focused on devising strategies to promote awareness of scientific grants.
+  badges:
+    - HKSAR Reaching Out Award
+
+- node: 3
+  title: MComp (AI)
+  netLabel: MComp
+  institution: National University of Singapore
+  location: Singapore
+  country: SG
+  image: /images/nus.png
+  degree: Masters of Computing (Artificial Intelligence)
+  period: Jan 2022 - Jan 2023
+  grade: "CGPA: 4.65 / 5.00"
+  skills:
+    - AI
+  description:
+    - "Honours: Postgraduate AI Scholarship"
+  badges:
+    - OCBC AI Scholar 2022

@@ -1,58 +1,56 @@
-import {
-    Container, Stack, Box, HStack, Text, Divider,
-    Card, List, ListItem, Center, Code
-} from "@chakra-ui/react";
-import HobbiesArray from "../arrays/HobbyArray";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import InterestCloud from "./InterestCloud";
+﻿import { useState, useEffect } from 'react';
+import { FiChevronRight } from 'react-icons/fi';
+import { load } from 'js-yaml';
+import InterestCloud from './InterestCloud';
+import SectionHeader from './SectionHeader';
+import { Hobbies } from '../types';
 
-const Interests = (props: { color: string }) => {
-    const hobbies = HobbiesArray();
+const Interests = () => {
+  const [hobbies, setHobbies] = useState<Hobbies>({ interests: {}, activities: [] });
 
-    return (
-        <>
-            <Container maxW={"4xl"} id="interests">
-                <Stack
-                    as={Box}
-                    textAlign={"center"}
-                    spacing={{ base: 8, md: 8 }}
-                    pb={{ base: 20, md: 16 }}
-                >
-                    <Stack align="center" direction="row" p={4}>
-                        <HStack mx={4}>
-                            <Text color={`${props.color}.400`} fontWeight={800}>
-                                06
-                            </Text>
-                            <Text fontWeight={800}>Interests</Text>
-                        </HStack>
-                        <Divider orientation="horizontal" />
-                    </Stack>
-                    <Center px={4}>
-                        {window.visualViewport.width > 768 ?
-                            <InterestCloud hobbies={hobbies} color={props.color} /> :
-                            <Code>&lt;p&gt; A Word Cloud rendition of my interests, optimized for widescreen views. &lt;p&gt;</Code>}
-                    </Center>
-                    <Text color={"gray.600"} fontSize={"xl"} px={2}>
-                        Other Activities
-                    </Text>
-                    <Card px={2} py={2} mx={4}>
-                        <List spacing={2}>
-                            {hobbies.activities.map((hobby) => (
-                                <ListItem key={hobby} textAlign={'left'}>
-                                    <ChevronRightIcon
-                                        boxSize={6}
-                                        as={ChevronRightIcon}
-                                        color={`${props.color}.500`}
-                                    />
-                                    <Text as={'b'}>{hobby.split(',')[0]}</Text>
-                                    <Text as={'span'}>,{hobby.split(/,(.*)/s).slice(1)}</Text>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </Card>
-                </Stack>
-            </Container>
-        </>);
-}
+  useEffect(() => {
+    fetch('/content/hobbies.yaml')
+      .then(r => r.text())
+      .then(text => setHobbies(load(text) as Hobbies))
+      .catch(console.error);
+  }, []);
+  const isWideScreen =
+    typeof window !== 'undefined' && window.visualViewport!.width > 768;
+
+  return (
+    <section id="interests" className="max-w-5xl mx-auto px-4 sm:px-6 pb-12 scroll-mt-20">
+      <SectionHeader number="06" title="Interests" />
+
+      {isWideScreen ? (
+        <div className="mb-8">
+          <InterestCloud hobbies={hobbies} color="#14b8a6" />
+        </div>
+      ) : (
+        <p className="text-sm text-zinc-400 dark:text-zinc-600 font-mono mb-8 text-center">
+          {'<'} Word cloud - best viewed on desktop {' />'}
+        </p>
+      )}
+
+      <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-4">
+        Other Activities
+      </p>
+      <div className="rounded-xl bg-white dark:bg-zinc-900 shadow-[0_2px_16px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.5)] dark:ring-1 dark:ring-white/[0.06] divide-y divide-zinc-50 dark:divide-zinc-700">
+        {hobbies.activities?.map((activity, i) => {
+          const [bold, ...rest] = activity.split(',');
+          return (
+            <div key={i} className="flex items-start gap-2 px-4 py-3">
+              <FiChevronRight size={14} className="text-teal-500 mt-0.5 flex-shrink-0" />
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                <span className="font-semibold text-zinc-800 dark:text-zinc-200">{bold}</span>
+                {rest.length > 0 ? `,${rest.join(',')}` : ''}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
 
 export default Interests;
+
