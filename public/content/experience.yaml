@@ -6,7 +6,8 @@
   image: /images/barclays.png
   period: Dec 2025 - Present
   description:
-    - Building with Data and AI as part of the Global Markets Team.
+    - Building an all-in-one internal AI assistant for global Markets colleagues, consolidating internal and external data sources to support workflows across trading, client intelligence and operations.
+    - Coordinating with stakeholders across Asia to scope new AI use cases and drive adoption of agentic frameworks including Microsoft Copilot and Claude Code within the bank.
   badges:
     - Current Role
 
@@ -34,7 +35,7 @@
     - Developed recommendation systems for real-time personalization with distributed frameworks generating a 3x uplift in conversions across marketing campaigns and a $2 million revenue increase.
     - Modernized investment advisory creating a Large Language Model (LLM) agent pipeline using LangChain with a RAG-powered text summarization tool, multithreaded to analyse 2000+ research documents across financial assets.
     - Led a team to engineer a standardized Python Machine Learning utilities framework for the AI Lab, integrating big data, feature engineering and modelling libraries with scalable I/O, accelerating development timelines by 50%.
-    - Built solutions to serve models using Flask and modules for model monitoring, back-testing and A/B testing.
+    - Standardised the model deployment lifecycle by building Flask-based serving infrastructure and reusable modules for monitoring, back-testing and A/B testing, improving reproducibility and scalability across the AI Lab.
     - "Implemented Forex models: identifying optimal trades for business banking and automated hedging for profitability."
     - Enhanced customer satisfaction scores by 30% building a customer feedback scorer to prioritize critical concerns.
   badges:
@@ -59,9 +60,9 @@
   image: /images/jpmc.png
   period: Aug 2020 - Dec 2021
   description:
-    - Delivered new features and enhancements as a server-side developer for a suite of advisor CRM applications, utilizing asynchronous (Reactive) Java, SpringBoot, Kafka and the Elastic stack in biweekly agile sprints.
-    - Streamlined technical support creating an innovative NLP solution with an analytics dashboard, to auto-reconcile data discrepancies, saving 10 hours of manual intervention weekly increasing operational efficiency.
-    - Won prizes at internal hackathons and, as an Ignite APAC ML Community Lead organized technical sharing sessions.
+    - Developed server-side features for advisor CRM applications using Reactive Java, SpringBoot, Kafka and the Elastic stack across biweekly agile sprints.
+    - Streamlined technical support with an innovative NLP solution and analytics dashboard to auto-reconcile data discrepancies, saving 10 hours of manual intervention weekly and increasing operational efficiency.
+    - Won prizes at multiple internal hackathons developing ML-powered solutions.
     - Built a Capture the Flag for the graduate onboarding of 100+ technologists using Kubernetes on Amazon Web Services (AWS) cloud platforms.
   badges:
     - Ignite ML Lead - APAC 2021

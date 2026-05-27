@@ -3,7 +3,7 @@ import { type } from "os";
 export type Profile = {
     siteName: string
     headerName: string
-    headerRole: string
+    headerRole: string[]
     headerDesc: string
     about: string
     linkedin: string

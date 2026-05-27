@@ -3,7 +3,7 @@ import { load } from 'js-yaml';
 import { Profile } from '../types';
 
 const empty: Profile = {
-  siteName: '', headerName: '', headerRole: '', headerDesc: '',
+  siteName: '', headerName: '', headerRole: [], headerDesc: '',
   about: '', linkedin: '', github: '', email: '', logoFull: '', logoShort: '',
 };
 
@@ -20,7 +20,7 @@ export const ProfileProvider = ({ children }: { children: React.ReactNode }) => 
         setProfile({
           siteName:   data.siteName           ?? '',
           headerName: data.header?.name       ?? '',
-          headerRole: data.header?.roles      ?? '',
+          headerRole: data.header?.roles      ?? [],
           headerDesc: data.header?.description ?? '',
           about:      data.about              ?? '',
           linkedin:   data.contact?.linkedin  ?? '',

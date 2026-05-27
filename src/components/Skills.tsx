@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { load } from 'js-yaml';
 import { Icon } from '@iconify/react';
 import SkillNet from './SkillGraph';
@@ -43,7 +43,6 @@ const iconIds: Record<string, string> = {
   Java: 'devicon-plain:java',
   // AI/ML
   'Claude Code': 'simple-icons:claude',
-  LangChain: 'simple-icons:langchain',
   LangGraph: 'simple-icons:langgraph',
   LangFlow: 'simple-icons:langflow',
   Anthropic: 'simple-icons:anthropic',
@@ -327,8 +326,8 @@ const SkillsSection = () => {
           <Card title="Spoken Languages">
             <div className="grid grid-cols-[1fr_auto_auto] gap-x-2 gap-y-2.5 items-center">
               {Object.entries(skills.languages).map(([lang, level]) => (
-                <>
-                  <div key={lang} className="flex items-center gap-2 min-w-0">
+                <React.Fragment key={lang}>
+                  <div className="flex items-center gap-2 min-w-0">
                     <img
                       src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${langmap[lang]}.svg`}
                       alt={langmap[lang]}
@@ -336,11 +335,11 @@ const SkillsSection = () => {
                     />
                     <span className="text-sm text-zinc-700 dark:text-zinc-300 truncate">{lang}</span>
                   </div>
-                  <ProfBar key={`${lang}-bar`} level={level} />
-                  <span key={`${lang}-label`} className={`text-xs px-2 py-0.5 rounded font-medium whitespace-nowrap text-center flex-shrink-0 ${langLabelClass(level)}`}>
+                  <ProfBar level={level} />
+                  <span className={`text-xs px-2 py-0.5 rounded font-medium whitespace-nowrap text-center flex-shrink-0 ${langLabelClass(level)}`}>
                     {langLabel(level)}
                   </span>
-                </>
+                </React.Fragment>
               ))}
             </div>
           </Card>
@@ -348,7 +347,7 @@ const SkillsSection = () => {
 
         <div className="col-span-6 sm:col-span-3">
           <Card title="Soft Skills">
-            <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
               {skills.others.map(skill => (
                 <div key={skill} className="flex items-center gap-2">
                   <span className="text-teal-500 font-medium flex-shrink-0">›</span>

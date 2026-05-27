@@ -102,7 +102,7 @@ const Projects = () => {
         ))}
       </div>
 
-      <SubHeading label="More Projects" />
+      <SubHeading label="Personal Projects" />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
         {projects.filter(p => p.node > 0 && p.node < 1000).map(p => (
           <ProjectCard key={p.node} project={p} />

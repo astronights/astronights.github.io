@@ -5,7 +5,7 @@ const Header = () => {
   const profile = useProfile();
   const [roleIndex, setRoleIndex] = useState(0);
   const [visible, setVisible] = useState(true);
-  const roles = profile.headerRole ? profile.headerRole.split(';') : [''];
+  const roles = profile.headerRole.length ? profile.headerRole : [''];
 
   useEffect(() => {
     const interval = setInterval(() => {

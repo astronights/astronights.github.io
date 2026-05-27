@@ -1,19 +1,40 @@
 # Shubhankar Agrawal
 
-This project is my personal website available at [http://astronights.github.io](http://astronights.github.io). It serves as a web rendition of a more detailed version of my CV along with stylized components using ML based data visualizations.
+Personal portfolio site available at [astronights.github.io](https://astronights.github.io).
 
-## Technology
+A web rendition of my CV with interactive data visualisations built on top of a YAML-driven content layer.
 
-The project is built primarily on React with Typescript as the framework to develop the application. A majority of the UI components were created using CHakra UI with reliance on other libraries for interactive visualizations of Neural Networks and Knowledge Graphs.
+## Stack
 
-#### Education Interactive Neural Network
+- **React 18 + TypeScript** — component framework
+- **Vite** — build tooling
+- **Tailwind CSS** — styling (zinc/teal palette, dark mode first)
+- **@iconify/react** — skill & tool icons
+- **js-yaml** — content loaded at runtime from `/public/content/*.yaml`
 
-![Education Interactive Neural Network](https://github.com/user-attachments/assets/0641a789-c632-4e68-b42f-12f1c5c0cc7f)
+## Interactive Components
 
-#### Skills Interactive Knowledge Graph
+- **3D Skill Graph** — force-directed knowledge graph via `react-force-graph-3d` + `three.js`
+- **Education Neural Network** — animated node graph via `reactflow`
+- **Interests Word Cloud** — weighted cloud via `@visx/wordcloud`
 
-![Skills Interactive Knowledge Graph](https://github.com/user-attachments/assets/75f4aa14-af75-4365-ae72-3e09ba2b6f27)
+## Content
 
-#### Interests World Cloud
+All page content lives in `/public/content/` as YAML files — no redeployment needed for copy updates:
 
-![Interests World Cloud](https://github.com/user-attachments/assets/ac041707-4f7a-44c3-aa2a-e0c90ff20b6e)
+| File | Section |
+|---|---|
+| `profile.yaml` | Header, About, contact links |
+| `experience.yaml` | Work history |
+| `education.yaml` | Education |
+| `projects.yaml` | Projects |
+| `skills.yaml` | Skills cards + graph data |
+| `interests.yaml` | Interests word cloud |
+
+## Development
+
+```bash
+npm install
+npm start        # dev server
+npm run build    # production build
+```
