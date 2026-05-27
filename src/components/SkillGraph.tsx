@@ -24,6 +24,16 @@ const SkillNet = (props: { skills: Skills; color: string }) => {
     graphRef.current?.d3ReheatSimulation();
     graphRef.current?.cameraPosition({ x: 20, y: 0, z: 320 }, { x: 0, y: 0, z: 0 }, 1000);
     graphRef.current?.zoomToFit(1500, 1500);
+    const earlyControls = graphRef.current?.controls() as any;
+    if (earlyControls) earlyControls.enablePan = false;
+    setTimeout(() => {
+      const controls = graphRef.current?.controls() as any;
+      const camera = graphRef.current?.camera();
+      if (controls && camera) {
+        controls.enablePan = false;
+        controls.maxDistance = camera.position.length();
+      }
+    }, 3200);
   }, [graphRef]);
 
   return (
