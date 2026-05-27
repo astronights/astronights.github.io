@@ -16,7 +16,23 @@
     - /images/hypors-crates.png
     - /images/hypors.png
   badges:
-    - Crates hypors 0.2.4
+    - Crates hypors 0.3.0
+
+- node: 100
+  title: Babel Bridge
+  link: https://babel-bridge-ui.vercel.app
+  description: Multiplayer language learning platform where users practice foreign languages through real conversations with friends and an AI tutor, with live scoring and word-level feedback.
+  images:
+    - /images/babel-bridge-ui.png
+    - /images/babel-bridge-server-repo.png
+
+- node: 101
+  title: Food for Thought
+  link: https://food-for-thought-kappa.vercel.app
+  description: Mobile-first PWA to access nutritional information from Singapore restaurants, with a meal builder for real-time calorie tracking and crowdsourced data submission via AI vision.
+  images:
+    - /images/food-for-thought.png
+    - /images/food-for-thought-repo.png
 
 - node: 92
   title: Optimizing 1px Black Box Attacks
@@ -28,14 +44,14 @@
 - node: 93
   title: Options Pricing
   link: https://github.com/astronights/options-rusty
-  description: Implemented various Options Pricing strategies (including Black Scholes, Monte Carlo) and Greeks calculation methods developing Rust skills.
+  description: A Rust implementation of Options Pricing strategies including Black-Scholes and Monte Carlo simulations, with Greeks calculations.
   images:
     - /images/option-pricing.png
 
 - node: 94
   title: LLM Amazing Race
   link: https://github.com/astronights/llm-amazing-race-ai
-  description: Created an LLM based Amazing Race on a global scale to generate city exploration puzzles supported with a MERN web component.
+  description: AI-powered text adventure game inspired by The Amazing Race, where LLM-generated riddles unlock real-world city destinations. Features an interactive 3D globe for in-game navigation and routing.
   images:
     - /images/llm-amazing-race-ui.png
     - /images/llm-amazing-race-ai.png
@@ -43,7 +59,7 @@
 - node: 95
   title: Cryptle
   link: https://daily-cryptic-iief.vercel.app/
-  description: Developed a daily crossword clue puzzle using the MERN stack + Typescript enhancing web skills powered by Open Source data.
+  description: A daily cryptic crossword clue game inspired by Wordle, serving a new puzzle every day from an open source clue bank. Built with the MERN stack and TypeScript, deployed on Vercel.
   images:
     - /images/cryptle-ui.png
     - /images/cryptle-repo.png
@@ -58,7 +74,7 @@
 - node: 97
   title: Financial Data Forecaster
   link: https://i.cs.hku.hk/fyp/2019/fyp19020/
-  description: Built a forecaster that predicts cross-domain index and forex price movement across 17 APAC countries with 10-year historical prices and sentiment of geo-political tags on social media.
+  description: Multi-domain financial forecaster for indices and forex across 17 APAC markets, powered by historical price data and social media sentiment analysis.
   images:
     - /images/fyp.png
     - /images/fyp-repo.png
@@ -76,6 +92,11 @@
   description: Developed trading strategies for optimal RFQ price matching and trading on client and dealer market, prioritizing risk, PnL, activity, and generating post trade reports.
   badges:
     - JPMC SEP Hackathon Runner Up 2020
+
+- node: -7
+  title: Two to Tango
+  link: https://two-to-tango.vercel.app
+  description: Offline PWA for the LinkedIn Tango puzzle with an automatic unique puzzle generator.
 
 - node: -8
   title: Candle Collector

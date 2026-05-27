@@ -11,7 +11,6 @@ aiml:
   ai:
     - LangGraph
     - LangFlow
-    - LangChain
     - Anthropic
     - OpenAI
     - AWS Bedrock
@@ -82,11 +81,13 @@ languages:
 
 others:
   - Problem Solving
-  - Teamwork & Collaboration
+  - Cross-team Collaboration
   - Effective Communication
   - Critical Thinking
   - Adaptability
-  - Multitasking
+  - Stakeholder Management
+  - Technical Leadership
+  - Mentorship
 
 graph:
   nodes:
@@ -116,7 +117,6 @@ graph:
     # AI tools (group 3)
     - { id: LangGraph,   group: 3 }
     - { id: LangFlow,    group: 3 }
-    - { id: LangChain,   group: 3 }
     - { id: Anthropic,   group: 3 }
     - { id: OpenAI,      group: 3 }
     - { id: AWS Bedrock, group: 3 }
@@ -187,12 +187,14 @@ graph:
     - { id: Mandarin, group: 8 }
     - { id: Russian,  group: 8 }
     # soft skills (group 9)
-    - { id: Problem Solving,           group: 9 }
-    - { id: Teamwork & Collaboration,  group: 9 }
-    - { id: Effective Communication,   group: 9 }
-    - { id: Critical Thinking,         group: 9 }
-    - { id: Adaptability,              group: 9 }
-    - { id: Multitasking,              group: 9 }
+    - { id: Problem Solving,              group: 9 }
+    - { id: Cross-team Collaboration, group: 9 }
+    - { id: Effective Communication,      group: 9 }
+    - { id: Critical Thinking,            group: 9 }
+    - { id: Adaptability,                 group: 9 }
+    - { id: Stakeholder Management,       group: 9 }
+    - { id: Technical Leadership,         group: 9 }
+    - { id: Mentorship,                   group: 9 }
 
   links:
     # level 1 — root to main branches
@@ -224,7 +226,6 @@ graph:
     - { source: Programming Languages, target: Rust,        level: 4 }
     - { source: AI Tools, target: LangGraph,   level: 4 }
     - { source: AI Tools, target: LangFlow,    level: 4 }
-    - { source: AI Tools, target: LangChain,   level: 4 }
     - { source: AI Tools, target: Anthropic,   level: 4 }
     - { source: AI Tools, target: OpenAI,      level: 4 }
     - { source: AI Tools, target: AWS Bedrock, level: 4 }
@@ -276,12 +277,14 @@ graph:
     - { source: Spoken Languages, target: Tamil,    level: 4 }
     - { source: Spoken Languages, target: Mandarin, level: 4 }
     - { source: Spoken Languages, target: Russian,  level: 4 }
-    - { source: Soft Skills, target: Problem Solving,           level: 4 }
-    - { source: Soft Skills, target: Teamwork & Collaboration,  level: 4 }
-    - { source: Soft Skills, target: Effective Communication,   level: 4 }
-    - { source: Soft Skills, target: Critical Thinking,         level: 4 }
-    - { source: Soft Skills, target: Adaptability,              level: 4 }
-    - { source: Soft Skills, target: Multitasking,              level: 4 }
+    - { source: Soft Skills, target: Problem Solving,               level: 4 }
+    - { source: Soft Skills, target: Cross-team Collaboration, level: 4 }
+    - { source: Soft Skills, target: Effective Communication,       level: 4 }
+    - { source: Soft Skills, target: Critical Thinking,             level: 4 }
+    - { source: Soft Skills, target: Adaptability,                  level: 4 }
+    - { source: Soft Skills, target: Stakeholder Management,        level: 4 }
+    - { source: Soft Skills, target: Technical Leadership,          level: 4 }
+    - { source: Soft Skills, target: Mentorship,                    level: 4 }
     # cross-links
     - { source: Python,        target: Pandas,       level: 5 }
     - { source: Python,        target: Polars,       level: 5 }
@@ -314,9 +317,7 @@ graph:
     - { source: ElasticSearch, target: Java,         level: 5 }
     - { source: ElasticSearch, target: Kibana,       level: 5 }
     - { source: ElasticSearch, target: Grafana,      level: 5 }
-    - { source: LangChain,     target: pgvector,     level: 5 }
-    - { source: LangChain,     target: OpenSearch,   level: 5 }
-    - { source: LangGraph,     target: LangChain,    level: 5 }
+    - { source: LangGraph,     target: LangFlow,     level: 5 }
     - { source: Docker,        target: Kubernetes,   level: 5 }
     - { source: Kubernetes,    target: EKS,          level: 5 }
     - { source: Techniques,    target: Python,       level: 5 }
