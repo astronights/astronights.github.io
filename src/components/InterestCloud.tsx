@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Hobbies } from "../types";
-import Wordcloud from '@visx/wordcloud/lib/Wordcloud';
+import Wordcloud from '@visx/wordcloud/esm/Wordcloud';
 import { Text } from '@visx/text';
 import { scaleLog } from '@visx/scale';
 
